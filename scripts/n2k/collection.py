@@ -110,9 +110,9 @@ def collect_assets(n2k_root: str) -> list[str]:
     return assets
 
 
-def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[int]) -> None:
+def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[str]) -> None:
     summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
-    summaries.epsg = epsg_list
+    summaries.code = epsg_list
 
 
 def add_links_to_collection(collection: pystac.Collection, link_list: list[pystac.Link]) -> None:
@@ -137,7 +137,7 @@ def create_collection(n2k_root: str) -> pystac.Collection:
         )
 
         # summaries
-        epsg_list = [3035]
+        epsg_list = ["EPSG:3035"]
         add_summaries_to_collection(collection, epsg_list)
 
         # links

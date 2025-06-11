@@ -84,9 +84,9 @@ def create_core_collection() -> pystac.Collection:
     )
 
 
-def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[int]) -> None:
+def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[str]) -> None:
     summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
-    summaries.epsg = epsg_list
+    summaries.code = epsg_list
 
 
 def add_item_assets_to_collection(collection: pystac.Collection, item_asset_class: Enum) -> None:
@@ -110,7 +110,7 @@ def create_collection(item_list: list[str]) -> None:
         collection = create_core_collection()
 
         # summaries
-        epsg_list = [3035]
+        epsg_list = ["EPSG:3035"]
         add_summaries_to_collection(collection, epsg_list)
 
         # extensions

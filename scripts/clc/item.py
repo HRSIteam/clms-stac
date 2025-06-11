@@ -192,7 +192,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
     proj_ext.apply(
-        epsg=rio.crs.CRS(img.crs).to_epsg(),
+        code=rio.crs.CRS(img.crs).to_epsg(),
         bbox=img.bounds,
         shape=list(img.shape),
         transform=[*list(img.transform), 0.0, 0.0, 1.0],

@@ -164,7 +164,7 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
     collection.make_all_asset_hrefs_relative()
     collection.update_extent_from_items()
     ProjectionExtension.add_to(collection)
-    collection.summaries = pystac.Summaries({"proj:epsg": list(set(proj_epsg))})
+    collection.summaries = pystac.Summaries({"proj:code": list(set(proj_epsg))})
 
     try:
         error_msg = best_match(validator.iter_errors(collection.to_dict()))

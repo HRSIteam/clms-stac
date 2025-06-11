@@ -203,7 +203,7 @@ def add_providers_to_item(item: pystac.Item, provider_list: list[pystac.Provider
 
 def add_projection_extension_to_item(item: pystac.Item, crs: CRS, bounds: BoundingBox, height: int, width: int) -> None:
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = crs.to_epsg()
+    projection.code = crs.to_epsg()
     projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
     projection.shape = [height, width]
 
