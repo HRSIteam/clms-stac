@@ -20,11 +20,11 @@
       ],
       "properties": {
         "stac_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         },
         "stac_extensions": {
           "const": [
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
         "type": {
@@ -55,7 +55,11 @@
                   "minimum": 18.140136,
                   "maximum": 19.329582
                 },
-                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 }
+                {
+                  "type": "number",
+                  "minimum": 41.672629,
+                  "maximum": 42.463926
+                }
               ]
             }
           ]
@@ -69,7 +73,7 @@
             "end_datetime",
             "created",
             "providers",
-            "proj:epsg",
+            "proj:code",
             "proj:bbox",
             "proj:shape"
           ],
@@ -79,8 +83,22 @@
                 {
                   "name": "Copernicus Land Monitoring Service",
                   "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": ["licensor", "host"],
+                  "roles": [
+                    "licensor",
+                    "host"
+                  ],
                   "url": "https://land.copernicus.eu"
+                }
+              ]
+            },
+            "proj:code": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^EPSG:\\d+$"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             }
@@ -187,12 +205,12 @@
       ],
       "properties": {
         "stac_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         },
         "stac_extensions": {
           "const": [
             "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
         "type": {
@@ -226,7 +244,10 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": ["licensor", "host"],
+              "roles": [
+                "licensor",
+                "host"
+              ],
               "url": "https://land.copernicus.eu/en"
             }
           ]
@@ -234,10 +255,22 @@
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [[-31.285, 27.642, 44.807, 71.165]]
+              "bbox": [
+                [
+                  -31.285,
+                  27.642,
+                  44.807,
+                  71.165
+                ]
+              ]
             },
             "temporal": {
-              "interval": [["2018-01-01T00:00:00.000Z", null]]
+              "interval": [
+                [
+                  "2018-01-01T00:00:00.000Z",
+                  null
+                ]
+              ]
             }
           }
         },
@@ -260,9 +293,24 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["proj:epsg"],
+          "required": [
+            "proj:code"
+          ],
           "minProperties": 1,
-          "maxProperties": 1
+          "maxProperties": 1,
+          "properties": {
+            "proj:code": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^EPSG:\\d+$"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          }
         },
         "links": {
           "type": "array",

@@ -23,15 +23,23 @@
         "assets"
       ],
       "properties": {
-        "stac_version": { "const": "1.0.0" },
+        "stac_version": {
+          "const": "1.1.0"
+        },
         "stac_extensions": {
           "const": [
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
-        "type": { "const": "Collection" },
-        "id": { "const": "natura2000" },
-        "title": { "const": "Natura 2000 Land Cover/Land Use Status" },
+        "type": {
+          "const": "Collection"
+        },
+        "id": {
+          "const": "natura2000"
+        },
+        "title": {
+          "const": "Natura 2000 Land Cover/Land Use Status"
+        },
         "description": {
           "const": "The Copernicus Land Cover/Land Use (LC/LU) status map as part of the Copernicus Land Monitoring Service (CLMS) Local Component, tailored to the needs of biodiversity monitoring in selected Natura2000 sites (4790 sites of natural and semi-natural grassland formations listed in Annex I of the Habitats Directive) including a 2km buffer zone surrounding the sites and covering an area of 631.820 km² across Europe. LC/LU is extracted from VHR satellite data and other available data."
         },
@@ -47,42 +55,83 @@
             "Landscape"
           ]
         },
-        "license": { "const": "proprietary" },
+        "license": {
+          "const": "proprietary"
+        },
         "providers": {
           "const": [
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": ["licensor", "host"],
+              "roles": [
+                "licensor",
+                "host"
+              ],
               "url": "https://land.copernicus.eu"
             }
           ]
         },
         "extent": {
           "type": "object",
-          "required": ["spatial", "temporal"],
+          "required": [
+            "spatial",
+            "temporal"
+          ],
           "minProperties": 2,
           "maxProperties": 2,
           "properties": {
             "spatial": {
               "oneOf": [
-                { "const": { "bbox": [[-16.82, 27.87, 33.17, 66.79]] } },
-                { "const": { "bbox": [[-16.81, 27.87, 33.17, 66.79]] } }
+                {
+                  "const": {
+                    "bbox": [
+                      [
+                        -16.82,
+                        27.87,
+                        33.17,
+                        66.79
+                      ]
+                    ]
+                  }
+                },
+                {
+                  "const": {
+                    "bbox": [
+                      [
+                        -16.81,
+                        27.87,
+                        33.17,
+                        66.79
+                      ]
+                    ]
+                  }
+                }
               ]
             },
             "temporal": {
-              "const": { "interval": [["2006-01-01T00:00:00Z", null]] }
+              "const": {
+                "interval": [
+                  [
+                    "2006-01-01T00:00:00Z",
+                    null
+                  ]
+                ]
+              }
             }
           }
         },
         "summaries": {
           "type": "object",
-          "required": ["proj:epsg"],
+          "required": [
+            "proj:code"
+          ],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {
-            "proj:epsg": {
-              "const": [3035]
+            "proj:code": {
+              "const": [
+                "EPSG:3035"
+              ]
             }
           }
         },
@@ -93,7 +142,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "license" },
+                  "rel": {
+                    "const": "license"
+                  },
                   "href": {
                     "const": "https://land.copernicus.eu/en/data-policy"
                   }
@@ -104,7 +155,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "self" },
+                  "rel": {
+                    "const": "self"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"
@@ -116,7 +169,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "root" },
+                  "rel": {
+                    "const": "root"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"
@@ -128,7 +183,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "parent" },
+                  "rel": {
+                    "const": "parent"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"
