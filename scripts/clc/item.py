@@ -1,7 +1,7 @@
 import logging
 import os
 import re
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 import pystac
 import pystac.item
@@ -9,6 +9,7 @@ import pystac.link
 import rasterio as rio
 import rasterio.warp
 from pystac.extensions.projection import ProjectionExtension
+from rasterio import windows
 from shapely.geometry import box, mapping
 
 from .constants import (
@@ -27,7 +28,7 @@ from .constants import (
 LOGGER = logging.getLogger(__name__)
 
 
-def deconstruct_clc_name(filename: str) -> dict[str]:
+def deconstruct_clc_name(filename: str) -> dict[str, str]:
     filename_split = {"dirname": os.path.dirname(filename), "basename": os.path.basename(filename)}
     p = re.compile("^(?P<id>[A-Z0-9a-z_-]*)\\.(?P<suffix>.*)$")
     m = p.search(filename_split["basename"])
@@ -50,7 +51,7 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
     return filename_split
 
 
-def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
+def create_item_asset(asset_file: str, dom_code: str) -> tuple[str, pystac.Asset]:
     filename_elements = deconstruct_clc_name(asset_file)
 
     suffix = filename_elements["suffix"].replace(".", "_")
@@ -117,25 +118,25 @@ def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
     return asset_files
 
 
-def project_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS) -> tuple[float]:
-    return rio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
+def project_bbox(src: rio.DatasetReader, dst_crs: rio.CRS) -> tuple[float]:
+    return rasterio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
 
 
 def project_data_window_bbox(
-    src: rio.io.DatasetReader, dst_crs: rio.CRS, dst_resolution: tuple = (0.25, 0.25)
-) -> tuple[float]:
-    data, transform = rio.warp.reproject(
+    src: rio.DatasetReader, dst_crs: rio.CRS, dst_resolution: tuple = (0.25, 0.25)
+) -> tuple[float, float, float, float]:
+    data, transform = rasterio.warp.reproject(
         source=src.read(),
         src_transform=src.transform,
         src_crs=src.crs,
         dst_crs=dst_crs,
         dst_nodata=src.nodata,
         dst_resolution=dst_resolution,
-        resampling=rio.warp.Resampling.max,
+        resampling=rasterio.warp.Resampling.max,
     )
 
-    data_window = rio.windows.get_data_window(data, nodata=src.nodata)
-    return rio.windows.bounds(data_window, transform=transform)
+    data_window = windows.get_data_window(data, nodata=src.nodata)
+    return windows.bounds(data_window, transform=transform)
 
 
 def create_item(img_path: str, data_root: str) -> pystac.Item:
@@ -156,13 +157,20 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         else:
             bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
 
+        if year is not None:
+            start_datetime = datetime(int(year), 1, 1, microsecond=0, tzinfo=timezone.utc)
+            end_datetime = datetime(int(year), 12, 31, microsecond=0, tzinfo=timezone.utc)
+        else:
+            start_datetime = None
+            end_datetime = None
+
         params = {
             "id": clc_name_elements.get("id"),
             "bbox": bbox,
-            "geometry": mapping(box(*bbox)),
+            "geometry": mapping(box(*bbox, ccw=True)),
             "datetime": None,
-            "start_datetime": datetime(int(year), 1, 1, microsecond=0, tzinfo=UTC),
-            "end_datetime": datetime(int(year), 12, 31, microsecond=0, tzinfo=UTC),
+            "start_datetime": start_datetime,
+            "end_datetime": end_datetime,
             "properties": props,
         }
 
@@ -170,7 +178,8 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     for asset_file in asset_files:
         try:
-            key, asset = create_item_asset(asset_file, DOM_code=clc_name_elements.get("DOM_code"))
+            dom_code = clc_name_elements.get("DOM_code") or ""
+            key, asset = create_item_asset(asset_file, dom_code=dom_code)
             item.add_asset(
                 key=key,
                 asset=asset,
@@ -192,7 +201,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
     proj_ext.apply(
-        code=rio.crs.CRS(img.crs).to_epsg(),
+        code=img.crs.to_epsg(),
         bbox=img.bounds,
         shape=list(img.shape),
         transform=[*list(img.transform), 0.0, 0.0, 1.0],

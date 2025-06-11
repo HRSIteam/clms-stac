@@ -91,7 +91,7 @@ def create_asset(filename, asset_path):
     )
 
 
-def collect_assets(n2k_root: str) -> list[str]:
+def collect_assets(n2k_root: str) -> dict[str, pystac.Asset]:
     asset_list = (
         get_files(n2k_root, "xml")
         + get_files(n2k_root, "lyr")
@@ -151,6 +151,8 @@ def create_collection(n2k_root: str) -> pystac.Collection:
         # update links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
         catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        if not isinstance(catalog, pystac.Catalog):
+            raise CollectionCreationError("Parent catalog is not a pystac.Catalog instance.")
         collection.set_root(catalog)
         collection.set_parent(catalog)
     except Exception as error:

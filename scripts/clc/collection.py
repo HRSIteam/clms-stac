@@ -1,7 +1,7 @@
 import json
 import logging
 import os
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 import pystac
 import pystac.item
@@ -45,11 +45,11 @@ def get_stac_validator(product_schema: str) -> Draft7Validator:
     return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 
-def proj_epsg_from_item_asset(item: pystac.Item) -> int:
+def proj_epsg_from_item_asset(item: pystac.Item) -> int | None:
     for asset_key in item.assets:
         asset = item.assets[asset_key].to_dict()
         if "proj:epsg" in asset:
-            return asset.get("proj:epsg")
+            return asset.get("proj:code")
 
     return None
 
@@ -91,8 +91,8 @@ def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
 
 
 def create_collection() -> pystac.Collection:
-    sp_extent = pystac.SpatialExtent([None, None, None, None])
-    tmp_extent = pystac.TemporalExtent([datetime(1990, 1, 1, microsecond=0, tzinfo=UTC), None])
+    sp_extent = pystac.SpatialExtent([[-180.0, -90.0, 180.0, 90.0]])
+    tmp_extent = pystac.TemporalExtent([datetime(1990, 1, 1, microsecond=0, tzinfo=timezone.utc), None])
     extent = pystac.Extent(sp_extent, tmp_extent)
 
     collection = pystac.Collection(
@@ -120,6 +120,8 @@ def create_collection() -> pystac.Collection:
     collection.add_link(CLMS_LICENSE)
     collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{collection.id}/{collection.id}.json"))
     catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+    if not isinstance(catalog, pystac.Catalog):
+        raise TypeError("Loaded catalog is not a pystac.Catalog instance")
 
     collection.set_root(catalog)
     collection.set_parent(catalog)

@@ -76,6 +76,8 @@ def add_links_to_collection(collection: pystac.Collection, link_list: list[Link]
 def add_items_to_collection(collection: pystac.Collection, item_list: list[str]) -> None:
     for item in item_list:
         stac_object = pystac.read_file(item)
+        if not isinstance(stac_object, pystac.Item):
+            raise TypeError(f"Object loaded from {item} is not a pystac.Item")
         collection.add_item(stac_object, title=stac_object.id)
 
 
@@ -113,9 +115,11 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
 
         # add self, root, and parent links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{collection.id}/{collection.id}.json"))
-        catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
-        collection.set_root(catalog)
-        collection.set_parent(catalog)
+        catalog_obj = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        if not isinstance(catalog_obj, pystac.Catalog):
+            raise TypeError("Object loaded from catalog file is not a pystac.Catalog")
+        collection.set_root(catalog_obj)
+        collection.set_parent(catalog_obj)
     except Exception as error:
         raise CollectionCreationError(error)
     return collection

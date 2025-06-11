@@ -89,9 +89,9 @@ def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[s
     summaries.code = epsg_list
 
 
-def add_item_assets_to_collection(collection: pystac.Collection, item_asset_class: Enum) -> None:
+def add_item_assets_to_collection(collection: pystac.Collection, item_asset_class: type[Enum]) -> None:
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
-    item_assets.item_assets = {asset.name: asset.value for asset in item_asset_class}
+    item_assets.item_assets = {asset.name: asset.value for asset in item_asset_class.__members__.values()}
 
 
 def add_links_to_collection(collection: pystac.Collection, link_list: list[Link]) -> None:
@@ -102,10 +102,12 @@ def add_links_to_collection(collection: pystac.Collection, link_list: list[Link]
 def add_items_to_collection(collection: pystac.Collection, item_list: list[str]) -> None:
     for item in item_list:
         stac_object = pystac.read_file(item)
+        if not isinstance(stac_object, pystac.Item):
+            raise TypeError(f"Object at {item} is not a pystac.Item")
         collection.add_item(stac_object, title=stac_object.id)
 
 
-def create_collection(item_list: list[str]) -> None:
+def create_collection(item_list: list[str]) -> pystac.Collection:
     try:
         collection = create_core_collection()
 
@@ -125,9 +127,11 @@ def create_collection(item_list: list[str]) -> None:
 
         # add self, root and parent links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{collection.id}/{collection.id}.json"))
-        catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
-        collection.set_root(catalog)
-        collection.set_parent(catalog)
+        catalog_obj = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        if not isinstance(catalog_obj, pystac.Catalog):
+            raise TypeError(f"Root object at {WORKING_DIR}/{STAC_DIR}/clms_catalog.json is not a pystac.Catalog")
+        collection.set_root(catalog_obj)
+        collection.set_parent(catalog_obj)
     except Exception as error:
         raise CollectionCreationError(f"Failed to create Urban Atlas Building Height collection. Reason: {error}.")
     return collection
