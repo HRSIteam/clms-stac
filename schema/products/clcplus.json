@@ -23,9 +23,7 @@
           "const": "1.1.0"
         },
         "stac_extensions": {
-          "const": [
-            "https://stac-extensions.github.io/proj2.0.0/schema.json"
-          ]
+          "const": ["https://stac-extensions.github.io/proj2.0.0/schema.json"]
         },
         "type": {
           "const": "Feature"
@@ -223,10 +221,7 @@
                 {
                   "name": "Copernicus Land Monitoring Service",
                   "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": [
-                    "licensor",
-                    "host"
-                  ],
+                  "roles": ["licensor", "host"],
                   "url": "https://land.copernicus.eu"
                 }
               ]
@@ -350,12 +345,7 @@
           "const": "The CLC+ Backbone constitutes the first component of the CLMS’s new ‘CLC+ Product Suite’, which represents a true paradigm change in European land cover/land use (LC/LU) monitoring, building on the rich legacy of the European CORINE Land Cover (CLC) flagship product. The CLC+ Backbone is an object-oriented, large scale, wall-to-wall (EEA-38 + UK), high-resolution (HR) inventory of European LC in a vector format accompanied by a raster product layer, providing a consistent pan-European geometric backbone of Landscape Objects with limited, but robust thematic detail, on which many other applications can be built."
         },
         "keywords": {
-          "const": [
-            "Copernicus",
-            "Land Monitoring",
-            "Land Cover",
-            "CLC+"
-          ]
+          "const": ["Copernicus", "Land Monitoring", "Land Cover", "CLC+"]
         },
         "license": {
           "const": "proprietary"
@@ -365,10 +355,7 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu/en"
             }
           ]
@@ -376,22 +363,10 @@
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [
-                [
-                  -56.5052,
-                  24.2841,
-                  72.9061,
-                  72.6338
-                ]
-              ]
+              "bbox": [[-56.5052, 24.2841, 72.9061, 72.6338]]
             },
             "temporal": {
-              "interval": [
-                [
-                  "2018-01-01T00:00:00.000Z",
-                  null
-                ]
-              ]
+              "interval": [["2018-01-01T00:00:00.000Z", null]]
             }
           }
         },
@@ -419,9 +394,7 @@
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {

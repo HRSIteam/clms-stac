@@ -83,10 +83,7 @@
                 {
                   "name": "Copernicus Land Monitoring Service",
                   "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": [
-                    "licensor",
-                    "host"
-                  ],
+                  "roles": ["licensor", "host"],
                   "url": "https://land.copernicus.eu"
                 }
               ]
@@ -244,10 +241,7 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu/en"
             }
           ]
@@ -255,22 +249,10 @@
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [
-                [
-                  -31.285,
-                  27.642,
-                  44.807,
-                  71.165
-                ]
-              ]
+              "bbox": [[-31.285, 27.642, 44.807, 71.165]]
             },
             "temporal": {
-              "interval": [
-                [
-                  "2018-01-01T00:00:00.000Z",
-                  null
-                ]
-              ]
+              "interval": [["2018-01-01T00:00:00.000Z", null]]
             }
           }
         },
@@ -293,9 +275,7 @@
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {

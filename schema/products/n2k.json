@@ -63,20 +63,14 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu"
             }
           ]
         },
         "extent": {
           "type": "object",
-          "required": [
-            "spatial",
-            "temporal"
-          ],
+          "required": ["spatial", "temporal"],
           "minProperties": 2,
           "maxProperties": 2,
           "properties": {
@@ -84,54 +78,31 @@
               "oneOf": [
                 {
                   "const": {
-                    "bbox": [
-                      [
-                        -16.82,
-                        27.87,
-                        33.17,
-                        66.79
-                      ]
-                    ]
+                    "bbox": [[-16.82, 27.87, 33.17, 66.79]]
                   }
                 },
                 {
                   "const": {
-                    "bbox": [
-                      [
-                        -16.81,
-                        27.87,
-                        33.17,
-                        66.79
-                      ]
-                    ]
+                    "bbox": [[-16.81, 27.87, 33.17, 66.79]]
                   }
                 }
               ]
             },
             "temporal": {
               "const": {
-                "interval": [
-                  [
-                    "2006-01-01T00:00:00Z",
-                    null
-                  ]
-                ]
+                "interval": [["2006-01-01T00:00:00Z", null]]
               }
             }
           }
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {
             "proj:code": {
-              "const": [
-                "EPSG:3035"
-              ]
+              "const": ["EPSG:3035"]
             }
           }
         },

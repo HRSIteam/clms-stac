@@ -71,59 +71,37 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu"
             }
           ]
         },
         "extent": {
           "type": "object",
-          "required": [
-            "spatial",
-            "temporal"
-          ],
+          "required": ["spatial", "temporal"],
           "minProperties": 2,
           "maxProperties": 2,
           "properties": {
             "spatial": {
               "const": {
-                "bbox": [
-                  [
-                    -61.906047,
-                    -21.482245,
-                    55.935919,
-                    71.409109
-                  ]
-                ]
+                "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
               }
             },
             "temporal": {
               "const": {
-                "interval": [
-                  [
-                    "2006-01-01T00:00:00Z",
-                    "2012-12-31T00:00:00Z"
-                  ]
-                ]
+                "interval": [["2006-01-01T00:00:00Z", "2012-12-31T00:00:00Z"]]
               }
             }
           }
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {
             "proj:code": {
-              "const": [
-                "EPSG:3035"
-              ]
+              "const": ["EPSG:3035"]
             }
           }
         },

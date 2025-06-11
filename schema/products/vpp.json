@@ -222,19 +222,13 @@
                 {
                   "name": "Copernicus Land Monitoring Service",
                   "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": [
-                    "licensor",
-                    "host"
-                  ],
+                  "roles": ["licensor", "host"],
                   "url": "https://land.copernicus.eu"
                 },
                 {
                   "name": "VITO NV",
                   "description": "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development.",
-                  "roles": [
-                    "processor",
-                    "producer"
-                  ],
+                  "roles": ["processor", "producer"],
                   "url": "https://vito.be"
                 }
               ]
@@ -264,10 +258,7 @@
               }
             },
             "proj:shape": {
-              "const": [
-                10980,
-                10980
-              ]
+              "const": [10980, 10980]
             }
           }
         },
@@ -396,19 +387,13 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu"
             },
             {
               "name": "VITO NV",
               "description": "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development.",
-              "roles": [
-                "processor",
-                "producer"
-              ],
+              "roles": ["processor", "producer"],
               "url": "https://vito.be"
             }
           ]
@@ -416,30 +401,16 @@
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [
-                [
-                  -25,
-                  26,
-                  45,
-                  72
-                ]
-              ]
+              "bbox": [[-25, 26, 45, 72]]
             },
             "temporal": {
-              "interval": [
-                [
-                  "2017-01-01T00:00:00Z",
-                  null
-                ]
-              ]
+              "interval": [["2017-01-01T00:00:00Z", null]]
             }
           }
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {

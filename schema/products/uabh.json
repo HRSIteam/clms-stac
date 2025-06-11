@@ -98,10 +98,7 @@
                 {
                   "name": "Copernicus Land Monitoring Service",
                   "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": [
-                    "licensor",
-                    "host"
-                  ],
+                  "roles": ["licensor", "host"],
                   "url": "https://land.copernicus.eu"
                 }
               ]
@@ -228,11 +225,7 @@
           "const": "Urban Atlas building height over capital cities."
         },
         "keywords": {
-          "const": [
-            "Buildings",
-            "Building height",
-            "Elevation"
-          ]
+          "const": ["Buildings", "Building height", "Elevation"]
         },
         "license": {
           "const": "proprietary"
@@ -242,10 +235,7 @@
             {
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-              "roles": [
-                "licensor",
-                "host"
-              ],
+              "roles": ["licensor", "host"],
               "url": "https://land.copernicus.eu"
             }
           ]
@@ -253,37 +243,21 @@
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [
-                [
-                  -22.13,
-                  35.07,
-                  33.48,
-                  64.38
-                ]
-              ]
+              "bbox": [[-22.13, 35.07, 33.48, 64.38]]
             },
             "temporal": {
-              "interval": [
-                [
-                  "2012-01-01T00:00:00Z",
-                  null
-                ]
-              ]
+              "interval": [["2012-01-01T00:00:00Z", null]]
             }
           }
         },
         "summaries": {
           "type": "object",
-          "required": [
-            "proj:code"
-          ],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {
             "proj:code": {
-              "const": [
-                "EPSG:3035"
-              ]
+              "const": ["EPSG:3035"]
             }
           }
         },
