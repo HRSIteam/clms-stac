@@ -296,7 +296,7 @@
             "properties": {
               "href": {
                 "type": "string",
-                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.lyrx$|.qml$|.sld$|.txt$|.pdf$"
+                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.lyrx$|.qml$|.sld$|.txt$|.pdf$|.zip$"
               }
             }
           }

@@ -293,7 +293,7 @@
             "properties": {
               "href": {
                 "type": "string",
-                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.tfw$|.lyr$|.txt$"
+                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.tfw$|.lyr$|.txt$|.png$|.pdf"
               }
             }
           }

@@ -1,7 +1,7 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "clc2018_clc2018_v2018_20_raster100m_fr_glp",
@@ -70,7 +70,7 @@
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Single Band Land Classification Guadeloupe",
       "roles": ["data", "visual"],
-      "proj:epsg": 4559,
+      "proj:code": "EPSG:4559",
       "proj:bbox": [
         617151.0003241640515625, 1740782.1579604004509747,
         723451.0003241640515625, 1836482.1579604004509747
@@ -89,7 +89,6 @@
       "type": "text/plain",
       "roles": ["metadata"]
     },
-
     "clc2018_clc2018_v2018_20_fr_glp_tif_ovr": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/CLC2018_CLC2018_V2018_20_FR_GLP.tif.ovr",
       "title": "Pyramid Guadeloupe",

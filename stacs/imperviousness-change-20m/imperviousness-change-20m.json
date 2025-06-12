@@ -1,9 +1,9 @@
 {
   "type": "Collection",
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extension": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "id": "imperviousness-change-20m",
   "title": "High Resolution Layer Degree of Imperviousness Change 20m",
@@ -67,7 +67,7 @@
     }
   },
   "summaries": {
-    "proj:epsg": [3035]
+    "proj:code": ["EPSG: 3035"]
   },
   "links": [
     {

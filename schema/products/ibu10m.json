@@ -89,15 +89,8 @@
               ]
             },
             "proj:code": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^EPSG:\\d+$"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "type": "string",
+              "const": "EPSG:3035"
             }
           }
         },
@@ -169,7 +162,7 @@
             "properties": {
               "href": {
                 "type": "string",
-                "pattern": ".tif$|.dbf$|.tfw$"
+                "pattern": ".tif$|.dbf$|.tfw$|.txt$|.xml$|.pdf$|.zip$"
               }
             }
           },
@@ -280,15 +273,7 @@
           "maxProperties": 1,
           "properties": {
             "proj:code": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^EPSG:\\d+$"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "const": ["EPSG:3035"]
             }
           }
         },

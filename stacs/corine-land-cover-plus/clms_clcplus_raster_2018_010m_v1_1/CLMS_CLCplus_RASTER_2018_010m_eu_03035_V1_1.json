@@ -1,7 +1,7 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1",
@@ -71,7 +71,7 @@
       "type": "image/tiff; application=geotiff",
       "title": "Classification Map Europe",
       "roles": ["data", "visual"],
-      "proj:epsg": 3035,
+      "proj:code": "EPSG:3035",
       "proj:bbox": [900000, 900000, 7400000, 5500000],
       "proj:shape": [460000, 650000]
     },
