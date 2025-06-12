@@ -48,7 +48,7 @@ def get_stac_validator(product_schema: str) -> Draft7Validator:
 def proj_epsg_from_item_asset(item: pystac.Item) -> int | None:
     for asset_key in item.assets:
         asset = item.assets[asset_key].to_dict()
-        if "proj:epsg" in asset:
+        if "proj:code" in asset:
             return asset.get("proj:code")
 
     return None
