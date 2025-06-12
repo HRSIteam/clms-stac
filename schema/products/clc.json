@@ -283,8 +283,6 @@
         },
         "assets": {
           "type": "object",
-          "minProperties": 9,
-          "maxProperties": 10,
           "propertyNames": {
             "pattern": "^clc"
           },
@@ -321,7 +319,7 @@
       ],
       "properties": {
         "stac_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         },
         "stac_extensions": {
           "const": [

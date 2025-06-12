@@ -297,8 +297,41 @@
               "href": {
                 "type": "string",
                 "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.lyrx$|.qml$|.sld$|.txt$|.pdf$|.zip$"
+              },
+              "type": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proj:code": {
+                "type": "string"
+              },
+              "proj:bbox": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "proj:shape": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
               }
-            }
+            },
+            "required": ["href"],
+            "additionalProperties": true
           }
         }
       }
