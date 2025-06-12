@@ -5,16 +5,18 @@ import pytest
 from jsonschema.exceptions import best_match
 from referencing import Registry, Resource
 
-STAC_VERSION = "1.0.0"
-PROJECT_ID = "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+STAC_VERSION = "1.1.0"
+PROJECT_ID = "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
 ITEM_ASSETS_ID = "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
 RASTER_BANDS_ID = "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
 
 
-def test_core(stac_fixture, validator_fixture, stac_version="1.0.0"):
+def test_core(stac_fixture, validator_fixture, stac_version=STAC_VERSION):
     """Validate a core stac object."""
     for _, stac_dict in stac_fixture:
-        assert validator_fixture.validate_core(stac_dict, stac_dict["type"], stac_version), f"{stac_dict.id} is invalid"
+        assert validator_fixture.validate_core(
+            stac_dict, stac_dict["type"], stac_version
+        ), f"{stac_dict['id']} is invalid"
 
 
 @pytest.mark.parametrize("extension_id", [PROJECT_ID, ITEM_ASSETS_ID])
