@@ -1,0 +1,137 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extensions": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/region/v0.1.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json"
+    ],
+    "id": "hrwsi-wds", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "title": "SAR Wet/Dry Snow 2016-present (raster 60 m), Europe, daily",
+    "description": "The SAR Wet/Dry Snow (WDS) product is generated in near real-time for selected high mountain areas at European scale based on C-band SAR satellite data from the Sentinel-1 constellation. The product provides wet/dry snow state classification for high mountain areas with a spatial resolution of 60 m x 60 m.",
+    "license": "<LICENSE>",
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    66.00,
+                    34.00,
+                    44.00,
+                    -26.00
+                ]
+            ] /* bbox defined in metadata file */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "2016-09-01T00:00:00.000Z",
+                    null
+                ]
+            ] /* Begin date in metadata file */
+        }
+    },
+    "providers": [
+        {
+            "name": "European Commission",
+            "role": [
+                "owner"
+            ],
+            "url": "https://commission.europa.eu"
+        },
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "role": [
+                "custodian"
+            ],
+            "url": "https://land.copernicus.eu"
+        },
+        {
+            "name": "European Environment Agency",
+            "role": [
+                "publisher"
+            ],
+            "url": "http://www.eea.europa.eu"
+        },
+    ],
+    "region:name": "<REGION_NAME>", /* example: global */
+    "version": "<number>",
+    "gsd": 60,
+    "summaries": {
+        "proj:epsg": [],
+        "created": {
+            "minimum": "<MIN_DATE>",
+            "maximum": "<MAX_DATE>"
+        }, /* REQUIRED. Creation date and time of a product, in UTC. */
+        "datetime": {
+            "minimum": "<MIN_DATE>",
+            "maximum": "<MAX_DATE>"
+        }, /* REQUIRED. The searchable date and time of the assets, which must be in UTC. It is formatted according to RFC 3339, section 5.6." */
+        "end_datetime": {
+            "minimum": "<MIN_DATE>",
+            "maximum": "<MAX_DATE>"
+        }, /* REQUIRED. The last or end date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6. */
+        "grid:code": {
+            "minimum": "<MIN_GRID_CODE>",
+            "maximum": "<MAX_GRID_CODE>"
+        }, /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
+        "gsd": {
+            "minimum": "<MIN_GSD>",
+            "maximum": "<MAX_GSD>"
+        }, /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "<PROCESSING_FACILITY_1>",
+            "<PROCESSING_FACILITY_2>"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "<PROCESSIN_LEVEL_1>",
+            "<PROCESSIN_LEVEL_2>"
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "<PRODUCT_TYPE_1>",
+            "<PRODUCT_TYPE_2>"
+        ], /* REQUIRED. The product type., */
+        "product:timeliness": {
+            "minimum": "<MIN_TIMELINESS>",
+            "maximum": "<MAX_TIMELINESS>"
+        }, /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "proj:code": [
+            "<PROJ_CODE_1>",
+            "<PROJ_CODE_2>"
+        ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+        "proj:shape": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+        }, /* REQUIRED Number of pixels in Y and X directions for the default grid */
+        "start_datetime": {
+            "minimum": "<MIN_DATE>",
+            "maximum": "<MAX_DATE>"
+        }, /* REQUIRED. The first or start date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6 */
+    },
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>",
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",
+            "type": "application/geo+json"
+        }
+    ],
+    "keywords": [
+        "ice", /* From GEMET in Metadat pdf */
+        "land cover",
+        "landscape alteration",
+        "monitoring",
+        "climate change impact",
+        "snow"
+    ],
+}
