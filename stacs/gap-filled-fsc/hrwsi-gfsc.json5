@@ -56,7 +56,7 @@
             "url": "http://www.eea.europa.eu"
         },
     ],
-    "region:name": "<REGION_NAME>", /* example: global */
+    "region:name": "<REGION_NAME>", /* example: global, EEA38+UK */
     "version": "<number>",
     "gsd": 20,
     "summaries": {
