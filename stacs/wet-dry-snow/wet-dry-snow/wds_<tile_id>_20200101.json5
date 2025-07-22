@@ -161,6 +161,20 @@
             "file:checksum": "<CHECKSUM_SSC_QA>",
             "file:local_path": "<PRODUCT_ID>/../wds_<tile>_<datetime>_SSC-QA.tif",
             "file:size": "<SIZE_SSC_QA>"
+        },
+        "QAFLAGS": {
+            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/wds_<tile>_<datetime>_QAFLAGS.tif",
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Pixel-level quality flags (bitfield layer)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "quality"
+            ],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_QAFLAGS>",
+            "file:local_path": "<PRODUCT_ID>/../wds_<tile>_<datetime>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
         }
     }
 }
