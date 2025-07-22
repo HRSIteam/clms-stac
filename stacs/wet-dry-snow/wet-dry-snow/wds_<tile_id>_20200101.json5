@@ -54,10 +54,9 @@
         "gsd": 60,
         "grid:code": "MGRS-<TILE_ID>",
         "instruments": [
-            "sar"
+            "sar",
+            "msi"
         ],
-        "platform": "<PLATFORM>", /* The of the original data. */
-        "constellation": "sentinel-1",
         "processing:facility": "<PROCESSING_CENTER>",
         "processing:level": "L2",
         "processing:datetime": "<PROCESSING_DATETIME>",
@@ -96,6 +95,11 @@
         {
             "rel": "derived_from", /* RECOMMENDATION: List of scenes used to build this product if available. */
             "href": "<S1_COLLECTION_LINK>",
+            "type": "application/json"
+        },
+        {
+            "rel": "derived_from", /* RECOMMENDATION: List of scenes used to build this product if available. */
+            "href": "<S2_COLLECTION_LINK>",
             "type": "application/json"
         },
         {
