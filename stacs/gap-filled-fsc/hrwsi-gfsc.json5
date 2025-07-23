@@ -1,7 +1,7 @@
 {
     "type": "Collection",
     "stac_version": "1.1.0",
-    "stac_extension": [
+    "stac_extensions": [
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
@@ -9,10 +9,10 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi-fsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
-    "title": "Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
-    "description": "Fractional snow cover maps showing FSCTOC and FSCOG",
-    "licence": "<LICENSE>",
+    "id": "hrwsi-gfsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "title": "Gap-Filled Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
+    "description": "The Gap-Filled Fractional Snow Cover (GFSC) product provides gap-filled snow cover maps derived from optical satellite data. The product fills temporal and spatial gaps in fractional snow cover observations to provide continuous snow cover information with a spatial resolution of 20 m x 20 m.",
+    "license": "<LICENSE>",
     "extent": {
         "spatial": {
             "bbox": [
@@ -33,7 +33,7 @@
             ] /* Begin date in metadata file */
         }
     },
-    "providers"[
+    "providers": [
         {
             "name": "European Commission",
             "role": [
@@ -56,10 +56,11 @@
             "url": "http://www.eea.europa.eu"
         },
     ],
-    "region:name": "<REGION_NAME>" /* example: global */,
+    "region:name": "<REGION_NAME>", /* example: global, EEA38+UK */
     "version": "<number>",
     "gsd": 20,
     "summaries": {
+        "proj:epsg": [],
         "created": {
             "minimum": "<MIN_DATE>",
             "maximum": "<MAX_DATE>"
@@ -101,13 +102,13 @@
             "<PROJ_CODE_2>"
         ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
         "proj:shape": {
-            "ype": "array",
+            "type": "array",
             "items": {
                 "type": "integer"
             },
             "minItems": 2,
-            "maxItems": 2,
-        } /* REQUIRED Number of pixels in Y and X directions for the default grid */,
+            "maxItems": 2
+        }, /* REQUIRED Number of pixels in Y and X directions for the default grid */
         "start_datetime": {
             "minimum": "<MIN_DATE>",
             "maximum": "<MAX_DATE>"
@@ -126,11 +127,12 @@
         }
     ],
     "keywords": [
-        "ice", /* From GEMET in Metadat pdf */
-        "monitoring",
-        "snow",
+        "snow", /* From GEMET in Metadat pdf */
+        "fractional snow cover",
+        "gap-filled",
         "land cover",
-        "climate change impact",
-        "landscape alteration"
+        "landscape alteration",
+        "monitoring",
+        "climate change impact"
     ],
 }

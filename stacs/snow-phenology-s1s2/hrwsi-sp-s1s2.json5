@@ -1,7 +1,7 @@
 {
     "type": "Collection",
     "stac_version": "1.1.0",
-    "stac_extension": [
+    "stac_extensions": [
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
@@ -9,10 +9,10 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi-fsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
-    "title": "Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
-    "description": "Fractional snow cover maps showing FSCTOC and FSCOG",
-    "licence": "<LICENSE>",
+    "id": "hrwsi-sp-s1s2", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "title": "Snow Phenology Sentinel-1/Sentinel-2 2016-present (raster 20 m), Europe, annual",
+    "description": "The Snow Phenology product based on Sentinel-1 and Sentinel-2 (SP-S1S2) provides annual snow cover metrics derived from the combination of optical and SAR satellite data. The product includes snow cover duration, onset, and melt dates for European mountain areas with a spatial resolution of 20 m x 20 m.",
+    "license": "<LICENSE>",
     "extent": {
         "spatial": {
             "bbox": [
@@ -33,7 +33,7 @@
             ] /* Begin date in metadata file */
         }
     },
-    "providers"[
+    "providers": [
         {
             "name": "European Commission",
             "role": [
@@ -54,9 +54,9 @@
                 "publisher"
             ],
             "url": "http://www.eea.europa.eu"
-        },
+        }
     ],
-    "region:name": "<REGION_NAME>" /* example: global */,
+    "region:name": "<REGION_NAME>", /* example: global, EEA38+UK */
     "version": "<number>",
     "gsd": 20,
     "summaries": {
@@ -101,17 +101,17 @@
             "<PROJ_CODE_2>"
         ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
         "proj:shape": {
-            "ype": "array",
+            "type": "array",
             "items": {
                 "type": "integer"
             },
             "minItems": 2,
-            "maxItems": 2,
-        } /* REQUIRED Number of pixels in Y and X directions for the default grid */,
+            "maxItems": 2
+        }, /* REQUIRED Number of pixels in Y and X directions for the default grid */
         "start_datetime": {
             "minimum": "<MIN_DATE>",
             "maximum": "<MAX_DATE>"
-        }, /* REQUIRED. The first or start date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6 */
+        } /* REQUIRED. The first or start date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6 */
     },
     "links": [
         {
@@ -126,11 +126,15 @@
         }
     ],
     "keywords": [
-        "ice", /* From GEMET in Metadat pdf */
-        "monitoring",
-        "snow",
+        "climate change impact", /* From GEMET in Metadat pdf */
+        "ice",
         "land cover",
-        "climate change impact",
-        "landscape alteration"
-    ],
+        "environmental policy",
+        "snow",
+        "water",
+        "monitoring",
+        "landscape alteration",
+        "European",
+        "Annually"
+    ]
 }
