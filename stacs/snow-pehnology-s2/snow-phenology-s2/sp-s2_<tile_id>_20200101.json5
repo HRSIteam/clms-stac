@@ -54,6 +54,7 @@
         "instruments": [
             "sar"
         ],
+        "eo:cloud_cover": "<CLOUD_COVER_PERCENTAGE>", /* If Possible - Percentage of the scene that is covered by clouds, expressed as a value between 0 and 100. */
         "platform": "<PLATFORM>", /* The of the original data. */
         "constellation": "sentinel-1",
         "processing:facility": "<PROCESSING_CENTER>",
