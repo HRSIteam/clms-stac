@@ -2,6 +2,7 @@
     "type": "Collection",
     "stac_version": "1.1.0",
     "stac_extensions": [
+        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
@@ -76,6 +77,10 @@
             "minimum": "<MIN_GRID_CODE>",
             "maximum": "<MAX_GRID_CODE>"
         }, /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
+        "eo:cloud_cover": {
+            "minimum": "<MIN_CLOUD_COVER>",
+            "maximum": "<MAX_CLOUD_COVER>"
+        }, /* If Possible - Percentage of the scene that is covered by clouds, expressed as a value between 0 and 100. */
         "gsd": {
             "minimum": "<MIN_GSD>",
             "maximum": "<MAX_GSD>"

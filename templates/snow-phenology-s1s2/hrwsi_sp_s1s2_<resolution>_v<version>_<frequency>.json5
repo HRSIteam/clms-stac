@@ -2,6 +2,7 @@
     "type": "Collection",
     "stac_version": "1.1.0",
     "stac_extensions": [
+        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
@@ -80,6 +81,10 @@
             "minimum": "<MIN_GSD>",
             "maximum": "<MAX_GSD>"
         }, /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "eo:cloud_cover": {
+            "minimum": "<MIN_CLOUD_COVER>",
+            "maximum": "<MAX_CLOUD_COVER>"
+        }, /* If Possible - Percentage of the scene that is covered by clouds, expressed as a value between 0 and 100. */
         "processing:facility": [
             "<PROCESSING_FACILITY_1>",
             "<PROCESSING_FACILITY_2>"
