@@ -9,7 +9,7 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi-wds", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id": "hrwsi_wds_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "SAR Wet/Dry Snow 2016-present (raster 60 m), Europe, daily",
     "description": "The SAR Wet/Dry Snow (WDS) product is generated in near real-time for selected high mountain areas at European scale based on C-band SAR satellite data from the Sentinel-1 constellation. The product provides wet/dry snow state classification for high mountain areas with a spatial resolution of 60 m x 60 m.",
     "license": "<LICENSE>",
@@ -96,6 +96,10 @@
             "minimum": "<MIN_TIMELINESS>",
             "maximum": "<MAX_TIMELINESS>"
         }, /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "<TIMELINESS_CATEGORY1>",
+            "<TIMELINESS_CATEGORY2>",
+        ],
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"

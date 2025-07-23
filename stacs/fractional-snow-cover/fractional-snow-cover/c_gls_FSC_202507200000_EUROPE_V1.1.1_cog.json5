@@ -9,7 +9,7 @@
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json"
     ],
-    "id": "fsc_<tile_id>_20200101",
+    "id": "c_gls_FSC_202507200000_EUROPE_V1.1.1_cog",
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -61,6 +61,7 @@
         "processing:datetime": "<PROCESSING_DATETIME>",
         "processing:version": "<PRODUCT_VERSION>",
         "product:type": "<TYPE>",
+        "product:timeliness":"<STRING>",
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>",
         "proj:shape": [
@@ -121,7 +122,6 @@
             "type": "application/tar"
         },
         "MDT": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_MTD.xml",
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
@@ -131,7 +131,6 @@
             "file:size": "<SIZE_MTD>"
         },
         "FSCTOC": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_FSCTOC.tif",
             "title": "Forest/Non-Forest Classification (FSCTOC)",
             "description": "Binary forest/non-forest classification",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -143,7 +142,6 @@
             "file:size": "<SIZE_FSCTOC>"
         },
         "FSCOG": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_FSCOG.tif",
             "title": "Forest Cover Fraction (FSCOG)",
             "description": "Forest cover fraction [0–100]",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -155,11 +153,10 @@
             "file:size": "<SIZE_FSCOG>"
         },
         "FSCTOC-QA": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_FSCTOC-QA.tif",
             "title": "FSCTOC Quality Assessment",
             "description": "Quality layer for FSCTOC",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality"],
+            "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_FSCTOC_QA>",
@@ -167,11 +164,10 @@
             "file:size": "<SIZE_FSCTOC_QA>"
         },
         "FSCOG-QA": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_FSCOG-QA.tif",
             "title": "FSCOG Quality Assessment",
             "description": "Quality layer for FSCOG",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality"],
+            "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_FSCOG_QA>",
@@ -179,11 +175,10 @@
             "file:size": "<SIZE_FSCOG_QA>"
         },
         "QAFLAGS": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_QAFLAGS.tif",
             "title": "Quality Flags (QAFLAGS)",
             "description": "Bitmask layer with pixel quality flags",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality"],
+            "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_QAFLAGS>",
@@ -191,7 +186,6 @@
             "file:size": "<SIZE_QAFLAGS>"
         },
         "CLD": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_CLD.tif",
             "title": "Cloud Mask (CLD)",
             "description": "Cloud mask for HRSWI product",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -203,7 +197,6 @@
             "file:size": "<SIZE_CLD>"
         },
         "NDSI": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_NDSI.tif",
             "title": "Normalized Difference Snow Index (NDSI)",
             "description": "NDSI scaled or categorized as uint8",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",

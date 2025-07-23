@@ -9,7 +9,7 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id":   "hrwsi-sp-s2", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id":   "hrwsi_sp_s2_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "Snow Phenology S2 2016-present (raster 20 m), Europe, annually",
     "description": "This product describes the snow season in terms of temporality by providing, for each pixel within a hydrological year, the number of days with snow cover, as well as the first and the last day of the longest observed snow period",
     "licence": "<LICENSE>",
@@ -27,7 +27,7 @@
         "temporal": {
             "interval": [
                 [
-                    "2016-09-01T00:00:00.000Z", 
+                    "2016-09-01T00:00:00.000Z",
                     "2017-08-30T00:00:00.000Z"
                 ]
             ] /* Begin date in metadata file */
@@ -90,6 +90,10 @@
             "minimum": "<MIN_TIMELINESS>",
             "maximum": "<MAX_TIMELINESS>"
         }, /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "<TIMELINESS_CATEGORY1>",
+            "<TIMELINESS_CATEGORY2>",
+        ],
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"

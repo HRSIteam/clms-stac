@@ -9,7 +9,7 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi-gfsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id": "hrwsi_gfsc_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "Gap-Filled Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
     "description": "The Gap-Filled Fractional Snow Cover (GFSC) product provides gap-filled snow cover maps derived from optical satellite data. The product fills temporal and spatial gaps in fractional snow cover observations to provide continuous snow cover information with a spatial resolution of 20 m x 20 m.",
     "license": "<LICENSE>",
@@ -97,6 +97,10 @@
             "minimum": "<MIN_TIMELINESS>",
             "maximum": "<MAX_TIMELINESS>"
         }, /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "<TIMELINESS_CATEGORY1>",
+            "<TIMELINESS_CATEGORY2>",
+        ],
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"

@@ -9,7 +9,7 @@
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json"
     ],
-    "id": "sp-s2_<tile_id>_20200101",
+    "id": "c_gls_SP-S2_202507200000_EUROPE_V1.1.1_cog",
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -62,6 +62,7 @@
         "processing:datetime": "<PROCESSING_DATETIME>",
         "processing:version": "<PRODUCT_VERSION>",
         "product:type": "<TYPE>",
+        "product:timeliness":"<STRING>",
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>",
         "proj:shape": [
@@ -122,11 +123,10 @@
             "type": "application/tar"
         },
         "QAFLAGS": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_QAFLAGS.tif",
             "title": "Quality Flags (QAFLAGS)",
             "description": "QAFLAGS are expert flags providing quality information obtained during the processing of SCD. ",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality"],
+            "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_QAFLAGS>",
@@ -134,7 +134,6 @@
             "file:size": "<SIZE_QAFLAGS>"
         },
         "MDT": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_MTD.xml",
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
@@ -144,7 +143,6 @@
             "file:size": "<SIZE_MTD>"
         },
         "SCD": {
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCD.tif",
             "title": "Snow Cover Duration",
             "description": "Number of days of snow cover over the hydrological year, and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -156,7 +154,6 @@
             "file:size": "<SIZE_SCD>"
         },
         "NOBS":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_NOBS.tif",
             "title": "Number of valid observations",
             "description": "NOBS indicates the number of days for which an observation could be used to compute the SCD, SCO and SCM variables. Here, an observation is considered to be an observation of the snow conditions (snow/no-snow) and therefore is made under clear-sky conditions. If a cloud prevented the pixel from being classified, the algorithm assumes there was no observation.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -168,7 +165,6 @@
             "file:size": "<SIZE_NOBS>"
         },
         "SCO":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCO.tif",
             "title": "Snow Cover Onset date",
             "description": "Snow cover onset-date defined as the first day of the longest snow cover period, and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -180,7 +176,6 @@
             "file:size": "<SIZE_SCO>"
         },
         "SCM":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCM.tif",
             "title": "Snow Cover Melt date",
             "description": "Snow cover melt out date is defined as the last day of the longest snow cover period and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -192,7 +187,6 @@
             "file:size": "<SIZE_SCM>"
         },
         "SCD-QA":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCD-QA.tif",
             "title": "Quality layer for SCD",
             "description": "Quality layer providing a basic assessment of SCD layer quality.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -204,7 +198,6 @@
             "file:size": "<SIZE_SCD-QA>"
         },
         "SCO-QA":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCO-QA.tif",
             "title": "Quality layer for SCO",
             "description": "Number of days between the estimated snow onset date and the closest snow observation date.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
@@ -216,7 +209,6 @@
             "file:size": "<SIZE_SCO-QA>"
         },
         "SCM-QA":{
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>_SCM-QA.tif",
             "title": "Quality layer for SCM",
             "description": "Number of days between the estimated snow melt out date and the closest snow observation date.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
