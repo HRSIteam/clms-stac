@@ -60,7 +60,6 @@
     "version": "<number>",
     "gsd": 60,
     "summaries": {
-        "proj:epsg": [],
         "created": {
             "minimum": "<MIN_DATE>",
             "maximum": "<MAX_DATE>"

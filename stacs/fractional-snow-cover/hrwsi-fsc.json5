@@ -1,6 +1,6 @@
 {
     "type": "Collection",
-    "stac_version":"1.1.0",
+    "stac_version": "1.1.0",
     "stac_extension": [
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
@@ -9,40 +9,57 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id":   "hrwsi-fsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id": "hrwsi-fsc", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
     "description": "Fractional snow cover maps showing FSCTOC and FSCOG",
     "licence": "<LICENSE>",
     "extent": {
         "spatial": {
-          "bbox": [[66.00,34.00,44.00,-26.00]] /* bbox defined in metadata file */
+            "bbox": [
+                [
+                    66.00,
+                    34.00,
+                    44.00,
+                    -26.00
+                ]
+            ] /* bbox defined in metadata file */
         },
         "temporal": {
-          "interval": [["2016-09-01T00:00:00.000Z", null]] /* Begin date in metadata file */
+            "interval": [
+                [
+                    "2016-09-01T00:00:00.000Z",
+                    null
+                ]
+            ] /* Begin date in metadata file */
         }
-      },
+    },
     "providers"[
         {
             "name": "European Commission",
-            "role": ["owner"],
+            "role": [
+                "owner"
+            ],
             "url": "https://commission.europa.eu"
         },
         {
             "name": "Copernicus Land Monitoring Service",
-            "role": ["custodian"],
+            "role": [
+                "custodian"
+            ],
             "url": "https://land.copernicus.eu"
         },
         {
             "name": "European Environment Agency",
-            "role": ["publisher"],
+            "role": [
+                "publisher"
+            ],
             "url": "http://www.eea.europa.eu"
         },
     ],
-    "region:name":"<REGION_NAME>" /* example: global */
+    "region:name": "<REGION_NAME>" /* example: global */,
     "version": "<number>",
     "gsd": 20,
     "summaries": {
-        "proj:epsg": []
         "created": {
             "minimum": "<MIN_DATE>",
             "maximum": "<MAX_DATE>"
@@ -107,8 +124,8 @@
             "href": "<CDSE_COLLECTION_LINK>/items",
             "type": "application/geo+json"
         }
-    ]
-    "keywords":[
+    ],
+    "keywords": [
         "ice", /* From GEMET in Metadat pdf */
         "monitoring",
         "snow",
