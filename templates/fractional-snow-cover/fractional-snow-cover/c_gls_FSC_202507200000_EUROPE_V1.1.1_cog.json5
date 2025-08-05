@@ -61,7 +61,7 @@
         "processing:datetime": "<PROCESSING_DATETIME>",
         "processing:version": "<PRODUCT_VERSION>",
         "product:type": "<TYPE>",
-        "product:timeliness":"<STRING>",
+        "product:timeliness":"<STRING>",/* ISO 8601 duration */
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>",
         "proj:shape": [
@@ -189,7 +189,7 @@
             "title": "Cloud Mask (CLD)",
             "description": "Cloud mask for HRSWI product",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["mask"],
+            "roles": ["mask","data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_CLD>",

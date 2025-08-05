@@ -34,43 +34,36 @@
             ] /* Begin date in metadata file */
         },
     },
-    "providers"[
+    "providers":[
         {
-            "name": "European Commission",
-            "role": ["owner"],
-            "url": "https://commission.europa.eu"
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
         },
         {
-            "name": "Copernicus Land Monitoring Service",
-            "role": ["custodian"],
-            "url": "https://land.copernicus.eu"
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
         },
         {
-            "name": "European Environment Agency",
-            "role": ["publisher"],
-            "url": "http://www.eea.europa.eu"
+            "url":"https://magellium.com/",
+            "name":"Magellium",
+            "roles":["processor"]
         },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
     ],
     "region:name":"<REGION_NAME>" /* example: global */
     "version": "<number>",
     "gsd": 20,
     "summaries": {
-        "created": {
-            "minimum": "<MIN_DATE>",
-            "maximum": "<MAX_DATE>"
-        }, /* REQUIRED. Creation date and time of a product, in UTC. */
-        "datetime": {
-            "minimum": "<MIN_DATE>",
-            "maximum": "<MAX_DATE>"
-        }, /* REQUIRED. The searchable date and time of the assets, which must be in UTC. It is formatted according to RFC 3339, section 5.6." */
-        "end_datetime": {
-            "minimum": "<MIN_DATE>",
-            "maximum": "<MAX_DATE>"
-        }, /* REQUIRED. The last or end date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6. */
-        "grid:code": {
-            "minimum": "<MIN_GRID_CODE>",
-            "maximum": "<MAX_GRID_CODE>"
-        }, /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
         "gsd": {
             "minimum": "<MIN_GSD>",
             "maximum": "<MAX_GSD>"
@@ -107,10 +100,6 @@
             "minItems": 2,
             "maxItems": 2,
         } /* REQUIRED Number of pixels in Y and X directions for the default grid */,
-        "start_datetime": {
-            "minimum": "<MIN_DATE>",
-            "maximum": "<MAX_DATE>"
-        }, /* REQUIRED. The first or start date and time for the resource, in UTC. It is formatted as date-time according to RFC 3339, section 5.6 */
     },
     "links": [
         {
