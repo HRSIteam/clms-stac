@@ -110,7 +110,7 @@
     ],
     "assets": {
         "Product": {
-            "file:checksum": "<CHECKSUM>",
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
             "file:size": "<NUMBER>",
             "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>.tar",
             "roles": [
@@ -126,7 +126,7 @@
             "description": "Product metadata",
             "type": "application/xml",
             "roles": ["metadata"],
-            "file:checksum": "<CHECKSUM_MTD>",
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
             "file:size": "<SIZE_MTD>"
         },
@@ -137,7 +137,7 @@
             "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_QAFLAGS>",
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
             "file:size": "<SIZE_QAFLAGS>"
         },
@@ -148,7 +148,7 @@
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_CC>",
+            "file:checksum": "<CHECKSUM_CC>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CC.tif",
             "file:size": "<SIZE_CC>"
         },
@@ -159,7 +159,7 @@
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_CC-QA>",
+            "file:checksum": "<CHECKSUM_CC-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CC-QA.tif",
             "file:size": "<SIZE_CC-QA>"
         },

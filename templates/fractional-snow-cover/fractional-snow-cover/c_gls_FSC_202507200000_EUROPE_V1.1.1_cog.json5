@@ -110,7 +110,7 @@
     ],
     "assets": {
         "Product": {
-            "file:checksum": "<CHECKSUM>",
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
             "file:size": "<NUMBER>",
             "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>.tar",
             "roles": [
@@ -126,7 +126,7 @@
             "description": "Product metadata",
             "type": "application/xml",
             "roles": ["metadata"],
-            "file:checksum": "<CHECKSUM_MTD>",
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
             "file:size": "<SIZE_MTD>"
         },
@@ -137,7 +137,7 @@
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_FSCTOC>",
+            "file:checksum": "<CHECKSUM_FSCTOC>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCTOC.tif",
             "file:size": "<SIZE_FSCTOC>"
         },
@@ -148,7 +148,7 @@
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_FSCOG>",
+            "file:checksum": "<CHECKSUM_FSCOG>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCOG.tif",
             "file:size": "<SIZE_FSCOG>"
         },
@@ -159,7 +159,7 @@
             "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_FSCTOC_QA>",
+            "file:checksum": "<CHECKSUM_FSCTOC_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCTOC-QA.tif",
             "file:size": "<SIZE_FSCTOC_QA>"
         },
@@ -170,7 +170,7 @@
             "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_FSCOG_QA>",
+            "file:checksum": "<CHECKSUM_FSCOG_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCOG-QA.tif",
             "file:size": "<SIZE_FSCOG_QA>"
         },
@@ -181,7 +181,7 @@
             "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_QAFLAGS>",
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
             "file:size": "<SIZE_QAFLAGS>"
         },
@@ -192,7 +192,7 @@
             "roles": ["mask","data"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_CLD>",
+            "file:checksum": "<CHECKSUM_CLD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CLD.tif",
             "file:size": "<SIZE_CLD>"
         },
@@ -203,7 +203,7 @@
             "roles": ["index"],
             "data_type": "uint8",
             "nodata": 255,
-            "file:checksum": "<CHECKSUM_NDSI>",
+            "file:checksum": "<CHECKSUM_NDSI>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_NDSI.tif",
             "file:size": "<SIZE_NDSI>"
         }
