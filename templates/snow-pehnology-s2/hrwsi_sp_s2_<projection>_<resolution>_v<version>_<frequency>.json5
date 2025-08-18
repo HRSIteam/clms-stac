@@ -97,7 +97,7 @@
             "<PROJ_CODE_2>"
         ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
         "proj:shape": {
-            "ype": "array",
+            "type": "array",
             "items": {
                 "type": "integer"
             },
