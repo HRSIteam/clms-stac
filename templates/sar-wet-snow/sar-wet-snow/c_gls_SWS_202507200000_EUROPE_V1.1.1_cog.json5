@@ -7,7 +7,8 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json"
+        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
     "id": "c_gls_SWS_202507200000_EUROPE_V1.1.1_cog",
     "bbox": [
@@ -80,7 +81,7 @@
             "<PROJ_TRANSFORM_8>"
         ],
     },
-    "collection": "hrwsi-sws",
+    "collection": "hrwsi_sws_<projection>_<resolution>_v<version>_<frequency>",
     "links": [
         {
             "rel": "collection",
@@ -93,7 +94,6 @@
             "type": "application/json"
         },
         {
-            "rel": "derived_from ------ TBD", /* RECOMMENDATION: List of scenes used to build this product if available. */
             "href": "<S1_COLLECTION_LINK>",
             "type": "application/json"
         },
@@ -112,7 +112,6 @@
         "Product": {
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
             "file:size": "<NUMBER>",
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>.tar",
             "roles": [
                 "data",
                 "metadata",
@@ -137,6 +136,7 @@
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_WSM>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_WSM.tif",
             "file:size": "<SIZE_WSM>"
@@ -148,6 +148,7 @@
             "roles": ["data","quality"],
             "data_type": "uint8",
             "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_WSM-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_WSM-QA.tif",
             "file:size": "<SIZE_WSM-QA>"

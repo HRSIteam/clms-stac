@@ -8,7 +8,8 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json"
+        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
     "id": "c_gls_GFSC_202507200000_EUROPE_V1.1.1_cog",
     "bbox": [
@@ -81,7 +82,7 @@
             "<PROJ_TRANSFORM_8>"
         ],
     },
-    "collection": "hrwsi-gfsc",
+    "collection": "hrwsi_gfsc_<projection>_<resolution>_v<version>_<frequency>",
     "links": [
         {
             "rel": "collection",
@@ -94,12 +95,10 @@
             "type": "application/json"
         },
         {
-            "rel": "derived_from", /* RECOMMENDATION: List of scenes used to build this product if available. */
             "href": "<S1_COLLECTION_LINK>",
             "type": "application/json"
         },
         {
-            "rel": "derived_from", /* RECOMMENDATION: List of scenes used to build this product if available. */
             "href": "<S2_COLLECTION_LINK>",
             "type": "application/json"
         },
@@ -118,7 +117,6 @@
         "Product": {
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
             "file:size": "<NUMBER>",
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>.tar",
             "roles": [
                 "data",
                 "metadata",
@@ -161,6 +159,7 @@
             ],
             "data_type": "uint8",
             "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_GF_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_GF-QA.tif",
             "file:size": "<SIZE_GF_QA>"
@@ -175,6 +174,7 @@
             ],
             "data_type": "uint8",
             "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_QAFLAGS.tif",
             "file:size": "<SIZE_QAFLAGS>"

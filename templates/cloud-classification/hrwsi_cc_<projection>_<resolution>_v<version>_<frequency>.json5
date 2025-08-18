@@ -9,10 +9,10 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi_cc_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. Example: hrwsi_fsc_20m_vX_daily */
+    "id": "hrwsi_cc_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. Example: hrwsi_fsc_20m_vX_daily */
     "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
     "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
-    "licence": "<LICENSE>",
+    "license": "other",
     "extent": {
         "spatial": {
             "bbox": [

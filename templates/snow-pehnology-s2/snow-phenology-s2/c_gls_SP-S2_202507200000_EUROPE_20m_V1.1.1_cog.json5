@@ -8,7 +8,8 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json"
+        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
     "id": "c_gls_SP-S2_202507200000_EUROPE_20m_V1.1.1_cog",
     "bbox": [
@@ -82,7 +83,7 @@
             "<PROJ_TRANSFORM_8>"
         ],
     },
-    "collection": "hrwsi-fsc",
+    "collection": "hrwsi_sp_s2_<projection>_<resolution>_v<version>_<frequency>",
     "links": [
         {
             "rel": "collection",
@@ -95,7 +96,6 @@
             "type": "application/json"
         },
         {
-            "rel": "derived_from ------ TBD", /* RECOMMENDATION: List of scenes used to build this product if available. */
             "href": "<S1_COLLECTION_LINK>",
             "type": "application/json"
         },
@@ -114,7 +114,6 @@
         "Product": {
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
             "file:size": "<NUMBER>",
-            "href": "s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/<PRODUCT_ID>.tar",
             "roles": [
                 "data",
                 "metadata",
@@ -130,6 +129,7 @@
             "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
             "file:size": "<SIZE_QAFLAGS>"
@@ -194,6 +194,7 @@
             "roles": ["data","quality"],
             "data_type": "uint16",
             "nodata": 65535,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD-QA.tif",
             "file:size": "<SIZE_SCD-QA>"

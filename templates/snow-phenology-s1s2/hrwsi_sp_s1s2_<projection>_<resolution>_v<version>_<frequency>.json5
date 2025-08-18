@@ -10,10 +10,10 @@
         "https://stac-extensions.github.io/region/v0.1.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json"
     ],
-    "id": "hrwsi_sp_s1s2_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id": "hrwsi_sp_s1s2_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "Snow Phenology Sentinel-1/Sentinel-2 2016-present (raster 20 m), Europe, annual",
     "description": "The Snow Phenology product based on Sentinel-1 and Sentinel-2 (SP-S1S2) provides annual snow cover metrics derived from the combination of optical and SAR satellite data. The product includes snow cover duration, onset, and melt dates for European mountain areas with a spatial resolution of 20 m x 20 m.",
-    "license": "<LICENSE>",
+    "license": "other",
     "extent": {
         "spatial": {
             "bbox": [
