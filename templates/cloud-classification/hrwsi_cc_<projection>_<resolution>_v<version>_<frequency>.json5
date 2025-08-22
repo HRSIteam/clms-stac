@@ -7,6 +7,7 @@
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
     "id": "hrwsi_cc_<projection>_<resolution>_v<version>_<frequency>", 
@@ -17,10 +18,10 @@
         "spatial": {
             "bbox": [
                 [
-                    72.00,
-                    46.00,
-                    27.00,
-                    -32.00
+                    <lon_min>,
+                    <lat_min>,
+                    <lon_max>,
+                    <lat_max>
                 ]
             ] /* bbox defined in metadata file */
         },
@@ -55,7 +56,6 @@
             "roles":["host"]
         }
     ],
-    "region:name": "<REGION_NAME>" /* example: global */,
     "version": "<number>",
     "gsd": 20,
     "summaries": {
@@ -84,15 +84,7 @@
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"
-        ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
-        "proj:shape": {
-            "type": "array",
-            "items": {
-                "type": "integer"
-            },
-            "minItems": 2,
-            "maxItems": 2,
-        } /* REQUIRED Number of pixels in Y and X directions for the default grid */,
+        ] /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
     },
     "links": [
         {
