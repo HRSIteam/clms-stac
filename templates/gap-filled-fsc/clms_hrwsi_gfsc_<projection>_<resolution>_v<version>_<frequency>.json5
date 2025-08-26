@@ -1,0 +1,217 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extensions": [
+        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
+    ],
+    "id": "clms_hrwsi_gfsc_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "title": "Gap-Filled Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
+    "description": "The Gap-Filled Fractional Snow Cover (GFSC) product provides gap-filled snow cover maps derived from optical satellite data. The product fills temporal and spatial gaps in fractional snow cover observations to provide continuous snow cover information with a spatial resolution of 20 m x 20 m.",
+    "license": "other",
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    <lon_min>,
+                    <lat_min>,
+                    <lon_min>,
+                    <lat_min>
+                ]
+            ] /* https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#spatial-extent-object */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z",
+                    null /* null if collection is still being added */
+                ]
+            ] /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://magellium.com/",
+            "name":"Magellium",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<number>",
+    "gsd": 20,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "<PROCESSIN_LEVEL_1>"
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "<PRODUCT_TYPE_1>"
+        ], /* REQUIRED. The product type., */
+        "product:timeliness": [
+            "<TIMELINESS>"
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "<TIMELINESS_CATEGORY1>"
+        ],
+        "proj:code": [
+            "<PROJ_CODE_1>",
+            "<PROJ_CODE_2>"
+        ] /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    },
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>",
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",
+            "type": "application/geo+json"
+        },
+        {
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "snow", /* From GEMET in Metadat pdf */
+        "fractional snow cover",
+        "gap-filled",
+        "land cover",
+        "landscape alteration",
+        "monitoring",
+        "climate change impact",
+        "fractional snow cover",
+        "HR-WSI",
+        "CLMS"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+     ],
+     "item-assets": {
+         "Product": {
+             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+             "file:size": "<NUMBER>",
+             "roles": [
+                 "data",
+                 "metadata",
+                 "quality",
+                 "archive"
+             ],
+             "title": "TAR product",
+             "type": "application/tar"
+         },
+         "MDT": {
+             "title": "Product metadata",
+             "description": "Product metadata",
+             "type": "application/xml",
+             "roles": [
+                 "metadata"
+             ],
+             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+             "file:size": "<SIZE_MTD>"
+         },
+         "GF": {
+             "title": "Gap-Filled Snow Cover (GF)",
+             "description": "Gap-Filled Snow Cover",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "data"
+             ],
+             "data_type": "uint8",
+             "nodata": 255,
+             "file:checksum": "<CHECKSUM_GF>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_GF.tif",
+             "file:size": "<SIZE_GF>"
+         },
+         "GF-QA": {
+             "title": "GF Quality Assessment",
+             "description": "Quality layer for GF",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "quality",
+                 "data"
+             ],
+             "data_type": "uint8",
+             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+             "file:checksum": "<CHECKSUM_GF_QA>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_GF-QA.tif",
+             "file:size": "<SIZE_GF_QA>"
+         },
+         "QAFLAGS": {
+             "title": "Quality Flags (QAFLAGS)",
+             "description": "Pixel-level quality flags (bitfield layer)",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "quality",
+                 "data"
+             ],
+             "data_type": "uint8",
+             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_QAFLAGS.tif",
+             "file:size": "<SIZE_QAFLAGS>"
+         }
+     }
+}

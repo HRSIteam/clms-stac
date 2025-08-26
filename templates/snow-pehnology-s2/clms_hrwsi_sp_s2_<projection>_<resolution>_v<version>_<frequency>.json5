@@ -1,0 +1,261 @@
+{
+    "type": "Collection",
+    "stac_version":"1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
+    ],
+    "id": "clms_hrwsi_sp_s2_<projection>_<resolution>_v<version>_<frequency>",
+    "title": "Snow Phenology S2 2016-present (raster 20 m), Europe, annually",
+    "description": "This product describes the snow season in terms of temporality by providing, for each pixel within a hydrological year, the number of days with snow cover, as well as the first and the last day of the longest observed snow period",
+    "license": "other",
+    "extent": {
+        "spatial": {
+          "bbox": [
+                [
+                    <lon_min>,
+                    <lat_min>,
+                    <lon_max>,
+                    <lat_max>
+                ]
+            ] /* bbox defined in metadata file */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z",
+                    null
+                ]
+            ] /* Begin date in metadata file */
+        },
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://magellium.com/",
+            "name":"Magellium",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<number>",
+    "gsd": 20,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "<PROCESSIN_LEVEL_1>"
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "<PRODUCT_TYPE_1>"
+        ], /* REQUIRED. The product type., */
+        "product:timeliness": [
+            "<TIMELINESS>"
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "<TIMELINESS_CATEGORY1>"
+        ],
+        "proj:code": [
+            "<PROJ_CODE_1>",
+            "<PROJ_CODE_2>"
+        ] /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    },
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>",
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",
+            "type": "application/geo+json"
+        },
+        {
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ]
+    "keywords":[
+        "environmental policy" /* From GEMET in Metadat pdf */
+        "monitoring"
+        "water"
+        "landscape alteration"
+        "snow"
+        "climate change impact"
+        "ice"
+        "land cover",
+        "snow phenology",
+        "HR-WSI",
+        "CLMS"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles": ["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+    ],
+    "item-assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "QAFLAGS are expert flags providing quality information obtained during the processing of SCD. ",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "SCD": {
+            "title": "Snow Cover Duration",
+            "description": "Number of days of snow cover over the hydrological year, and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD.tif",
+            "file:size": "<SIZE_SCD>"
+        },
+        "NOBS":{
+            "title": "Number of valid observations",
+            "description": "NOBS indicates the number of days for which an observation could be used to compute the SCD, SCO and SCM variables. Here, an observation is considered to be an observation of the snow conditions (snow/no-snow) and therefore is made under clear-sky conditions. If a cloud prevented the pixel from being classified, the algorithm assumes there was no observation.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_NOBS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_NOBS.tif",
+            "file:size": "<SIZE_NOBS>"
+        },
+        "SCO":{
+            "title": "Snow Cover Onset date",
+            "description": "Snow cover onset-date defined as the first day of the longest snow cover period, and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCO>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCO.tif",
+            "file:size": "<SIZE_SCO>"
+        },
+        "SCM":{
+            "title": "Snow Cover Melt date",
+            "description": "Snow cover melt out date is defined as the last day of the longest snow cover period and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCM>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCM.tif",
+            "file:size": "<SIZE_SCM>"
+        },
+        "SCD-QA":{
+            "title": "Quality layer for SCD",
+            "description": "Quality layer providing a basic assessment of SCD layer quality.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD-QA.tif",
+            "file:size": "<SIZE_SCD-QA>"
+        },
+        "SCO-QA":{
+            "title": "Quality layer for SCO",
+            "description": "Number of days between the estimated snow onset date and the closest snow observation date.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "file:checksum": "<CHECKSUM_SCO-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCO-QA.tif",
+            "file:size": "<SIZE_SCO-QA>"
+        },
+        "SCM-QA":{
+            "title": "Quality layer for SCM",
+            "description": "Number of days between the estimated snow melt out date and the closest snow observation date.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "file:checksum": "<CHECKSUM_SCM-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCM-QA.tif",
+            "file:size": "<SIZE_SCM-QA>"
+        },
+    }
+}
