@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
-    "id": "c_gls_SP-S2_202507200000_EUROPE_20m_V1.1.1_cog",
+    "id": "clms_SP-S2_202507200000_EUROPE_20m_V1.1.1_cog",
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
