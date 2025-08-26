@@ -1,8 +1,7 @@
 {
     "type": "Collection",
     "stac_version": "1.1.0",
-    "stac_extensions": [
-        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
+    "stac_extension": [
         "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
@@ -11,9 +10,9 @@
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
-    "id": "hrwsi_gfsc_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
-    "title": "Gap-Filled Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
-    "description": "The Gap-Filled Fractional Snow Cover (GFSC) product provides gap-filled snow cover maps derived from optical satellite data. The product fills temporal and spatial gaps in fractional snow cover observations to provide continuous snow cover information with a spatial resolution of 20 m x 20 m.",
+    "id": "clms_hrwsi_fsc_<projection>_<resolution>_v<version>_<frequency>",
+    "title": "Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
+    "description": "Fractional snow cover maps showing FSCTOC and FSCOG",
     "license": "other",
     "extent": {
         "spatial": {
@@ -21,8 +20,8 @@
                 [
                     <lon_min>,
                     <lat_min>,
-                    <lon_min>,
-                    <lat_min>
+                    <lon_max>,
+                    <lat_max>
                 ]
             ] /* https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#spatial-extent-object */
         },
@@ -71,21 +70,21 @@
             "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "<PROCESSIN_LEVEL_1>"
+            "<PROCESSIN_LEVEL>"
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "<PRODUCT_TYPE_1>"
+            "<PRODUCT_TYPE>"
         ], /* REQUIRED. The product type., */
         "product:timeliness": [
             "<TIMELINESS>"
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
-            "<TIMELINESS_CATEGORY1>"
+            "<TIMELINESS_CATEGORY>"
         ],
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"
-        ] /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+        ]
     },
     "links": [
         {
@@ -106,13 +105,12 @@
         }
     ],
     "keywords": [
-        "snow", /* From GEMET in Metadat pdf */
-        "fractional snow cover",
-        "gap-filled",
-        "land cover",
-        "landscape alteration",
+        "ice", /* From GEMET in Metadat pdf */
         "monitoring",
+        "snow",
+        "land cover",
         "climate change impact",
+        "landscape alteration",
         "fractional snow cover",
         "HR-WSI",
         "CLMS"
@@ -121,7 +119,6 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "organization": "European Environment Agency",
-        "roles":["producer"],
         "emails": [
         	{
         		"value":"copernicus@eea.europa.eu",
@@ -147,5 +144,5 @@
         	}
     	]
       }
-     ]
+    ]
 }

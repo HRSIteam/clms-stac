@@ -82,7 +82,7 @@
             "<PROJ_TRANSFORM_8>"
         ]
     },
-    "collection": "hrwsi_sp_s1s2_<projection>_<resolution>_v<version>_<frequency>",
+    "collection": "clms_hrwsi_sp_s1s2_<projection>_<resolution>_v<version>_<frequency>",
     "links": [
         {
             "rel": "collection",

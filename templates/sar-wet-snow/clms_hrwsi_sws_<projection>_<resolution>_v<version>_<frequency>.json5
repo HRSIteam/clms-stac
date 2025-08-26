@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
-    "id":   "hrwsi_sws_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "id":   "clms_hrwsi_sws_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
     "description": "Provides for selected mountain regions at pan-European level according to Sentinel-1 revisit time (6/12 days) and in near real time information on the wet snow extent and the snow free or patchy snow or dry snow extent in high-mountain areas. The data are available at 60 m x 60 m spatial resolution with the temporal extent from September 2016 to present.",
     "license": "other",

@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
-    "id": "hrwsi_sp_s2_<projection>_<resolution>_v<version>_<frequency>",
+    "id": "clms_hrwsi_sp_s2_<projection>_<resolution>_v<version>_<frequency>",
     "title": "Snow Phenology S2 2016-present (raster 20 m), Europe, annually",
     "description": "This product describes the snow season in terms of temporality by providing, for each pixel within a hydrological year, the number of days with snow cover, as well as the first and the last day of the longest observed snow period",
     "license": "other",

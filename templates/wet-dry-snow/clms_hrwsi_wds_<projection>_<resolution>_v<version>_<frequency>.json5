@@ -1,18 +1,19 @@
 {
     "type": "Collection",
     "stac_version": "1.1.0",
-    "stac_extension": [
-        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
-        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
-        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
-        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "stac_extensions": [
+        "https://stac-extensions.github.io/eo/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json", /* REQUIRED IF APPLICABLE */
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
-    "id": "hrwsi_cc_<projection>_<resolution>_v<version>_<frequency>", 
-    "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
-    "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
+    "id": "clms_hrwsi_wds_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
+    "title": "SAR Wet/Dry Snow 2016-present (raster 60 m), Europe, daily",
+    "description": "The SAR Wet/Dry Snow (WDS) product is generated in near real-time for selected high mountain areas at European scale based on C-band SAR satellite data from the Sentinel-1 constellation. The product provides wet/dry snow state classification for high mountain areas with a spatial resolution of 60 m x 60 m.",
     "license": "other",
     "extent": {
         "spatial": {
@@ -57,26 +58,26 @@
         }
     ],
     "version": "<number>",
-    "gsd": 20,
+    "gsd": 60,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
         ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
         "gsd": [
-            20
-        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+            60
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
             "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "<PROCESSIN_LEVEL>",
+            "<PROCESSIN_LEVEL_1>"
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "<PRODUCT_TYPE>"
+            "<PRODUCT_TYPE_1>"
         ], /* REQUIRED. The product type., */
         "product:timeliness": [
-            "<TIMELINESS>",
+            "<TIMELINESS>"
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
             "<TIMELINESS_CATEGORY1>"
@@ -98,22 +99,19 @@
             "type": "application/geo+json"
         },
         {
-          "rel": "license",
-          "href": "https://land.copernicus.eu/en/data-policy",
-          "type": "text/html",
-          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
         }
     ],
     "keywords": [
-        "climate change impact",/* From GEMET in Metadat pdf */
+        "ice", /* From GEMET in Metadat pdf */
+        "land cover",
         "landscape alteration",
         "monitoring",
-        "water",
-        "land cover",
-        "environmental policy",
-        "ice",
+        "climate change impact",
         "snow",
-        "clouds",
         "HR-WSI",
         "CLMS"
     ],
@@ -121,7 +119,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "organization": "European Environment Agency",
-        "roles":["producer"],
+        "roles": ["producer"],
         "emails": [
         	{
         		"value":"copernicus@eea.europa.eu",
