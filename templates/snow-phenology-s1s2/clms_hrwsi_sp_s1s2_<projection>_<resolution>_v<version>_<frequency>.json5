@@ -121,34 +121,164 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "roles": ["producer"],
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-    ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles": ["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+    ],
+    "item-assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": [
+                "metadata"
+            ],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "SCD": {
+            "title": "Snow Cover Duration (SCD)",
+            "description": "Snow Cover Duration",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "data"
+            ],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_SCD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCD.tif",
+            "file:size": "<SIZE_SCD>"
+        },
+        "SCO": {
+            "title": "Snow Cover Onset date (SCO)",
+            "description": "Snow Cover Onset date",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "data"
+            ],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_SCO>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCO.tif",
+            "file:size": "<SIZE_SCO>"
+        },
+        "SCM": {
+            "title": "Snow Cover Melt date (SCM)",
+            "description": "Snow Cover Melt date",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "data"
+            ],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_SCM>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCM.tif",
+            "file:size": "<SIZE_SCM>"
+        },
+        "NOBS": {
+            "title": "Number of valid observations (NOBS)",
+            "description": "Number of valid observations",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "data"
+            ],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_NOBS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_NOBS.tif",
+            "file:size": "<SIZE_NOBS>"
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Pixel-level quality flags (bitfield layer)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "quality",
+                "data"
+            ],
+            "data_type": "uint8",
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
+        },
+        "SCD-QA": {
+            "title": "SCD Quality Assessment",
+            "description": "Quality layer for SCD",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "quality",
+                "data"
+            ],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_SCD_QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCD-QA.tif",
+            "file:size": "<SIZE_SCD_QA>"
+        },
+        "SCO-QA": {
+            "title": "SCO Quality Assessment",
+            "description": "Quality layer for SCO",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "quality",
+                "data"
+            ],
+            "data_type": "uint8",
+            "file:checksum": "<CHECKSUM_SCO_QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCO-QA.tif",
+            "file:size": "<SIZE_SCO_QA>"
+        },
+        "SCM-QA": {
+            "title": "SCM Quality Assessment",
+            "description": "Quality layer for SCM",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": [
+                "quality",
+                "data"
+            ],
+            "data_type": "uint8",
+            "file:checksum": "<CHECKSUM_SCM_QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCM-QA.tif",
+            "file:size": "<SIZE_SCM_QA>"
+        }
+    }
 }

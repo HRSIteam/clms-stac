@@ -118,33 +118,79 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-    ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+    ],
+    "assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "WSM": {
+            "title": "Wet Snow Map (SAR-based)",
+            "description": "Wet Snow classification in high Mountains areas (WSM) and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_WSM>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_WSM.tif",
+            "file:size": "<SIZE_WSM>"
+        },
+        "WSM-QA": {
+            "title": "Quality layer for WSM",
+            "description": "Quality layer providing basic assessment of WSM quality.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_WSM-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_WSM-QA.tif",
+            "file:size": "<SIZE_WSM-QA>"
+        },
+    }
 }

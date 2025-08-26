@@ -10,7 +10,7 @@
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
-    "id": "clms_hrwsi_cc_<projection>_<resolution>_v<version>_<frequency>", 
+    "id": "clms_hrwsi_cc_<projection>_<resolution>_v<version>_<frequency>",
     "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
     "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
     "license": "other",
@@ -118,34 +118,91 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "roles":["producer"],
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-    ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
+        },
+        "CC": {
+            "title": "Cloud classification",
+            "description": "Cloud and cloud shadow classification of the image.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_CC>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CC.tif",
+            "file:size": "<SIZE_CC>"
+        },
+        "CC-QA": {
+            "title": "Quality layer for CC",
+            "description": "Quality layer providing basic assessment of the Cloud Classification layer quality.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_CC-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CC-QA.tif",
+            "file:size": "<SIZE_CC-QA>"
+        },
+    }
 }

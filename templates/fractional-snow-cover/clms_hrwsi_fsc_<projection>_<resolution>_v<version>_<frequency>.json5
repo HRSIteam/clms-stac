@@ -116,33 +116,135 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-    ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+    ],
+    "item-assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "archive",
+                "quality",
+                "mask"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "FSCTOC": {
+            "title": "Forest/Non-Forest Classification (FSCTOC)",
+            "description": "Binary forest/non-forest classification",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_FSCTOC>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCTOC.tif",
+            "file:size": "<SIZE_FSCTOC>"
+        },
+        "FSCOG": {
+            "title": "Forest Cover Fraction (FSCOG)",
+            "description": "Forest cover fraction [0–100]",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_FSCOG>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCOG.tif",
+            "file:size": "<SIZE_FSCOG>"
+        },
+        "FSCTOC-QA": {
+            "title": "FSCTOC Quality Assessment",
+            "description": "Quality layer for FSCTOC",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_FSCTOC_QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCTOC-QA.tif",
+            "file:size": "<SIZE_FSCTOC_QA>"
+        },
+        "FSCOG-QA": {
+            "title": "FSCOG Quality Assessment",
+            "description": "Quality layer for FSCOG",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_FSCOG_QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCOG-QA.tif",
+            "file:size": "<SIZE_FSCOG_QA>"
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
+        },
+        "CLD": {
+            "title": "Cloud Mask (CLD)",
+            "description": "Cloud mask for HRSWI product",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["mask","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_CLD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_CLD.tif",
+            "file:size": "<SIZE_CLD>"
+        },
+        "NDSI": {
+            "title": "Normalized Difference Snow Index (NDSI)",
+            "description": "NDSI scaled or categorized as uint8",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "file:checksum": "<CHECKSUM_NDSI>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_NDSI.tif",
+            "file:size": "<SIZE_NDSI>"
+        }
+    }
 }

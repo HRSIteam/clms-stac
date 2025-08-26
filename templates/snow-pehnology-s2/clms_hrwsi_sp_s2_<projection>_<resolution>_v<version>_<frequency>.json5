@@ -119,34 +119,143 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "roles": ["producer"],
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-    ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles": ["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+    ],
+    "item-assets": {
+        "Product": {
+            "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+            "file:size": "<NUMBER>",
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "QAFLAGS are expert flags providing quality information obtained during the processing of SCD. ",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
+            "file:size": "<SIZE_QAFLAGS>"
+        },
+        "MDT": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+            "file:size": "<SIZE_MTD>"
+        },
+        "SCD": {
+            "title": "Snow Cover Duration",
+            "description": "Number of days of snow cover over the hydrological year, and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCD>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD.tif",
+            "file:size": "<SIZE_SCD>"
+        },
+        "NOBS":{
+            "title": "Number of valid observations",
+            "description": "NOBS indicates the number of days for which an observation could be used to compute the SCD, SCO and SCM variables. Here, an observation is considered to be an observation of the snow conditions (snow/no-snow) and therefore is made under clear-sky conditions. If a cloud prevented the pixel from being classified, the algorithm assumes there was no observation.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_NOBS>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_NOBS.tif",
+            "file:size": "<SIZE_NOBS>"
+        },
+        "SCO":{
+            "title": "Snow Cover Onset date",
+            "description": "Snow cover onset-date defined as the first day of the longest snow cover period, and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCO>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCO.tif",
+            "file:size": "<SIZE_SCO>"
+        },
+        "SCM":{
+            "title": "Snow Cover Melt date",
+            "description": "Snow cover melt out date is defined as the last day of the longest snow cover period and associated information.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "file:checksum": "<CHECKSUM_SCM>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCM.tif",
+            "file:size": "<SIZE_SCM>"
+        },
+        "SCD-QA":{
+            "title": "Quality layer for SCD",
+            "description": "Quality layer providing a basic assessment of SCD layer quality.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+            "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD-QA.tif",
+            "file:size": "<SIZE_SCD-QA>"
+        },
+        "SCO-QA":{
+            "title": "Quality layer for SCO",
+            "description": "Number of days between the estimated snow onset date and the closest snow observation date.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "file:checksum": "<CHECKSUM_SCO-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCO-QA.tif",
+            "file:size": "<SIZE_SCO-QA>"
+        },
+        "SCM-QA":{
+            "title": "Quality layer for SCM",
+            "description": "Number of days between the estimated snow melt out date and the closest snow observation date.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data","quality"],
+            "data_type": "uint16",
+            "file:checksum": "<CHECKSUM_SCM-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCM-QA.tif",
+            "file:size": "<SIZE_SCM-QA>"
+        },
+    }
 }

@@ -118,34 +118,100 @@
         "CLMS"
     ],
     "contacts": [
-      {
-        "name": "Copernicus Land Monitoring Service",
-        "organization": "European Environment Agency",
-        "roles":["producer"],
-        "emails": [
-        	{
-        		"value":"copernicus@eea.europa.eu",
-        		"roles":[
-        			"contact point"
-        		]
-        	}
-    	],
-        "phones": [
-        	{
-        		"value":"+45 33 36 71 00",
-        		"roles":[
-        			"contact point"
-        		]
-    		}
-    	],
-        "links": [
-        	{
-        		"href":"https://land.copernicus.eu/",
-    			"rel":"about",
-    			"type":"text/html",
-    			"title":"Homepage of the Copernicus Land Monitoring Service"
-        	}
-    	]
-      }
-     ]
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	]
+        }
+     ],
+     "item-assets": {
+         "Product": {
+             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
+             "file:size": "<NUMBER>",
+             "roles": [
+                 "data",
+                 "metadata",
+                 "quality",
+                 "archive"
+             ],
+             "title": "TAR product",
+             "type": "application/tar"
+         },
+         "MDT": {
+             "title": "Product metadata",
+             "description": "Product metadata",
+             "type": "application/xml",
+             "roles": [
+                 "metadata"
+             ],
+             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_MTD.xml",
+             "file:size": "<SIZE_MTD>"
+         },
+         "GF": {
+             "title": "Gap-Filled Snow Cover (GF)",
+             "description": "Gap-Filled Snow Cover",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "data"
+             ],
+             "data_type": "uint8",
+             "nodata": 255,
+             "file:checksum": "<CHECKSUM_GF>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_GF.tif",
+             "file:size": "<SIZE_GF>"
+         },
+         "GF-QA": {
+             "title": "GF Quality Assessment",
+             "description": "Quality layer for GF",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "quality",
+                 "data"
+             ],
+             "data_type": "uint8",
+             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+             "file:checksum": "<CHECKSUM_GF_QA>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_GF-QA.tif",
+             "file:size": "<SIZE_GF_QA>"
+         },
+         "QAFLAGS": {
+             "title": "Quality Flags (QAFLAGS)",
+             "description": "Pixel-level quality flags (bitfield layer)",
+             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+             "roles": [
+                 "quality",
+                 "data"
+             ],
+             "data_type": "uint8",
+             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
+             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
+             "file:local_path": "<PRODUCT_ID>/../gfsc_<tile>_<datetime>_QAFLAGS.tif",
+             "file:size": "<SIZE_QAFLAGS>"
+         }
+     }
 }
