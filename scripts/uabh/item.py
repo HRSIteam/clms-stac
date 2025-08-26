@@ -54,7 +54,10 @@ def str_to_datetime(datetime_str: str):
 
 
 def get_namespace(tag: str, xml_string: str) -> str:
-    return re.search(r"xmlns:" + tag + '="([^"]+)"', xml_string).group(0).split("=")[1][1:-1]
+    match = re.search(r"xmlns:" + tag + '="([^"]+)"', xml_string)
+    if not match:
+        raise ValueError(f'Namespace for tag "{tag}" not found in XML string.')
+    return match.group(0).split("=")[1][1:-1]
 
 
 def get_metadata_from_xml(xml: str) -> tuple[datetime, datetime, datetime]:
@@ -64,26 +67,24 @@ def get_metadata_from_xml(xml: str) -> tuple[datetime, datetime, datetime]:
     gml_namespace = get_namespace("gml", xml_string)
     tree = ETree.parse(xml)
     root = tree.getroot()
-    start_datetime = root.findall("".join((".//{", gml_namespace, "}beginPosition")))[0].text  # noqa: FLY002
-    end_datetime = root.findall("".join((".//{", gml_namespace, "}endPosition")))[0].text  # noqa: FLY002
-    created = root.findall(
-        "".join(  # noqa: FLY002
-            (
-                ".//{",
-                gmd_namespace,
-                "}CI_DateTypeCode[@codeListValue='creation']....//{",
-                gmd_namespace,
-                "}date/*",
-            )
-        )
-    )[0].text
-    return (str_to_datetime(start_datetime), str_to_datetime(end_datetime), str_to_datetime(created))
+    start_elem = root.findall(f".//{{{gml_namespace}}}beginPosition")[0]
+    end_elem = root.findall(f".//{{{gml_namespace}}}endPosition")[0]
+    created_elem = root.findall(
+        f".//{{{gmd_namespace}}}CI_DateTypeCode[@codeListValue='creation']....//{{{gmd_namespace}}}date/*"
+    )[0]
+
+    if start_elem.text is None or end_elem.text is None or created_elem.text is None:
+        raise ValueError("One or more required date fields are missing in the XML.")
+
+    return (
+        str_to_datetime(start_elem.text),
+        str_to_datetime(end_elem.text),
+        str_to_datetime(created_elem.text),
+    )
 
 
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
-    bbox = rio.coords.BoundingBox(
-        *transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top)
-    )
+    bbox = BoundingBox(*transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top))
     return box(*(bbox.left, bbox.bottom, bbox.right, bbox.top))
 
 
@@ -103,7 +104,7 @@ def get_files(uabh_root: str, city_code: str, asset_type: str) -> list[str]:
     return files
 
 
-def get_zip(uabh_root: str, city_code: str) -> str:
+def get_zip(uabh_root: str, city_code: str) -> list[str]:
     files = []
     for dirpath, _, filenames in os.walk(uabh_root):
         files += [
@@ -121,7 +122,7 @@ def collect_assets(uabh_root: str, city_code: str) -> dict[str, pystac.Asset]:
         + get_files(uabh_root, city_code, "Metadata")
         + get_files(uabh_root, city_code, "PixelBasedInfo")
         + get_files(uabh_root, city_code, "QC")
-        + get_zip(uabh_root, city_code)
+        + list(get_zip(uabh_root, city_code))
     )
     assets = {}
     for asset_path in asset_list:
@@ -203,7 +204,7 @@ def add_providers_to_item(item: pystac.Item, provider_list: list[pystac.Provider
 
 def add_projection_extension_to_item(item: pystac.Item, crs: CRS, bounds: BoundingBox, height: int, width: int) -> None:
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = crs.to_epsg()
+    projection.code = crs.to_epsg()
     projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
     projection.shape = [height, width]
 

@@ -2,7 +2,7 @@
   "id": "clms_catalog",
   "type": "Catalog",
   "title": "CLMS Catalog",
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "description": "This catalog is a simple demonstration of an example catalog that is used to organize a hierarchy of collections and their items.",
   "links": [
     {

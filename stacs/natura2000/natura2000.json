@@ -1,8 +1,8 @@
 {
   "type": "Collection",
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "id": "natura2000",
   "title": "Natura 2000 Land Cover/Land Use Status",
@@ -85,7 +85,7 @@
     }
   },
   "summaries": {
-    "proj:epsg": [3035]
+    "proj:code": ["EPSG:3035"]
   },
   "links": [
     {

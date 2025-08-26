@@ -1,9 +1,9 @@
 {
   "type": "Collection",
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "id": "corine-land-cover-raster",
   "title": "CORINE Land Cover Raster",
@@ -120,7 +120,13 @@
     }
   },
   "summaries": {
-    "proj:epsg": [3035, 2975, 4471, 4559, 2972]
+    "proj:code": [
+      "EPSG:3035",
+      "EPSG:2975",
+      "EPSG:4471",
+      "EPSG:4559",
+      "EPSG:2972"
+    ]
   },
   "links": [
     {

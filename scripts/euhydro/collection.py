@@ -75,7 +75,7 @@ def create_asset(filename, asset_path):
     )
 
 
-def collect_assets(root: str) -> list[str]:
+def collect_assets(root: str) -> dict[str, pystac.Asset]:
     asset_list = get_files(root, "xml") + get_files(root, "pdf") + get_files(root, "gpkg") + get_gdb(root)
     assets = {}
     for asset_path in asset_list:
@@ -86,9 +86,9 @@ def collect_assets(root: str) -> list[str]:
     return assets
 
 
-def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[int]) -> None:
+def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[str]) -> None:
     summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
-    summaries.epsg = epsg_list
+    summaries.code = epsg_list
 
 
 def add_links_to_collection(collection: pystac.Collection, link_list: list[pystac.Link]) -> None:
@@ -113,7 +113,7 @@ def create_collection(euhydro_root: str) -> pystac.Collection:
         )
 
         # summaries
-        epsg_list = [3035]
+        epsg_list = ["EPSG:3035"]
         add_summaries_to_collection(collection, epsg_list)
 
         # links
@@ -127,6 +127,8 @@ def create_collection(euhydro_root: str) -> pystac.Collection:
         # update links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
         catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        if not isinstance(catalog, pystac.Catalog):
+            raise CollectionCreationError("Root object is not a pystac.Catalog")
         collection.set_root(catalog)
         collection.set_parent(catalog)
     except Exception as error:

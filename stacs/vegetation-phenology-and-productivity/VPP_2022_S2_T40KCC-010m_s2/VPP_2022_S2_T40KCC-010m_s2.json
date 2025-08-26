@@ -1,7 +1,7 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "VPP_2022_S2_T40KCC-010m_s2",
@@ -38,7 +38,7 @@
         "url": "https://vito.be"
       }
     ],
-    "proj:epsg": 32740,
+    "proj:code": "EPSG:32740",
     "proj:bbox": [300000, 7690240, 409800, 7800040],
     "proj:shape": [10980, 10980]
   },

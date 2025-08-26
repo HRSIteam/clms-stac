@@ -1,7 +1,7 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "clc2018_clc2018_v2018_20_raster100m_fr_reu",
@@ -70,7 +70,7 @@
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Single Band Land Classification Reunion",
       "roles": ["data", "visual"],
-      "proj:epsg": 2975,
+      "proj:code": "EPSG:2975",
       "proj:bbox": [
         304639.4057148024439812, 7624010.2806383538991213,
         389339.4057148024439812, 7701310.2806383538991213
@@ -89,7 +89,6 @@
       "type": "text/plain",
       "roles": ["metadata"]
     },
-
     "clc2018_clc2018_v2018_20_fr_reu_tif_ovr": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.ovr",
       "title": "Pyramid Reunion",

@@ -20,11 +20,11 @@
       ],
       "properties": {
         "stac_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         },
         "stac_extensions": {
           "const": [
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
         "type": {
@@ -55,7 +55,11 @@
                   "minimum": 18.140136,
                   "maximum": 19.329582
                 },
-                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 }
+                {
+                  "type": "number",
+                  "minimum": 41.672629,
+                  "maximum": 42.463926
+                }
               ]
             }
           ]
@@ -69,7 +73,7 @@
             "end_datetime",
             "created",
             "providers",
-            "proj:epsg",
+            "proj:code",
             "proj:bbox",
             "proj:shape"
           ],
@@ -83,6 +87,10 @@
                   "url": "https://land.copernicus.eu"
                 }
               ]
+            },
+            "proj:code": {
+              "type": "string",
+              "const": "EPSG:3035"
             }
           }
         },
@@ -154,7 +162,7 @@
             "properties": {
               "href": {
                 "type": "string",
-                "pattern": ".tif$|.dbf$|.tfw$"
+                "pattern": ".tif$|.dbf$|.tfw$|.txt$|.xml$|.pdf$|.zip$"
               }
             }
           },
@@ -187,12 +195,12 @@
       ],
       "properties": {
         "stac_version": {
-          "const": "1.0.0"
+          "const": "1.1.0"
         },
         "stac_extensions": {
           "const": [
             "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
         "type": {
@@ -260,9 +268,14 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["proj:epsg"],
+          "required": ["proj:code"],
           "minProperties": 1,
-          "maxProperties": 1
+          "maxProperties": 1,
+          "properties": {
+            "proj:code": {
+              "const": ["EPSG:3035"]
+            }
+          }
         },
         "links": {
           "type": "array",

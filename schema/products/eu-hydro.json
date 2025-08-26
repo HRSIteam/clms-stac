@@ -23,15 +23,23 @@
         "assets"
       ],
       "properties": {
-        "stac_version": { "const": "1.0.0" },
+        "stac_version": {
+          "const": "1.1.0"
+        },
         "stac_extensions": {
           "const": [
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
           ]
         },
-        "type": { "const": "Collection" },
-        "id": { "const": "eu-hydro" },
-        "title": { "const": "EU-Hydro River Network Database" },
+        "type": {
+          "const": "Collection"
+        },
+        "id": {
+          "const": "eu-hydro"
+        },
+        "title": {
+          "const": "EU-Hydro River Network Database"
+        },
         "description": {
           "const": "EU-Hydro is a dataset for all EEA38 countries and the United Kingdom providing photo-interpreted river network, consistent of surface interpretation of water bodies (lakes and wide rivers), and a drainage model (also called Drainage Network), derived from EU-DEM, with catchments and drainage lines and nodes."
         },
@@ -55,7 +63,9 @@
             "Water body"
           ]
         },
-        "license": { "const": "proprietary" },
+        "license": {
+          "const": "proprietary"
+        },
         "providers": {
           "const": [
             {
@@ -86,12 +96,12 @@
         },
         "summaries": {
           "type": "object",
-          "required": ["proj:epsg"],
+          "required": ["proj:code"],
           "minProperties": 1,
           "maxProperties": 1,
           "properties": {
-            "proj:epsg": {
-              "const": [3035]
+            "proj:code": {
+              "const": ["EPSG:3035"]
             }
           }
         },
@@ -102,7 +112,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "license" },
+                  "rel": {
+                    "const": "license"
+                  },
                   "href": {
                     "const": "https://land.copernicus.eu/en/data-policy"
                   }
@@ -113,7 +125,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "self" },
+                  "rel": {
+                    "const": "self"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"
@@ -125,7 +139,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "root" },
+                  "rel": {
+                    "const": "root"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"
@@ -137,7 +153,9 @@
               "contains": {
                 "type": "object",
                 "properties": {
-                  "rel": { "const": "parent" },
+                  "rel": {
+                    "const": "parent"
+                  },
                   "href": {
                     "type": "string",
                     "pattern": ".json$"

@@ -1,9 +1,9 @@
 {
   "type": "Collection",
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "id": "river-and-lake-ice-extent-s2",
   "title": "Rive and Lake Ice Extent - Sentinel-2",
@@ -57,9 +57,21 @@
     }
   },
   "summaries": {
-    "proj:epsg": [
-      32625, 32626, 32627, 32628, 32629, 32630, 32631, 32632, 32633, 32634,
-      32635, 32636, 32637, 32638
+    "proj:code": [
+      "EPSG:32625",
+      "EPSG:32626",
+      "EPSG:32627",
+      "EPSG:32628",
+      "EPSG:32629",
+      "EPSG:32630",
+      "EPSG:32631",
+      "EPSG:32632",
+      "EPSG:32633",
+      "EPSG:32634",
+      "EPSG:32635",
+      "EPSG:32636",
+      "EPSG:32637",
+      "EPSG:32638"
     ]
   },
   "links": [

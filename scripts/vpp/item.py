@@ -54,22 +54,22 @@ def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str) -
     return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-")
 
 
-def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> tuple[BoundingBox, CRS, int, int]:
-    s3 = aws_session.resource("s3")
-    obj = s3.Object(bucket, key)
-    body = obj.get()["Body"].read()
+def read_metadata_from_s3(
+    bucket: str, key: str, aws_session: boto3.Session
+) -> tuple[BoundingBox, CRS, int, int, datetime]:
+    client = aws_session.client("s3")
+    obj = client.get_object(Bucket=bucket, Key=key)
+    body = obj["Body"].read()
     with rio.open(io.BytesIO(body)) as tif:
         bounds = tif.bounds
         crs = tif.crs
         height = tif.height
         width = tif.width
-    return (bounds, crs, height, width, obj.last_modified)
+    return (bounds, crs, height, width, obj["LastModified"])
 
 
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
-    bbox = rio.coords.BoundingBox(
-        *transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top)
-    )
+    bbox = BoundingBox(*transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top))
     return box(*(bbox.left, bbox.bottom, bbox.right, bbox.top))
 
 
@@ -126,7 +126,7 @@ def add_providers_to_item(item: pystac.Item, provider_list: list[pystac.Provider
 
 def add_projection_extension_to_item(item: pystac.Item, crs: CRS, bounds: BoundingBox, height: int, width: int) -> None:
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = crs.to_epsg()
+    projection.code = crs.to_epsg()
     projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
     projection.shape = [height, width]
 

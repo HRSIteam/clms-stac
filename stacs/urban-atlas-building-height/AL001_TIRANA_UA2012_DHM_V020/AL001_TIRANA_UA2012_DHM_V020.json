@@ -1,7 +1,7 @@
 {
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "AL001_TIRANA_UA2012_DHM_V020",
@@ -32,7 +32,7 @@
         "url": "https://land.copernicus.eu"
       }
     ],
-    "proj:epsg": 3035,
+    "proj:code": "EPSG:3035",
     "proj:bbox": [5107100, 2055830, 5178270, 2103470],
     "proj:shape": [4764, 7117]
   },

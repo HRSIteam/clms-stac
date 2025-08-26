@@ -55,9 +55,9 @@ def create_core_collection() -> pystac.Collection:
     )
 
 
-def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[int]) -> None:
+def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[str]) -> None:
     summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
-    summaries.epsg = epsg_list
+    summaries.code = epsg_list
 
 
 def add_item_assets_to_collection(collection: pystac.Collection, asset_title_map: dict[str, str]) -> None:
@@ -76,6 +76,8 @@ def add_links_to_collection(collection: pystac.Collection, link_list: list[Link]
 def add_items_to_collection(collection: pystac.Collection, item_list: list[str]) -> None:
     for item in item_list:
         stac_object = pystac.read_file(item)
+        if not isinstance(stac_object, pystac.Item):
+            raise TypeError(f"Object loaded from {item} is not a pystac.Item")
         collection.add_item(stac_object, title=stac_object.id)
 
 
@@ -85,25 +87,19 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
 
         # summaries
         epsg_list = [
-            32620,
-            32621,
-            32622,
-            32625,
-            32626,
-            32627,
-            32628,
-            32629,
-            32630,
-            32631,
-            32632,
-            32633,
-            32634,
-            32635,
-            32636,
-            32637,
-            32638,
-            32738,
-            32740,
+            "EPSG:32620",
+            "EPSG:32621",
+            "EPSG:32622",
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
         ]
         add_summaries_to_collection(collection, epsg_list)
 
@@ -119,9 +115,11 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
 
         # add self, root, and parent links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{collection.id}/{collection.id}.json"))
-        catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
-        collection.set_root(catalog)
-        collection.set_parent(catalog)
+        catalog_obj = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        if not isinstance(catalog_obj, pystac.Catalog):
+            raise TypeError("Object loaded from catalog file is not a pystac.Catalog")
+        collection.set_root(catalog_obj)
+        collection.set_parent(catalog_obj)
     except Exception as error:
         raise CollectionCreationError(error)
     return collection
