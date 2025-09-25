@@ -1,0 +1,240 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_wcd_laea_100_v<version>_annually",
+    "title": "Water Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
+    "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m. This product corresponds to a a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://www.geoville.com/",
+            "name":"GeoVille GmbH",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 100,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
+        "gsd": [
+            100
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L3", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "water_cover_duration"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT1M",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NTC"
+        ],
+        "proj:code": [
+            "EPSG:3035"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "WCD": {
+            "title": "Water Cover Duration (days)",
+            "description": " Water presence frequency in a hydrological year expressed in number of days (between 0 and 366)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "no_water",
+              "description": "No water",
+            },
+            {
+              "value": 65485,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 65533,
+              "name": "sea_water",
+              "description": "Sea water",
+            }
+            ]
+        },
+        "SCD-QA": {
+            "title": "Quality layer for the Water Cover Duration (WCD) layer",
+            "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 253,
+              "name": "sea_water",
+              "description": "Sea water",
+            }
+            ]
+        }
+    }
+}
+

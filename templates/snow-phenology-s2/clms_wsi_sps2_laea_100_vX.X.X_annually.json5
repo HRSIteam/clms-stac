@@ -1,0 +1,403 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_sps2_laea_100_v<version>_annually",
+    "title": "Snow Phenology Sentinel-2 2016-present (raster 100 m, LAEA projection), Europe, annually",
+    "description": "The Sentinel-2 Snow Phenology (SPS2) product is generated once a year at European scale, based on Fractional Snow Cover (FSC) products calculated from Sentinel-2 optical data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 20 m x 20 m, as does the input FSC product. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://www.cesbio.cnrs.fr/",
+            "name":"Magellium/CESBIO",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 100,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
+        "gsd": [
+            100
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L3", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "snow_phenology"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT1M",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NTC"
+        ],
+        "proj:code": [
+            "EPSG:3035"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "high_quality_inputs",
+              "description": "Indicates whether the median quality of the input FSC information on the pixel is 0, i.e. high quality.",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_high_quality_inputs",
+                  "description": "The median quality of the FSC input data is not high.",
+                  "value": 0
+                },
+                {
+                  "name": "high_quality_inputs",
+                  "description": "The median quality of the FSC input data is high.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "medium_quality_inputs",
+              "description": "Indicates whether the median quality of the input FSC information on the pixel is 1, i.e. medium quality.",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_medium_quality_inputs",
+                  "description": "The median quality of the FSC input data is not medium.",
+                  "value": 0
+                },
+                {
+                  "name": "medium_quality_inputs",
+                  "description": "The median quality of the FSC input data is medium.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "low_quality_inputs",
+              "description": "Indicates whether the median quality of the input FSC information on the pixel is 2, i.e. low quality.",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_low_quality_inputs",
+                  "description": "The median quality of the FSC input data is not low.",
+                  "value": 0
+                },
+                {
+                  "name": "low_quality_inputs",
+                  "description": "The median quality of the FSC input data is low.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "minimal_quality_inputs",
+              "description": "Indicates whether the median quality of the input FSC information on the pixel is 3, i.e. minimal quality.",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_minimal_quality_inputs",
+                  "description": "The median quality of the FSC input data is not minimal.",
+                  "value": 0
+                },
+                {
+                  "name": "minimal_quality_inputs",
+                  "description": "The median quality of the FSC input data is minimal.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "snow_cover_duration_too_low",
+              "description": "Indicates pixels with no sufficient snowfall throughout the year to allow for an accurate estimate of the snow season.",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_snow_cover_duration_too_low",
+                  "description": "The pixel receives sufficient snowfall throughout the year to characterize the snow season.",
+                  "value": 0
+                },
+                {
+                  "name": "snow_cover_duration_too_low",
+                  "description": "The pixel does not receive sufficient snowfall throughout the year to allow for an accurate estimate of the snow season.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "tree_cover_duration_too_high",
+              "description": "Indicates whether the tree cover density is too high for an accurate snow detection.",
+              "offset": 5,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_tree_cover_duration_too_high",
+                  "description": "The tree cover density is not too high for an accurate snow detection.",
+                  "value": 0
+                },
+                {
+                  "name": "tree_cover_duration_too_high",
+                  "description": "The tree cover density is too high for an accurate snow detection.",
+                  "value": 1
+                }
+              ]
+            }
+            ]
+        },
+        "SCD": {
+            "title": "Snow Cover Duration (days)",
+            "description": "Number of days of snow cover over the hydrological year (between 0 and 366)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 420,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ]
+        },
+        "SCO": {
+            "title": "Snow Cover Onset-date (day of the year)",
+            "description": "Snow cover onset-date defined as the first day of the longest snow cover period. Date expressed as the number of days from the beginning of the hydrological year (1st September = day 0).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 420,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ]
+        },
+        "SCM": {
+            "title": "Snow Cover Melt out date (day of the year)",
+            "description": "Snow cover melt out date defined as the last day of the longest snow cover period. Date expressed as the number of days from the beginning of the hydrological year (1st September = day 0).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 420,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ]
+        },
+        "NOBS": {
+            "title": "Number of clear sky observations over the hydrological year",
+            "description": "Number of days with clear sky observations used in the interpolation of the snow cover time series (between 0 and 366).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 420,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ]
+        },
+        "SCD-QA": {
+            "title": "Quality layer for the Snow Cover Duration (SCD) layer",
+            "description": "Quality layer providing basic assessment of the Snow Cover Duration layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 420,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ]
+        },
+        "SCO-QA": {
+            "title": "Quality indicator associated with the Snow Cover Onset (SCO) date",
+            "description": "Number of days between the estimated snow onset date and the closest snow observation date (between 0 and 366).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535
+        },
+        "SCM-QA": {
+            "title": "Quality indicator associated with the Snow Cover Melt out (SCM) date",
+            "description": "Number of days between the estimated snow melt out date and the closest snow observation date (between 0 and 366).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535
+        }
+    }
+}
+

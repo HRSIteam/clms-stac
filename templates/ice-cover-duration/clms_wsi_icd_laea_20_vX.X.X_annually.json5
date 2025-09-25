@@ -1,0 +1,229 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_icd_laea_20_v<version>_annually",
+    "title": "Ice Cover Duration 2016-present (raster 20 m, LAEA projection), Europe, annually",
+    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://en.ilmatieteenlaitos.fi/",
+            "name":"FMI",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 20,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L3", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "ice_cover_duration"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT1M",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NTC"
+        ],
+        "proj:code": [
+            "EPSG:3035"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "ICD": {
+            "title": "Ice Cover Duration (days)",
+            "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535
+        },
+        "NOBS1": {
+            "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
+            "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535
+        },
+        "NOBS2": {
+            "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
+            "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint16",
+            "nodata": 65535
+        },
+        "ICD-QA": {
+            "title": "Quality layer for the Ice Cover Duration (ICD) layer",
+            "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint16",
+            "nodata": 65535,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            }
+            ]
+        }
+    }
+}
+

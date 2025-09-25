@@ -1,0 +1,331 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_wics2_utm_20_v<version>_daily",
+    "title": "Water/Ice Cover S2 2016-present (raster 60 m), Europe, daily",
+    "description": "The Water and Ice Cover by Sentinel-2 (WICS2) product is generated in near real-time at European scale, based on optical satellite data from the Sentinel-2 constellation. The product provides the water and ice extent, including snow-covered or snow-free ice on water bodies (rivers and lakes), at a spatial resolution of 20 m x 20 m.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://www.magellium.com/en/",
+            "name":"Magellium",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 20,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L2", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "water_ice_cover"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT12H",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NRT"
+        ],
+        "proj:code": [
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
+            "EPSG:32635",
+            "EPSG:32636",
+            "EPSG:32637",
+            "EPSG:32638"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "hillshade",
+              "description": "Indicates whether the pixel is located in the hillshade",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_hillshade",
+                  "description": "The pixel is not located in the hillshade",
+                  "value": 0
+                },
+                {
+                  "name": "hillshade",
+                  "description": "The pixel is located in the hillshade",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "water",
+              "description": "Indicates whether the pixel is located within a water body, according to the water mask used as input",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_water",
+                  "description": " The pixel is not part of a water body.",
+                  "value": 0
+                },
+                {
+                  "name": "water",
+                  "description": " The pixel is part of a water body.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "reclassified",
+              "description": "Indicates whether the pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_reclassified",
+                  "description": "The initial pixel classification was maintained.",
+                  "value": 0
+                },
+                {
+                  "name": "reclassified",
+                  "description": "The pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+                  "value": 1
+                }
+              ]
+            },
+            ]
+        },
+        "WIC": {
+            "title": "Water/ice cover ",
+            "description": "Water/ice cover classification",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 1,
+              "name": "open_water",
+              "description": "Open water",
+            },
+            {
+              "value": 100,
+              "name": "ice",
+              "description": "Snow-covered or snow-free ice",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 254,
+              "name": "other_features",
+              "description": "Other features",
+            }
+            ]
+        },
+        "WIC-QA": {
+            "title": "Quality layer for the water/ice cover (WIC) layer",
+            "description": "Quality layer providing basic assessment of the water/ice cover layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            }
+            ]
+        },
+        "PRB": {
+            "title": "Probability of the WIC class from the Random Forest classifier (%)",
+            "description": "Probability of the water/ice cover (WIC) layer class from the Random Forest classifier, between 0 and 100",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            }
+            ]
+        }
+    }
+}
+

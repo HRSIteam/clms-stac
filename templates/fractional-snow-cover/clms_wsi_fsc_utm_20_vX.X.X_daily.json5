@@ -1,0 +1,575 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_fsc_utm_20_v<version>_daily",
+    "title": "Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
+    "description": "The Fractional Snow Cover (FSC) product is generated in near real-time at European scale based on optical satellite data from the Sentinel-2 constellation. The product provides the fraction of the surface covered by snow at the top of canopy (FSC-TOC) and on ground (FSC-OG) per pixel as a percentage (0% – 100%) with a spatial resolution of 20 m x 20 m.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://www.cesbio.cnrs.fr/",
+            "name":"Magellium/CESBIO",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 20,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L2", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "snow_cover_extent"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT12H",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NRT"
+        ],
+        "proj:code": [
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
+            "EPSG:32635",
+            "EPSG:32636",
+            "EPSG:32637",
+            "EPSG:32638"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "hillshade",
+              "description": "Indicates whether the pixel is located in the hillshade",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_hillshade",
+                  "description": "The pixel is not located in the hillshade",
+                  "value": 0
+                },
+                {
+                  "name": "hillshade",
+                  "description": "The pixel is located in the hillshade",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "tree_cover_too_high",
+              "description": "Indicates whether the tree cover density is too high for an accurate detection and forest correction",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_tree_cover_too_high",
+                  "description": "The tree cover density is not too high for an accurate detection and forest correction",
+                  "value": 0
+                },
+                {
+                  "name": "tree_cover_too_high",
+                  "description": "The tree cover density is too high for an accurate detection and forest correction",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_cover",
+              "description": "The snow fraction was estimated despite cloud cover (except high clouds)",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_cover",
+                  "description": "The pixel was not initially identified as a cloud.",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_cover",
+                  "description": "The pixel was initially identified as a cloud but snow was detected and snow fraction estimated.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "tree_cover_undefined",
+              "description": "Indicates whether the tree cover density was defined or available on the pixel",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "tree_cover_defined",
+                  "description": "The tree cover density was defined on the pixel",
+                  "value": 0
+                },
+                {
+                  "name": "tree_cover_undefined",
+                  "description": "The tree cover density was not defined or not available on the pixel",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "snow_found_in_shades",
+              "description": "Indicates whether the pixel is located in the hillshade and was identified as snow-covered",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_snow_found_in_shades",
+                  "description": "The pixel is not snow-covered and located in the hillshades",
+                  "value": 0
+                },
+                {
+                  "name": "snow_found_in_shades",
+                  "description": "The pixel was detected as snow-covered despite its location in the hillshades",
+                  "value": 1
+                }
+              ]
+            }
+            ]
+        },
+        "FSCTOC": {
+            "title": "Top of canopy fractional snow cover (%)",
+            "description": "Estimate of the top of canopy fractional snow cover (visible from space)",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
+              "name": "snow_fraction",
+              "description": "Snow fraction as a percentage"
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ],
+        },
+        "FSCTOC-QA": {
+            "title": "Quality layer for the Top-of-canopy snow fraction (FSCTOC) layer",
+            "description": "Quality layer providing basic assessment of the Top-of-canopy snow fraction layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },{
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ],
+        },
+        "FSCOG": {
+            "title": "On-ground fractional snow cover (%)",
+            "description": "Estimated fractional snow cover on the ground (i.e. snow fraction estimated under the canopy or visible from space in the absence of tree cover).",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
+              "name": "snow_fraction",
+              "description": "Snow fraction as a percentage"
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ],
+        },
+        "FSCOG-QA": {
+            "title": "Quality layer for the on-ground snow fraction (FSCOG) layer",
+            "description": "Quality layer providing basic assessment of the on-ground snow fraction layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },{
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ],
+        },
+        "NDSI": {
+            "title": "Normalized Difference Snow Index (%) of detected snow areas",
+            "description": "Values of the spectral index Normalized Difference Snow Index (%) for snow-covered-pixels",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
+              "name": "normalized_difference_snow_index",
+              "description": "Normalized Difference Snow Index as a percentage"
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
+            }
+            ],
+        },
+        "CLD": {
+            "title": "MAJA L2A cloud and cloud shadow mask",
+            "description": "Bitmask layer defining the cloud and cloud shadow mask derived from the input MAJA Sentinel-2 level 2A product",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "all_clouds_and_shadows",
+              "description": "Indicates whether the pixel was identified as part of a cloud or cloud-shadow. Does not include thinnest clouds.",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_all_clouds_and_shadows",
+                  "description": "The pixel is neither a cloud (expect thin cloud) or a cloud shadow",
+                  "value": 0
+                },
+                {
+                  "name": "all_clouds_and_shadows",
+                  "description": "The pixel is identified as part of a cloud (not a thin cloud) or cloud-shadow.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "all_clouds",
+              "description": "Indicates whether the pixel was identified as part of a cloud. Does not include thinnest clouds.",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_all_clouds",
+                  "description": "The pixel is not identified as a cloud (except thin cloud)",
+                  "value": 0
+                },
+                {
+                  "name": "all_clouds",
+                  "description": "The pixel is identified as a cloud (except thin cloud)",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "mono_temporal",
+              "description": "Indicates whether the cloud pixel was detected through the mono-temporal approach",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_mono_temporal",
+                  "description": "The pixel was not detected as cloudy through the mono-temporal approach.",
+                  "value": 0
+                },
+                {
+                  "name": "mono_temporal",
+                  "description": "The pixel was detected as cloudy through the mono-temporal approach.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "multi_temporal",
+              "description": "Indicates whether the cloud pixel was detected through the multi-temporal approach",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_multi_temporal",
+                  "description": "The pixel was not detected as cloudy through the multi-temporal approach",
+                  "value": 0
+                },
+                {
+                  "name": "multi_temporal",
+                  "description": "The pixel was detected as cloudy through the multi-temporal approach",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "thin_cloud",
+              "description": "Indicates whether the pixel is detected as part of the thinnest clouds",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_thin_cloud",
+                  "description": "The pixel is not detected as a thin cloud",
+                  "value": 0
+                },
+                {
+                  "name": "thin_cloud",
+                  "description": "The pixel is detected as a thin cloud",
+                  "value": 1
+                }
+              ]
+            }
+            {
+              "name": "cloud_shadow_from_cloud_in_image",
+              "description": "Cloud shadow mask cast from a cloud visible in the image",
+              "offset": 5,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud visible in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud visible in the image",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_shadow_from_cloud_outside_image",
+              "description": "Cloud shadow mask cast from a cloud located outside the image",
+              "offset": 6,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud located outside in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud located outside in the image",
+                  "value": 1
+                }
+              ]
+            }
+            ],
+        },
+    }
+}
+

@@ -1,0 +1,437 @@
+{
+    "type": "Collection",
+    "stac_version": "1.1.0",
+    "stac_extension": [
+        "https://stac-extensions.github.io/grid/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/product/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+    ],
+    "id": "clms_wsi_wics1_utm_60_v<version>_daily",
+    "title": "Water/Ice Cover S1 2016-present (raster 60 m), Europe, daily",
+    "description": "The Water and Ice Cover by Sentinel-1 (WICS1) product is generated in near real-time at European scale, based on synthetic aperture radar data from the Sentinel-1 constellation. The product provides the river and lake area covered by snow-covered or snow-free ice with a spatial resolution of 60 m x 60 m.",
+    "license": "other", 
+    "extent": {
+        "spatial": {
+            "bbox": [
+                [
+                    "<lon_min>", /* -26 */
+                    "<lat_min>", /* 33 */
+                    "<lon_max>", /* 48 */
+                    "<lat_max>" /* 72 */
+                ]
+            ], /* bbox for EEA38+UK */
+        },
+        "temporal": {
+            "interval": [
+                [
+                    "YYYY-MM-DDT00:00:00.000Z", /* 2016-08-01T00:00:00.000Z */
+                    null
+                ]
+            ], /* Begin date in metadata file */
+        }
+    },
+    "providers":[
+        {
+            "url":"https://land.copernicus.eu",
+            "name":"EEA",
+            "roles":["producer"]
+        },
+        {
+            "url":"https://commission.europa.eu/",
+            "name":"European Commission",
+            "roles":["licensor"]
+        },
+        {
+            "url":"https://en.ilmatieteenlaitos.fi/",
+            "name":"FMI",
+            "roles":["processor"]
+        },
+        {
+            "url":"https://cloudferro.com/",
+            "name":"CloudFerro",
+            "roles":["host"]
+        }
+    ],
+    "version": "<version>", /* major version, eg v0.0.0*/
+    "gsd": 60,
+    "summaries": {
+        "grid:code": [
+            "<GRID_CODE_1>",
+            "<GRID_CODE_2>"
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
+        "gsd": [
+            60
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "processing:facility": [
+            "Magellium/WEkEO"
+        ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
+        "processing:level": [
+            "L3", 
+        ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
+        "product:type": [
+            "water_ice_cover"
+        ], /* REQUIRED. TBC */
+        "product:timeliness": [
+            "PT12H",
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness_category": [
+            "NRT"
+        ],
+        "proj:code": [
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
+            "EPSG:32635",
+            "EPSG:32636",
+            "EPSG:32637",
+            "EPSG:32638"
+        ] 
+    }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
+    "links": [
+        {
+            "rel": "root",
+            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
+            "type": "application/json"
+        },
+        {
+            "rel": "items",
+            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
+            "type": "application/geo+json"
+        },
+        {
+          "rel": "license",
+          "href": "https://land.copernicus.eu/en/data-policy",
+          "type": "text/html",
+          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+        }
+    ],
+    "keywords": [
+        "HR-WSI",
+        "Water snow and ice monitoring",
+        "monitoring",
+        "land cover",
+        "water",
+        "snow",
+        "ice",
+        "clouds",
+        "high resolution",
+        "near real time",
+        "pan-European"
+        "CLMS",
+        "Copernicus"
+        "climate change impact",
+        "landscape alteration",
+        "environmental policy"
+    ],
+    "contacts": [
+        {
+            "name": "Copernicus Land Monitoring Service",
+            "organization": "European Environment Agency",
+            "roles":["producer"],
+            "emails": [
+               	{
+              		"value":"copernicus@eea.europa.eu",
+              		"roles":[
+             			"contact point"
+              		]
+               	}
+           	],
+            "phones": [
+               	{
+              		"value":"+45 33 36 71 00",
+              		"roles":[
+             			"contact point"
+              		]
+          		}
+           	],
+            "links": [
+               	{
+              		"href":"https://land.copernicus.eu/",
+         			"rel":"about",
+         			"type":"text/html",
+         			"title":"Homepage of the Copernicus Land Monitoring Service"
+               	}
+           	],
+        },
+    ],
+    "item_assets": {
+        "Product": {
+            "roles": [
+                "data",
+                "metadata",
+                "quality",
+                "archive"
+            ],
+            "title": "TAR product",
+            "type": "application/tar"
+        },
+        "MTD": {
+            "title": "Product metadata",
+            "description": "Product metadata",
+            "type": "application/xml",
+            "roles": ["metadata"],
+        },
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint16",
+            "classification:bitfields": [
+            {
+              "name": "temporary_water",
+              "description": "Indicates whether the pixel is located within a temporary water area, according to the EU-Hydro database.",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_temporary_water",
+                  "description": "The pixel is not located within a temporary water area.",
+                  "value": 0
+                },
+                {
+                  "name": "temporary_water",
+                  "description": "The pixel is located within a temporary water area.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "standing_or_uncategorized_water",
+              "description": "Indicates whether the pixel is located within a standing water area or an uncategorized water body, according to the EU-Hydro database.",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_standing_or_uncategorized_water",
+                  "description": " The pixel is not located within a standing water area nor an uncategorized water body.",
+                  "value": 0
+                },
+                {
+                  "name": "standing_or_uncategorized_water",
+                  "description": " The pixel is located within a standing water area or an uncategorized water body.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "temperature_data",
+              "description": "Indicates whether the algorithm had access to air temperature data to filter potential false alarms.",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_temperature_data",
+                  "description": "The algorithm had no access to air temperature data.",
+                  "value": 0
+                },
+                {
+                  "name": "temperature_data",
+                  "description": "The algorithm had access to air temperature data.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "summer_day",
+              "description": "Indicates whether the algorithm assessed that the acquisition was made in summer day conditions with a very low probability of ice presence, based on air temperature data.",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_summer_day",
+                  "description": "The air temperature data do not allow to assess the probability of ice being present.",
+                  "value": 0
+                },
+                {
+                  "name": "summer_day",
+                  "description": "The probability of ice presence was assessed as very low by the algorithm, on the basis of the air temperature conditions.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "imperviousness",
+              "description": "Indicates whether the pixel is located within an impervious area.",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_imperviousness",
+                  "description": "The pixel is not located within an impervious area.",
+                  "value": 0
+                },
+                {
+                  "name": "imperviousness",
+                  "description": "The pixel is located within an impervious area.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "tree_cover_density",
+              "description": "Indicates whether the pixel is located within an area of high-density tree cover.",
+              "offset": 5,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_tree_cover_density",
+                  "description": "The pixel is not located within an area of high-density tree cover.",
+                  "value": 0
+                },
+                {
+                  "name": "tree_cover_density",
+                  "description": "The pixel is located within an area of high-density tree cover.",
+                  "value": 1
+                }
+              ]
+            },
+                        {
+              "name": "grassland",
+              "description": "Indicates whether the pixel is located within a grassland area.",
+              "offset": 6,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_grassland",
+                  "description": "The pixel is not located within a grassland area.",
+                  "value": 0
+                },
+                {
+                  "name": "grassland",
+                  "description": "The pixel is located within a grassland area.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "wind_speed_data",
+              "description": "Indicates whether the algorithm had access to wind speed data in order to assess the suitability of Sentinel-1 satellite data for ice detection.",
+              "offset": 7,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_wind_speed_data",
+                  "description": "The algorithm had no access to wind speed data.",
+                  "value": 0
+                },
+                {
+                  "name": "wind_speed_data",
+                  "description": "The algorithm had access to wind speed data.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "windy",
+              "description": "Indicates whether the algorithm assessed strong wind conditions that could lead to false alarms regarding ice cover.",
+              "offset": 8,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_windy",
+                  "description": "The wind speed data do not allow to assess the probability of false alarms regarding ice cover.",
+                  "value": 0
+                },
+                {
+                  "name": "windy",
+                  "description": "The probability of false alarms regarding ice cover is high in relation to wind speed.",
+                  "value": 1
+                }
+              ]
+            },
+             {
+              "name": "inland_water",
+              "description": "Indicates whether the pixel is part of a water body according to the water mask used as input",
+              "offset": 15,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_inland_water",
+                  "description": "The pixel is not part of a water body.",
+                  "value": 0
+                },
+                {
+                  "name": "inland_water",
+                  "description": "The pixel is part of a water body.",
+                  "value": 1
+                }
+              ]
+            }
+            ] 
+        },
+        "WIC": {
+            "title": "Water/ice cover ",
+            "description": "Water/ice cover classification within the extent of a water mask",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 1,
+              "name": "open_water",
+              "description": "Open water",
+            },
+            {
+              "value": 100,
+              "name": "ice",
+              "description": "Snow-covered or snow-free ice",
+            },
+            {
+              "value": 200,
+              "name": "radar_geometric_distorsions",
+              "description": "Radar Shadow, layover, or foreshortening",
+            }
+            ]
+        },
+        "WIC-QA": {
+            "title": "Quality layer for the water/ice cover (WIC) layer",
+            "description": "Quality layer providing basic assessment of the water/ice cover layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality",
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality",
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality",
+            },
+            {
+              "value": 200,
+              "name": "radar_geometric_distorsions",
+              "description": "Radar Shadow, layover, or foreshortening",
+            }
+            ]
+        }
+    }
+}
+
