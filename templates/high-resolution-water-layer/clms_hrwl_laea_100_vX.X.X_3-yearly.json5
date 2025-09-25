@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_hrwl_laea_10_v<version>_annually",
-    "title": "High Resolution Water Layer 2021 (raster 10 m, LAEA projection), Europe, 3-yearly",
-    "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
+    "id": "clms_wsi_hrwl_laea_100_v<version>_3-yearly",
+    "title": "High Resolution Water Layer 2021 (raster 100 m, LAEA projection), Europe, 3-yearly",
+    "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. This product corresponds to a 100m resampling and a reprojection to the LAEA projection of the native product defined on UTM 10 m x 10 m grid.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -58,14 +58,14 @@
         }
     ],
     "version": "<version>", /* major version, eg v0.0.0*/
-    "gsd": 10,
+    "gsd": 100,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
         ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
         "gsd": [
-            10
+            100
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
             "Magellium/WEkEO"
@@ -77,7 +77,7 @@
             "water_cover"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
-            "PT1M",
+            "PT3Y",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
             "NTC"
@@ -170,63 +170,33 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "WCD": {
-            "title": "Water Cover Duration (days)",
-            "description": " Water presence frequency in a hydrological year expressed in number of days (between 0 and 366)",
+        "WL": {
+            "title": "Water classification",
+            "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535,
-            "classification:classes": [
-            {
-              "value": 0,
-              "name": "no_water",
-              "description": "No water",
-            },
-            {
-              "value": 65485,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
-            },
-            {
-              "value": 65533,
-              "name": "sea_water",
-              "description": "Sea water",
-            }
-            ]
-        },
-        "SCD-QA": {
-            "title": "Quality layer for the Water Cover Duration (WCD) layer",
-            "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality","data"],
             "data_type": "uint8",
             "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
-              "name": "high_quality",
-              "description": "High quality",
+              "name": "dry",
+              "description": "dry",
             },
             {
               "value": 1,
-              "name": "medium_quality",
-              "description": "Medium quality"
+              "name": "permanent_water",
+              "description": "Permanent water",
             },
             {
               "value": 2,
-              "name": "low_quality",
-              "description": "Low quality",
-            },
-            {
-              "value": 3,
-              "name": "minimal_quality",
-              "description": "Minimal quality",
+              "name": "temporary_water",
+              "description": "Temporary water",
             },
             {
               "value": 205,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "name": "cloud_and_cloud_shadow",
+              "description": "Cloud and cloud shadow",
             },
             {
               "value": 253,
