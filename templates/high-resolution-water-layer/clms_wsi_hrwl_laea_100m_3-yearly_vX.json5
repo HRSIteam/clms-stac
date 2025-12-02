@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_icd_laea_100_v<version>_annually",
-    "title": "Ice Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_hrwl_laea_100m_3-yearly_<version>",
+    "title": "High Resolution Water Layer 2021 (raster 100 m, LAEA projection), Europe, 3-yearly",
+    "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. This product corresponds to a 100m resampling and a reprojection to the LAEA projection of the native product defined on UTM 10 m x 10 m grid.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -47,8 +47,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://en.ilmatieteenlaitos.fi/",
-            "name":"FMI",
+            "url":"https://www.geoville.com/",
+            "name":"GeoVille GmbH",
             "roles":["processor"]
         },
         {
@@ -57,7 +57,7 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
+    "version": "<version>", /* major version, eg v1*/
     "gsd": 100,
     "summaries": {
         "grid:code": [
@@ -74,10 +74,10 @@
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "ice_cover_duration"
+            "water_cover"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
-            "PT1M",
+            "PT3Y",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
             "NTC"
@@ -170,57 +170,38 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "ICD": {
-            "title": "Ice Cover Duration (days)",
-            "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
+        "WL": {
+            "title": "Water classification",
+            "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS1": {
-            "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS2": {
-            "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "ICD-QA": {
-            "title": "Quality layer for the Ice Cover Duration (ICD) layer",
-            "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality","data"],
-            "data_type": "uint16",
-            "nodata": 65535,
+            "data_type": "uint8",
+            "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
-              "name": "high_quality",
-              "description": "High quality",
+              "name": "dry",
+              "description": "dry",
             },
             {
               "value": 1,
-              "name": "medium_quality",
-              "description": "Medium quality"
+              "name": "permanent_water",
+              "description": "Permanent water",
             },
             {
               "value": 2,
-              "name": "low_quality",
-              "description": "Low quality",
+              "name": "temporary_water",
+              "description": "Temporary water",
             },
             {
-              "value": 3,
-              "name": "minimal_quality",
-              "description": "Minimal quality",
+              "value": 205,
+              "name": "cloud_and_cloud_shadow",
+              "description": "Cloud and cloud shadow",
+            },
+            {
+              "value": 253,
+              "name": "sea_water",
+              "description": "Sea water",
             }
             ]
         }

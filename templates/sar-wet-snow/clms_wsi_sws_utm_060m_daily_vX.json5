@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_wcd_laea_100_v<version>_annually",
-    "title": "Water Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
-    "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m. This product corresponds to a a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_sws_utm_060m_daily_<version>",
+    "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
+    "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band Synthetic Aperture Radar satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -47,8 +47,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://www.geoville.com/",
-            "name":"GeoVille GmbH",
+            "url":"https://www.enveo.at/",
+            "name":"ENVEO GmbH",
             "roles":["processor"]
         },
         {
@@ -57,33 +57,46 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
-    "gsd": 100,
+    "version": "<version>", /* major version, eg v1*/
+    "gsd": 60,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
-        ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
+        ], /* Here list of all the S2 tiles processed over the high mountain areas with the format "MGRS-32TNS" */
         "gsd": [
-            100
+            60
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
-            "Magellium/WEkEO"
+            "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_cover_duration"
+            "wet_snow_cover"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
-            "PT1M",
+            "PT12H",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
-            "NTC"
+            "NRT"
         ],
         "proj:code": [
-            "EPSG:3035"
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
+            "EPSG:32635",
+            "EPSG:32636",
+            "EPSG:32637",
+            "EPSG:32638"
         ] 
     }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
     "links": [
@@ -170,34 +183,54 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "WCD": {
-            "title": "Water Cover Duration (days)",
-            "description": " Water presence frequency in a hydrological year expressed in number of days (between 0 and 366)",
+        "WSM": {
+            "title": "Wet Snow classification in high Mountains areas",
+            "description": "Wet snow cover in high mountain areas",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535,
+            "data_type": "uint8",
+            "nodata": 255,
             "classification:classes": [
             {
-              "value": 0,
-              "name": "no_water",
-              "description": "No water",
+              "value": 110,
+              "name": "wet_snow",
+              "description": "Wet snow",
             },
             {
-              "value": 65485,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "value": 125,
+              "name": "dry_patchy_or_no_snow",
+              "description": "Dry snow or snow-free or patchy snow",
             },
             {
-              "value": 65533,
-              "name": "sea_water",
-              "description": "Sea water",
+              "value": 200,
+              "name": "radar_geometric_distorsions",
+              "description": "Radar Shadow, layover, or foreshortening (masked)",
+            },
+            {
+              "value": 210,
+              "name": "water",
+              "description": "Water (masked)",
+            }
+            {
+              "value": 220,
+              "name": "forest",
+              "description": "Forest (masked)",
+            },
+            {
+              "value": 230,
+              "name": "urban_areas",
+              "description": "Urban areas (masked)",
+            },
+            {
+              "value": 240,
+              "name": "no_mountain",
+              "description": "Non-mountain areas (masked)",
             }
             ]
         },
-        "SCD-QA": {
-            "title": "Quality layer for the Water Cover Duration (WCD) layer",
-            "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
+        "WSM-QA": {
+            "title": "Quality layer for the wet snow classification (WSM) layer",
+            "description": "Quality layer providing basic assessment of the wet snow classification layer.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
@@ -224,16 +257,12 @@
               "description": "Minimal quality",
             },
             {
-              "value": 205,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
-            },
-            {
-              "value": 253,
-              "name": "sea_water",
-              "description": "Sea water",
+              "value": 250,
+              "name": "masked",
+              "description": "Masked",
             }
             ]
+        } 
         }
     }
 }

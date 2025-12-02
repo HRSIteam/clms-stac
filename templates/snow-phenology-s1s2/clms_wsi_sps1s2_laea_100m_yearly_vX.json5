@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_sps1s2_laea_100_v<version>_annually",
+    "id": "clms_wsi_sps1s2_laea_100m_yearly_<version>",
     "title": "Snow Phenology Sentinel-2 & Sentinel-1 2016-present (raster 100 m, LAEA projection), Europe, annually",
     "description": "The Sentinel-1 and Sentinel-2 Snow Phenology (SP S1+ S2) product is generated once a year over high-mountain areas at European scale, based on daily cumulative Gap-Filled Fractional Snow Cover (GFSC) products calculated from Sentinel-2 optical and Sentinel-1 radar data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 60 m x 60 m, as does the input GFSC product. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
     "license": "other", 
@@ -57,7 +57,7 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
+    "version": "<version>", /* major version, eg v1*/
     "gsd": 100,
     "summaries": {
         "grid:code": [

@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_icd_laea_20_v<version>_annually",
-    "title": "Ice Cover Duration 2016-present (raster 20 m, LAEA projection), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_icd_utm_020m_yearly_<version>",
+    "title": "Ice Cover Duration 2016-present (raster 20 m), Europe, annually",
+    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -57,13 +57,13 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
+    "version": "<version>", /* major version, eg v1*/
     "gsd": 20,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
-        ], /* Here list of all the LAEA tiles processed over EE38+UK with the format "CDEM-N25E69" /!\ it is CDEM-{northing}{easting} */
+        ], /* Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
         "gsd": [
             20
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
@@ -83,7 +83,20 @@
             "NTC"
         ],
         "proj:code": [
-            "EPSG:3035"
+            "EPSG:32625",
+            "EPSG:32626",
+            "EPSG:32627",
+            "EPSG:32628",
+            "EPSG:32629",
+            "EPSG:32630",
+            "EPSG:32631",
+            "EPSG:32632",
+            "EPSG:32633",
+            "EPSG:32634",
+            "EPSG:32635",
+            "EPSG:32636",
+            "EPSG:32637",
+            "EPSG:32638"
         ] 
     }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
     "links": [

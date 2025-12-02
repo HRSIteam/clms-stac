@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_sws_utm_60_v<version>_daily",
-    "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
-    "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band Synthetic Aperture Radar satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
+    "id": "clms_wsi_cc_utm_020m_daily_<version>",
+    "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
+    "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -47,8 +47,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://www.enveo.at/",
-            "name":"ENVEO GmbH",
+            "url":"https://magellium.com/",
+            "name":"Magellium/CNES",
             "roles":["processor"]
         },
         {
@@ -57,24 +57,24 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
-    "gsd": 60,
+    "version": "<version>", /* major version eg. v1*/
+    "gsd": 20,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
-        ], /* Here list of all the S2 tiles processed over the high mountain areas with the format "MGRS-32TNS" */
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
         "gsd": [
-            60
+            20
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
             "Magellium/WEkEO"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "L3", 
+            "L2", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "wet_snow_cover"
+            "cloud_mask"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
             "PT12H",
@@ -183,58 +183,159 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "WSM": {
-            "title": "Wet Snow classification in high Mountains areas",
-            "description": "Wet snow cover in high mountain areas",
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "mono_temporal",
+              "description": "Indicates whether cloud pixels were detected through the mono-temporal approach",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_mono_temporal",
+                  "description": "Cloud was not detected through the mono-temporal approach",
+                  "value": 0
+                },
+                {
+                  "name": "mono_temporal",
+                  "description": "Cloud was detected through the mono-temporal approach",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "multi_temporal",
+              "description": "Indicates whether cloud pixels were detected through the multi-temporal approach",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_multi_temporal",
+                  "description": "Cloud was not detected through the multi-temporal approach",
+                  "value": 0
+                },
+                {
+                  "name": "multi_temporal",
+                  "description": "Cloud was detected through the multi-temporal approach",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "thin_cloud",
+              "description": "Thin cloud mask",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_thin_cloud",
+                  "description": "The pixel was not identified as thin cloud",
+                  "value": 0
+                },
+                {
+                  "name": "thin_cloud",
+                  "description": "The pixel was identified as thin cloud",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_shadow_from_cloud_in_image",
+              "description": "Cloud shadow mask cast from a cloud visible in the image",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud visible in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud visible in the image",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_shadow_from_cloud_outside_image",
+              "description": "Cloud shadow mask cast from a cloud located outside the image",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud located outside in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud located outside in the image",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "water",
+              "description": "Water mask",
+              "offset": 5,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_water",
+                  "description": "The pixel does not cover a water body",
+                  "value": 0
+                },
+                {
+                  "name": "water",
+                  "description": "The pixel belongs to a water body",
+                  "value": 1
+                }
+              ]
+            },
+            ]
+        },
+        "CC": {
+            "title": "Cloud classification",
+            "description": "Cloud and cloud shadow classification of the image.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 110,
-              "name": "wet_snow",
-              "description": "Wet snow",
+              "value": 0,
+              "name": "clear",
+              "description": "Cloud and cloud shadow-free",
             },
             {
-              "value": 125,
-              "name": "dry_patchy_or_no_snow",
-              "description": "Dry snow or snow-free or patchy snow",
+              "value": 1,
+              "name": "high_cloud",
+              "description": "High cloud"
             },
             {
-              "value": 200,
-              "name": "radar_geometric_distorsions",
-              "description": "Radar Shadow, layover, or foreshortening (masked)",
+              "value": 2,
+              "name": "other_cloud",
+              "description": "Other cloud than high cloud",
             },
             {
-              "value": 210,
-              "name": "water",
-              "description": "Water (masked)",
-            }
-            {
-              "value": 220,
-              "name": "forest",
-              "description": "Forest (masked)",
-            },
-            {
-              "value": 230,
-              "name": "urban_areas",
-              "description": "Urban areas (masked)",
-            },
-            {
-              "value": 240,
-              "name": "no_mountain",
-              "description": "Non-mountain areas (masked)",
+              "value": 3,
+              "name": "cloud_shadow",
+              "description": "Cloud shadow",
             }
             ]
         },
-        "WSM-QA": {
-            "title": "Quality layer for the wet snow classification (WSM) layer",
-            "description": "Quality layer providing basic assessment of the wet snow classification layer.",
+        "CC-QA": {
+            "title": "Quality layer for CC",
+            "description": "Quality layer providing basic assessment of the Cloud Classification layer quality.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
@@ -255,15 +356,8 @@
               "value": 3,
               "name": "minimal_quality",
               "description": "Minimal quality",
-            },
-            {
-              "value": 250,
-              "name": "masked",
-              "description": "Masked",
             }
             ]
-        } 
         }
     }
 }
-

@@ -11,9 +11,9 @@
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_icd_utm_20_v<version>_annually",
-    "title": "Ice Cover Duration 2016-present (raster 20 m), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m.",
+    "id": "clms_wsi_wics2_utm_020m_daily_<version>",
+    "title": "Water/Ice Cover S2 2016-present (raster 20 m), Europe, daily",
+    "description": "The Water and Ice Cover by Sentinel-2 (WICS2) product is generated in near real-time at European scale, based on optical satellite data from the Sentinel-2 constellation. The product provides the water and ice extent, including snow-covered or snow-free ice on water bodies (rivers and lakes), at a spatial resolution of 20 m x 20 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -47,8 +47,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://en.ilmatieteenlaitos.fi/",
-            "name":"FMI",
+            "url":"https://www.magellium.com/en/",
+            "name":"Magellium",
             "roles":["processor"]
         },
         {
@@ -57,13 +57,13 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
+    "version": "<version>", /* major version, eg v1*/
     "gsd": 20,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
-        ], /* Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
         "gsd": [
             20
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
@@ -71,16 +71,16 @@
             "Magellium/WEkEO"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "L3", 
+            "L2", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "ice_cover_duration"
+            "water_ice_cover"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
-            "PT1M",
+            "PT12H",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
-            "NTC"
+            "NRT"
         ],
         "proj:code": [
             "EPSG:32625",
@@ -183,37 +183,106 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "ICD": {
-            "title": "Ice Cover Duration (days)",
-            "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS1": {
-            "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS2": {
-            "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "ICD-QA": {
-            "title": "Quality layer for the Ice Cover Duration (ICD) layer",
-            "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
-            "data_type": "uint16",
-            "nodata": 65535,
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "hillshade",
+              "description": "Indicates whether the pixel is located in the hillshade",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_hillshade",
+                  "description": "The pixel is not located in the hillshade",
+                  "value": 0
+                },
+                {
+                  "name": "hillshade",
+                  "description": "The pixel is located in the hillshade",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "water",
+              "description": "Indicates whether the pixel is located within a water body, according to the water mask used as input",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_water",
+                  "description": " The pixel is not part of a water body.",
+                  "value": 0
+                },
+                {
+                  "name": "water",
+                  "description": " The pixel is part of a water body.",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "reclassified",
+              "description": "Indicates whether the pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_reclassified",
+                  "description": "The initial pixel classification was maintained.",
+                  "value": 0
+                },
+                {
+                  "name": "reclassified",
+                  "description": "The pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+                  "value": 1
+                }
+              ]
+            },
+            ]
+        },
+        "WIC": {
+            "title": "Water/ice cover ",
+            "description": "Water/ice cover classification",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 1,
+              "name": "open_water",
+              "description": "Open water",
+            },
+            {
+              "value": 100,
+              "name": "ice",
+              "description": "Snow-covered or snow-free ice",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            },
+            {
+              "value": 254,
+              "name": "other_features",
+              "description": "Other features",
+            }
+            ]
+        },
+        "WIC-QA": {
+            "title": "Quality layer for the water/ice cover (WIC) layer",
+            "description": "Quality layer providing basic assessment of the water/ice cover layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
@@ -234,6 +303,26 @@
               "value": 3,
               "name": "minimal_quality",
               "description": "Minimal quality",
+            },
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
+            }
+            ]
+        },
+        "PRB": {
+            "title": "Probability of the WIC class from the Random Forest classifier (%)",
+            "description": "Probability of the water/ice cover (WIC) layer class from the Random Forest classifier, between 0 and 100",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 205,
+              "name": "cloud_or_cloud_shadow",
+              "description": "Cloud or cloud shadow",
             }
             ]
         }

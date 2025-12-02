@@ -9,12 +9,12 @@
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
-        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     ],
-    "id": "clms_wsi_hrwl_laea_10_v<version>_3-yearly",
+    "id": "clms_wsi_hrwl_laea_010m_3-yearly_<version>",
     "title": "High Resolution Water Layer 2021 (raster 10 m, LAEA projection), Europe, 3-yearly",
     "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
-    "license": "other", 
+"license": "other", 
     "extent": {
         "spatial": {
             "bbox": [
@@ -57,7 +57,7 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v0.0.0*/
+    "version": "<version>", /* major version, eg v1*/
     "gsd": 10,
     "summaries": {
         "grid:code": [
