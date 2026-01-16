@@ -10,8 +10,9 @@
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
         "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_hrwl_laea_010m_3-yearly_<version>",
+    "id": "<COLLECTION_NAME>", /* name of the collection JSON file, ie this file */
     "title": "High Resolution Water Layer 2021 (raster 10 m, LAEA projection), Europe, 3-yearly",
     "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
 "license": "other", 
@@ -68,14 +69,14 @@
             10
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
-            "Magellium/WEkEO"
+            "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_cover"
-        ], /* REQUIRED. TBC */
+            "water_bodies_extent"
+        ],
         "product:timeliness": [
             "PT3Y",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
@@ -102,8 +103,19 @@
           "href": "https://land.copernicus.eu/en/data-policy",
           "type": "text/html",
           "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
-        }
+        },
+        {
+          "rel":"SDI_URL", 
+          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+          "type":"text/html"
+	    }, 
+        {
+          "rel":"cite-as", 
+          "href":"https://doi.org/10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+          "type":"text/html"
+	    }
     ],
+    "sci:doi": "10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -115,9 +127,9 @@
         "clouds",
         "high resolution",
         "near real time",
-        "pan-European"
+        "pan-European",
         "CLMS",
-        "Copernicus"
+        "Copernicus",
         "climate change impact",
         "landscape alteration",
         "environmental policy"

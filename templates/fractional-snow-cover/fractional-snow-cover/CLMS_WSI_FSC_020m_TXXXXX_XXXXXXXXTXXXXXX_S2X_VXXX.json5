@@ -506,7 +506,7 @@
                   "value": 1
                 }
               ]
-            }
+            },
             {
               "name": "cloud_shadow_from_cloud_in_image",
               "description": "Cloud shadow mask cast from a cloud visible in the image",

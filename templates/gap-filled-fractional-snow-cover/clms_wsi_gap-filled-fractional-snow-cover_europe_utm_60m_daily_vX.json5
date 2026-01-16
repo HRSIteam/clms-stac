@@ -9,11 +9,12 @@
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
-        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json", 
+        "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_wics2_utm_020m_daily_<version>",
-    "title": "Water/Ice Cover S2 2016-present (raster 20 m), Europe, daily",
-    "description": "The Water and Ice Cover by Sentinel-2 (WICS2) product is generated in near real-time at European scale, based on optical satellite data from the Sentinel-2 constellation. The product provides the water and ice extent, including snow-covered or snow-free ice on water bodies (rivers and lakes), at a spatial resolution of 20 m x 20 m.",
+    "id": "<COLLECTION_NAME>", /* name of the collection JSON file, ie this file */
+    "title": "Gap-filled Fractional Snow Cover 2016-present (raster 60 m), Europe, daily",
+    "description": "The Daily Cumulative Gap-filled Fractional Snow Cover (GFSC) product is generated on a daily basis at European scale based on synthetic aperture radar data from the Sentinel-1 constellation and optical imaging data from the Sentinel-2 constellation. The product provides the extent of the snow cover per pixel as a percentage (0% – 100%) with a spatial resolution of 60 m x 60 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -47,8 +48,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://www.magellium.com/en/",
-            "name":"Magellium",
+            "url":"https://en.ilmatieteenlaitos.fi/",
+            "name":"FMI",
             "roles":["processor"]
         },
         {
@@ -58,23 +59,23 @@
         }
     ],
     "version": "<version>", /* major version, eg v1*/
-    "gsd": 20,
+    "gsd": 60,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
         ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
         "gsd": [
-            20
+            60
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
-            "Magellium/WEkEO"
+            "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "L2", 
+            "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_ice_cover"
+            "snow_cover_extent"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
             "PT12H",
@@ -115,8 +116,19 @@
           "href": "https://land.copernicus.eu/en/data-policy",
           "type": "text/html",
           "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
-        }
+        },
+        {
+          "rel":"SDI_URL", 
+          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/832c7297-a20f-4b92-8e32-1e2e1548e642",
+          "type":"text/html"
+	      }, 
+        {
+          "rel":"cite-as", 
+          "href":"https://doi.org/10.2909/832c7297-a20f-4b92-8e32-1e2e1548e642",
+          "type":"text/html"
+	      }
     ],
+    "sci:doi": "10.2909/832c7297-a20f-4b92-8e32-1e2e1548e642",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -128,9 +140,9 @@
         "clouds",
         "high resolution",
         "near real time",
-        "pan-European"
+        "pan-European",
         "CLMS",
-        "Copernicus"
+        "Copernicus",
         "climate change impact",
         "landscape alteration",
         "environmental policy"
@@ -209,60 +221,109 @@
               ]
             },
             {
-              "name": "water",
-              "description": "Indicates whether the pixel is located within a water body, according to the water mask used as input",
+              "name": "tree_cover_too_high",
+              "description": "Indicates whether the tree cover density is too high for an accurate detection and forest correction",
               "offset": 1,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_water",
-                  "description": " The pixel is not part of a water body.",
+                  "name": "not_tree_cover_too_high",
+                  "description": "The tree cover density is not too high for an accurate detection and forest correction",
                   "value": 0
                 },
                 {
-                  "name": "water",
-                  "description": " The pixel is part of a water body.",
+                  "name": "tree_cover_too_high",
+                  "description": "The tree cover density is too high for an accurate detection and forest correction",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "reclassified",
-              "description": "Indicates whether the pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+              "name": "cloud_cover",
+              "description": "The snow fraction was estimated despite cloud cover (except high clouds)",
               "offset": 2,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_reclassified",
-                  "description": "The initial pixel classification was maintained.",
+                  "name": "not_cloud_cover",
+                  "description": "The pixel was not initially identified as a cloud.",
                   "value": 0
                 },
                 {
-                  "name": "reclassified",
-                  "description": "The pixel was assigned a new classification in the post-processing step as the initial one was likely wrong.",
+                  "name": "cloud_cover",
+                  "description": "The pixel was initially identified as a cloud but snow was detected and snow fraction estimated.",
                   "value": 1
                 }
               ]
             },
+            {
+              "name": "tree_cover_undefined",
+              "description": "Indicates whether the tree cover density was defined or available on the pixel",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "tree_cover_defined",
+                  "description": "The tree cover density was defined on the pixel",
+                  "value": 0
+                },
+                {
+                  "name": "tree_cover_undefined",
+                  "description": "The tree cover density was not defined or not available on the pixel",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "snow_found_in_shades",
+              "description": "Indicates whether the pixel is located in the hillshade and was identified as snow-covered",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_snow_found_in_shades",
+                  "description": "The pixel is not snow-covered and located in the hillshades",
+                  "value": 0
+                },
+                {
+                  "name": "snow_found_in_shades",
+                  "description": "The pixel was detected as snow-covered despite its location in the hillshades",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "sensor_type",
+              "description": "Indicates whether the pixel information is derived from optical Sentinel-2 or radar Sentinel-1 imagery",
+              "offset": 7,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "optical",
+                  "description": "The pixel information is derived from optical Sentinel-2 imagery",
+                  "value": 0
+                },
+                {
+                  "name": "radar",
+                  "description": "The pixel information is derived from radar Sentinel-1 imagery ",
+                  "value": 1
+                }
+              ]
+            }
             ]
         },
-        "WIC": {
-            "title": "Water/ice cover ",
-            "description": "Water/ice cover classification",
+        "GF": {
+            "title": "Fractional snow cover (%)",
+            "description": "Estimate of the fractional snow cover",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 1,
-              "name": "open_water",
-              "description": "Open water",
-            },
-            {
-              "value": 100,
-              "name": "ice",
-              "description": "Snow-covered or snow-free ice",
+              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
+              "name": "snow_fraction",
+              "description": "Snow fraction as a percentage"
             },
             {
               "value": 205,
@@ -270,15 +331,15 @@
               "description": "Cloud or cloud shadow",
             },
             {
-              "value": 254,
-              "name": "other_features",
-              "description": "Other features",
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
             }
             ]
         },
-        "WIC-QA": {
-            "title": "Quality layer for the water/ice cover (WIC) layer",
-            "description": "Quality layer providing basic assessment of the water/ice cover layer.",
+        "GF-QA": {
+            "title": "Quality layer for the gap-filled fractional snow cover (GF) layer",
+            "description": "Quality layer providing basic assessment of the snow fraction layer.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
@@ -308,23 +369,19 @@
               "value": 205,
               "name": "cloud_or_cloud_shadow",
               "description": "Cloud or cloud shadow",
+            },{
+              "value": 210,
+              "name": "inland_water",
+              "description": "Inland water",
             }
             ]
         },
-        "PRB": {
-            "title": "Probability of the WIC class from the Random Forest classifier (%)",
-            "description": "Probability of the water/ice cover (WIC) layer class from the Random Forest classifier, between 0 and 100",
+        "AT": {
+            "title": "Sensing start date",
+            "description": "Sensing start date (seconds from Unix time). Informs about the sensing date of the acquisition at the pixel level.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 205,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
-            }
-            ]
+            "data_type": "uint32"
         }
     }
 }
