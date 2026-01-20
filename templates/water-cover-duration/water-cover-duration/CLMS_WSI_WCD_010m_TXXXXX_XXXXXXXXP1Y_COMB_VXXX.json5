@@ -181,13 +181,13 @@
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD.tif",
             "file:size": "<SIZE_WCD>"
         },
-        "SCD-QA": {
+        "WCD-QA": {
             "title": "Quality layer for the Water Cover Duration (WCD) layer",
             "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
+            "nodata": 65535,
             "classification:classes": [
             {
               "value": 0,
@@ -210,19 +210,19 @@
               "description": "Minimal quality",
             },
             {
-              "value": 205,
+              "value": 65485,
               "name": "cloud_or_cloud_shadow",
               "description": "Cloud or cloud shadow",
             },
             {
-              "value": 253,
+              "value": 65533,
               "name": "sea_water",
               "description": "Sea water",
             }
             ],
-            "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
-            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD-QA.tif",
-            "file:size": "<SIZE_SCD-QA>"
+            "file:checksum": "<CHECKSUM_WCD-QA>",/* must be multihash encoded */
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD-QA.tif",
+            "file:size": "<SIZE_WCD-QA>"
         }
     }
 }
