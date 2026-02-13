@@ -13,8 +13,8 @@
         "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
     ],
     "id": "<COLLECTION_NAME>", /* name of the collection JSON file, ie this file */
-    "title": "Ice Cover Duration 2016-present (raster 20 m), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m.",
+    "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
+    "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -48,8 +48,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://en.ilmatieteenlaitos.fi/",
-            "name":"FMI",
+            "url":"https://magellium.com/",
+            "name":"Magellium/CNES",
             "roles":["processor"]
         },
         {
@@ -58,13 +58,13 @@
             "roles":["host"]
         }
     ],
-    "version": "<version>", /* major version, eg v1*/
+    "version": "<version>", /* major version eg. v1*/
     "gsd": 20,
     "summaries": {
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
-        ], /* Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
+        ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode . Here list of all the S2 tiles processed over EE38+UK with the format "MGRS-32TNS" */
         "gsd": [
             20
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
@@ -72,16 +72,16 @@
             "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "L3", 
+            "L2", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "ice_phenology"
-        ],
+            "cloud_mask"
+        ], /* REQUIRED. TBC */
         "product:timeliness": [
-            "PT1M",
+            "PT12H",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
-            "NTC"
+            "NRT"
         ],
         "proj:code": [
             "EPSG:32625",
@@ -116,19 +116,20 @@
           "href": "https://land.copernicus.eu/en/data-policy",
           "type": "text/html",
           "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+
         },
         {
           "rel":"SDI_URL", 
-          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/8d5eac19-877e-459a-a501-e1182516d64d",
+          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/34ad510f-bba7-4c55-b1a6-8aac544bc216",
           "type":"text/html"
 	      }, 
         {
           "rel":"cite-as", 
-          "href":"https://doi.org/10.2909/8d5eac19-877e-459a-a501-e1182516d64d",
+          "href":"https://doi.org/10.2909/34ad510f-bba7-4c55-b1a6-8aac544bc216",
           "type":"text/html"
-	      }
+	      }        
     ],
-    "sci:doi": "10.2909/8d5eac19-877e-459a-a501-e1182516d64d",
+    "sci:doi": "10.2909/34ad510f-bba7-4c55-b1a6-8aac544bc216",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -195,37 +196,159 @@
             "type": "application/xml",
             "roles": ["metadata"],
         },
-        "ICD": {
-            "title": "Ice Cover Duration (days)",
-            "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS1": {
-            "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS2": {
-            "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "ICD-QA": {
-            "title": "Quality layer for the Ice Cover Duration (ICD) layer",
-            "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
+        "QAFLAGS": {
+            "title": "Quality Flags (QAFLAGS)",
+            "description": "Bitmask layer with pixel quality flags",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
-            "data_type": "uint16",
-            "nodata": 65535,
+            "data_type": "uint8",
+            "classification:bitfields": [
+            {
+              "name": "mono_temporal",
+              "description": "Indicates whether cloud pixels were detected through the mono-temporal approach",
+              "offset": 0,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_mono_temporal",
+                  "description": "Cloud was not detected through the mono-temporal approach",
+                  "value": 0
+                },
+                {
+                  "name": "mono_temporal",
+                  "description": "Cloud was detected through the mono-temporal approach",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "multi_temporal",
+              "description": "Indicates whether cloud pixels were detected through the multi-temporal approach",
+              "offset": 1,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_multi_temporal",
+                  "description": "Cloud was not detected through the multi-temporal approach",
+                  "value": 0
+                },
+                {
+                  "name": "multi_temporal",
+                  "description": "Cloud was detected through the multi-temporal approach",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "thin_cloud",
+              "description": "Thin cloud mask",
+              "offset": 2,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_thin_cloud",
+                  "description": "The pixel was not identified as thin cloud",
+                  "value": 0
+                },
+                {
+                  "name": "thin_cloud",
+                  "description": "The pixel was identified as thin cloud",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_shadow_from_cloud_in_image",
+              "description": "Cloud shadow mask cast from a cloud visible in the image",
+              "offset": 3,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud visible in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud visible in the image",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "cloud_shadow_from_cloud_outside_image",
+              "description": "Cloud shadow mask cast from a cloud located outside the image",
+              "offset": 4,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud located outside in the image",
+                  "value": 0
+                },
+                {
+                  "name": "cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud located outside in the image",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "name": "water",
+              "description": "Water mask",
+              "offset": 5,
+              "length": 1,
+              "classes": [
+                {
+                  "name": "not_water",
+                  "description": "The pixel does not cover a water body",
+                  "value": 0
+                },
+                {
+                  "name": "water",
+                  "description": "The pixel belongs to a water body",
+                  "value": 1
+                }
+              ]
+            },
+            ]
+        },
+        "CC": {
+            "title": "Cloud classification",
+            "description": "Cloud and cloud shadow classification of the image.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "clear",
+              "description": "Cloud and cloud shadow-free",
+            },
+            {
+              "value": 1,
+              "name": "high_cloud",
+              "description": "High cloud"
+            },
+            {
+              "value": 2,
+              "name": "other_cloud",
+              "description": "Other cloud than high cloud",
+            },
+            {
+              "value": 3,
+              "name": "cloud_shadow",
+              "description": "Cloud shadow",
+            }
+            ]
+        },
+        "CC-QA": {
+            "title": "Quality layer for CC",
+            "description": "Quality layer providing basic assessment of the Cloud Classification layer quality.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
             "classification:classes": [
             {
               "value": 0,
@@ -251,4 +374,3 @@
         }
     }
 }
-

@@ -140,9 +140,9 @@
         "clouds",
         "high resolution",
         "near real time",
-        "pan-European"
+        "pan-European",
         "CLMS",
-        "Copernicus"
+        "Copernicus",
         "climate change impact",
         "landscape alteration",
         "environmental policy"
@@ -543,7 +543,7 @@
                   "value": 1
                 }
               ]
-            }
+            },
             {
               "name": "cloud_shadow_from_cloud_in_image",
               "description": "Cloud shadow mask cast from a cloud visible in the image",

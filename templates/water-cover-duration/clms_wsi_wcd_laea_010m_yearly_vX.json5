@@ -9,9 +9,10 @@
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
         "https://stac-extensions.github.io/version/v1.2.0/schema.json",
         "https://stac-extensions.github.io/contacts/v1.0.0/schema.json",
-        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
+        "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json", 
+        "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
     ],
-    "id": "clms_wsi_wcd_laea_010m_yearly_<version>",
+    "id": "<COLLECTION_NAME>", /* name of the collection JSON file, ie this file */
     "title": "Water Cover Duration 2016-present (raster 10 m, LAEA projection), Europe, annually",
     "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
     "license": "other", 
@@ -68,14 +69,14 @@
             10
         ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. If MIN_GSD=MAX_GSD Please provide a single value like "gsd":[VALUE]. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
-            "Magellium/WEkEO"
+            "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_cover_duration"
-        ], /* REQUIRED. TBC */
+            "water_bodies_duration"
+        ],
         "product:timeliness": [
             "PT1M",
         ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
@@ -102,8 +103,19 @@
           "href": "https://land.copernicus.eu/en/data-policy",
           "type": "text/html",
           "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
-        }
+        },
+        {
+          "rel":"SDI_URL", 
+          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/39e1ff33-01d9-45c2-9edc-00924383f34f",
+          "type":"text/html"
+	    }, 
+        {
+          "rel":"cite-as", 
+          "href":"https://doi.org/10.2909/39e1ff33-01d9-45c2-9edc-00924383f34f",
+          "type":"text/html"
+	    }
     ],
+    "sci:doi": "10.2909/39e1ff33-01d9-45c2-9edc-00924383f34f",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -115,9 +127,9 @@
         "clouds",
         "high resolution",
         "near real time",
-        "pan-European"
+        "pan-European",
         "CLMS",
-        "Copernicus"
+        "Copernicus",
         "climate change impact",
         "landscape alteration",
         "environmental policy"
@@ -195,13 +207,13 @@
             }
             ]
         },
-        "SCD-QA": {
+        "WCD-QA": {
             "title": "Quality layer for the Water Cover Duration (WCD) layer",
             "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
+            "nodata": 65535,
             "classification:classes": [
             {
               "value": 0,
@@ -224,12 +236,12 @@
               "description": "Minimal quality",
             },
             {
-              "value": 205,
+              "value": 65485,
               "name": "cloud_or_cloud_shadow",
               "description": "Cloud or cloud shadow",
             },
             {
-              "value": 253,
+              "value": 65533,
               "name": "sea_water",
               "description": "Sea water",
             }
