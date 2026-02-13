@@ -14,7 +14,7 @@
     ],
     "id": "<COLLECTION_NAME>", /* name of the collection JSON file, ie this file */
     "title": "Wet/Dry Snow 2016-present (raster 60 m), Europe, daily",
-    "description": "The Wet/Dry Snow (WDS) product is generated in near real-time at European scale based on C-band SAR satellite data from the Sentinel-1 constellation within the fractional snow cover on top of canopy (FSCTOC) derived from overlapping optical satellite data from the Sentinel-2 constellation. The product provides the snow state condition (wet / dry) for surfaces covered by snow (FSCTOC >= 90%) for non-forested land areas with a spatial resolution of 60 m x 60 m.",
+    "description": "The Wet/Dry Snow (WDS) product is generated in near real-time at European scale based on C-band SAR satellite data from the Sentinel-1 constellation within the fractional snow cover on top of canopy (FSCTOC) derived from overlapping optical satellite data from the Sentinel-2 constellation. The product provides the snow state condition (wet / dry) for surfaces covered by snow (FSCTOC >= 60%) for non-forested land areas with a spatial resolution of 60 m x 60 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -112,22 +112,28 @@
             "type": "application/geo+json"
         },
         {
-          "rel": "license",
-          "href": "https://land.copernicus.eu/en/data-policy",
-          "type": "text/html",
-          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
 
         },
         {
-          "rel":"SDI_URL", 
-          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
-          "type":"text/html"
+            "rel":"SDI_URL", 
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
+            "type":"text/html"
 	      }, 
         {
-          "rel":"cite-as", 
-          "href":"https://doi.org/10.2909/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
-          "type":"text/html"
-	      }
+            "rel":"cite-as", 
+            "href":"https://doi.org/10.2909/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
+            "type":"text/html"
+	    },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_wet-dry-snow",
+            "type":"text/html"
+        }
     ],
     "sci:doi": "10.2909/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
     "keywords": [
