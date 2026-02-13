@@ -56,6 +56,12 @@
             "url":"https://cloudferro.com/",
             "name":"CloudFerro",
             "roles":["host"]
+        },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_high-resolution-water-layer",
+            "type":"text/html"
         }
     ],
     "version": "<version>", /* major version, eg v1*/

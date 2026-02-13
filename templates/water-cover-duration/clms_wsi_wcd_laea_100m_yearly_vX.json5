@@ -113,7 +113,13 @@
           "rel":"cite-as", 
           "href":"https://doi.org/10.2909/f2dab19c-57d5-4b26-9c1b-9dababff1f2a",
           "type":"text/html"
-	    }
+	    },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_water-cover-duration",
+            "type":"text/html"
+        }
     ],
     "sci:doi": "10.2909/f2dab19c-57d5-4b26-9c1b-9dababff1f2a",
     "keywords": [

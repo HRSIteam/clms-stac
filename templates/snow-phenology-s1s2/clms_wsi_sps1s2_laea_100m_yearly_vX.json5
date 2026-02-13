@@ -108,12 +108,18 @@
           "rel":"SDI_URL", 
           "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/3893c1e6-eea1-46bc-9321-d11f0e39a044",
           "type":"text/html"
-	      }, 
+	    }, 
         {
           "rel":"cite-as", 
           "href":"https://doi.org/10.2909/3893c1e6-eea1-46bc-9321-d11f0e39a044",
           "type":"text/html"
-	      }        
+	    },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_snow-phenology",
+            "type":"text/html"
+        }         
     ],
     "sci:doi": "10.2909/3893c1e6-eea1-46bc-9321-d11f0e39a044",
     "keywords": [

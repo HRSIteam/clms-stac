@@ -126,7 +126,13 @@
           "rel":"cite-as", 
           "href":"https://doi.org/10.2909/668f4071-5d18-48dc-9034-9680a2aea717",
           "type":"text/html"
-	      }
+	      },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_water-ice-cover",
+            "type":"text/html"
+        }
     ],
     "sci:doi": "10.2909/668f4071-5d18-48dc-9034-9680a2aea717",
     "keywords": [

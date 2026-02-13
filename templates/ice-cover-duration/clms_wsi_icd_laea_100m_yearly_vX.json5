@@ -99,21 +99,27 @@
             "type": "application/geo+json"
         },
         {
-          "rel": "license",
-          "href": "https://land.copernicus.eu/en/data-policy",
-          "type": "text/html",
-          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
         },
         {
-          "rel":"SDI_URL", 
-          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
-          "type":"text/html"
-	      }, 
+            "rel":"SDI_URL", 
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
+            "type":"text/html"
+	    }, 
         {
-          "rel":"cite-as", 
-          "href":"https://doi.org/10.2909/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
-          "type":"text/html"
-	      }
+            "rel":"cite-as", 
+            "href":"https://doi.org/10.2909/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
+            "type":"text/html"
+	    },
+        {
+            "rel":"colourmaps-legends", 
+            "title": "Legends files accompanying the product's raster files in four different formats: .sld, .qml, .clr and .lyrx.",
+            "href":"https://github.com/copernicus-land/colourmaps-legends/tree/main/colourmaps/clms_wsi_ice-cover-duration",
+            "type":"text/html"
+        }
     ],
     "sci:doi": "10.2909/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
     "keywords": [
