@@ -58,7 +58,7 @@
             "platformShortName":"<PLATFORM_UPP>", /*  e.g. 'SPOT4,SENTINEL3A,SENTINEL3B' */
             "missionShortName":"SENTINEL2", /* (All platforms in uppercase.) e.g 'SPOT4,SENTINEL3' */
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
-            "SDIResourceIdentifier":"copernicus_r_utm-wgs845_100_m_sps2_p_2016-now_v01_r00", 
+            "SDIResourceIdentifier":"copernicus_r_3035_100_m_sps2_p_2016-now_v01_r00", 
             "temporalRepeatRate":"yearly",
             "productType": "snow_phenology",
             "cloudCover":"0.0",
