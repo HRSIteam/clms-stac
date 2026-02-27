@@ -415,6 +415,36 @@
             "roles": ["data"],
             "data_type": "uint16",
             "nodata": 65535
+        },
+        "SCD-MTD": {
+            "title": "SCD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
+        },
+        "SCO-MTD": {
+            "title": "SCDSCO auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCO raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
+        },
+        "SCM-MTD": {
+            "title": "SCM auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCM raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
+        },
+        "NOBS-MTD": {
+            "title": "NOBS auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
+        },
+        "SCD-QA-MTD": {
+            "title": "SCD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
         }
     }
 }

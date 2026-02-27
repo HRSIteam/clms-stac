@@ -403,6 +403,51 @@
             "file:checksum": "<CHECKSUM_SCM-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCM-QA.tif",
             "file:size": "<SIZE_SCM-QA>"
+        },
+        "SCD-MTD": {
+            "title": "SCD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_SCD-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD.tif.aux.xml",
+            "file:size": "<SIZE_SCD-MTD>"
+        },
+        "SCO-MTD": {
+            "title": "SCDSCO auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCO raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_SCO-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCO.tif.aux.xml",
+            "file:size": "<SIZE_SCO-MTD>"
+        },
+        "SCM-MTD": {
+            "title": "SCM auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCM raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_SCM-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCM.tif.aux.xml",
+            "file:size": "<SIZE_SCM-MTD>"
+        },
+        "NOBS-MTD": {
+            "title": "NOBS auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_NOBS-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS.tif.aux.xml",
+            "file:size": "<SIZE_NOBS-MTD>"
+        },
+        "SCD-QA-MTD": {
+            "title": "SCD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the SCD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_SCD-QA-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD-QA.tif.aux.xml",
+            "file:size": "<SIZE_SCD-QA-MTD>"
         }
     }
 }

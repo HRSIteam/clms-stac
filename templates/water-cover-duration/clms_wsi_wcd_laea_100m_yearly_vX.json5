@@ -252,6 +252,18 @@
               "description": "Sea water",
             }
             ]
+        },
+        "WCD-MTD": {
+            "title": "WCD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the WCD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
+        },
+        "WCD-QA-MTD": {
+            "title": "WCD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the WCD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"]
         }
     }
 }

@@ -217,6 +217,42 @@
             "file:checksum": "<CHECKSUM_ICD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD-QA.tif",
             "file:size": "<SIZE_ICD-QA>"
+        },
+        "ICD-MTD": {
+            "title": "ICD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the ICD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_ICD-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD.tif.aux.xml",
+            "file:size": "<SIZE_ICD-MTD>"
+        },
+        "NOBS1-MTD": {
+            "title": "NOBS1 auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS1 raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_NOBS1-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS1.tif.aux.xml",
+            "file:size": "<SIZE_NOBS1-MTD>"
+        },
+        "NOBS2-MTD": {
+            "title": "NOBS2 auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS2 raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_NOBS2-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS2.tif.aux.xml",
+            "file:size": "<SIZE_NOBS2-MTD>"
+        },
+        "ICD-QA-MTD": {
+            "title": "ICD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the ICD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_ICD-QA-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD-QA.tif.aux.xml",
+            "file:size": "<SIZE_ICD-QA-MTD>"
         }
     }
 }
