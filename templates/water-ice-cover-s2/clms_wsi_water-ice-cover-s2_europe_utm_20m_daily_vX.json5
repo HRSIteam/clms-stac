@@ -75,7 +75,7 @@
             "L2", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_and_ice_cover"
+            "river_and_lake_ice_extent"
         ], 
         "product:timeliness": [
             "PT12H",

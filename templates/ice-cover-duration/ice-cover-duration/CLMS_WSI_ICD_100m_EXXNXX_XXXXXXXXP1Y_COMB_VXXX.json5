@@ -60,7 +60,7 @@
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
             "SDIResourceIdentifier":"copernicus_r_3035_100_m_icd_p_2016-now_v01_r00", 
             "temporalRepeatRate":"yearly",
-            "productType": "ice_phenology",
+            "productType": "river_and_lake_ice_extent",
             "cloudCover":"0.0",
             "projectionName":"laea"
         }
@@ -81,7 +81,7 @@
         "processing:level": "L3",
         "processing:datetime": "<PROCESSING_DATETIME>", /* with the format 2025-06-21T00:00:00.000000Z. */
         "processing:version": "<PROCESSING_VERSION>", /* eg. v0.0 */
-        "product:type": "ice_phenology",
+        "product:type": "river_and_lake_ice_extent",
         "product:timeliness": "PT1M",/* ISO 8601 duration */
         "product:timeliness_category": "NTC",
         "proj:code": "EPSG:3035", /* LAEA projection */ 

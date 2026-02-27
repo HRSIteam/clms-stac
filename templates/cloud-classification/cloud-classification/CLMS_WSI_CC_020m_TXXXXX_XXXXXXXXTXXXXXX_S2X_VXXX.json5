@@ -61,7 +61,7 @@
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
             "SDIResourceIdentifier":"copernicus_r_utm-wgs84_20_m_cc_p_2025-now_v01_r00", 
             "temporalRepeatRate":"daily",
-            "productType": "cloud_mask",
+            "productType": "auxiliary_data",
             "cloudCover":"<CLOUD_COVER>",
             "projectionName":"utm"
           }
@@ -82,7 +82,7 @@
         "processing:level": "L2",
         "processing:datetime": "<PROCESSING_DATETIME>", /* with the format 2025-06-21T00:00:00.000000Z. */
         "processing:version": "<PROCESSING_VERSION>", /* eg. v0.0 */
-        "product:type": "cloud_mask",
+        "product:type": "auxiliary_data",
         "product:timeliness": "PT12H",/* ISO 8601 duration */
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>", /* eg. EPSG:326XX where XX indicates the UTM zone, also corresponds to the first 2 digits of a tile name. */ 

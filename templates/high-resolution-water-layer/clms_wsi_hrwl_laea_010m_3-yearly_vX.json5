@@ -81,7 +81,7 @@
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "water_bodies_extent"
+            "water_extent"
         ],
         "product:timeliness": [
             "PT3Y",

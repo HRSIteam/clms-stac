@@ -75,7 +75,7 @@
             "L3", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "snow_phenology"
+            "snow_cover_extent"
         ],
         "product:timeliness": [
             "PT1M",

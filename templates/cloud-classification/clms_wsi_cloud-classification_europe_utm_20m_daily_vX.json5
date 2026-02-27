@@ -75,7 +75,7 @@
             "L2", 
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "cloud_mask"
+            "auxiliary_data"
         ], /* REQUIRED. TBC */
         "product:timeliness": [
             "PT12H",
