@@ -60,7 +60,7 @@
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
             "SDIResourceIdentifier":"copernicus_r_utm-wgs84_10_m_wcd_p_2016-now_v01_r00", 
             "temporalRepeatRate":"yearly",
-            "productType": " water_extent",
+            "productType": "water_extent",
             "cloudCover":"0.0",
             "projectionName":"laea"
           }
