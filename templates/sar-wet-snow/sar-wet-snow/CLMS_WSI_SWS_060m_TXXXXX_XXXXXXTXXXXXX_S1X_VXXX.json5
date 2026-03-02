@@ -49,7 +49,8 @@
             "areaOfInterest":"europe", 
             "component":"bio-geophysical", 
             "datasetAlias":"clms_wsi_sar-wet-snow", 
-            "datasetIdentifier":"<COLLECTION_NAME>", 
+            "datasetIdentifier":"<COLLECTION_NAME>",
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",   
             "datasetShortName":"sws", 
             "fileFormat":"cog",
             "gridLabel":"60m", 
@@ -103,21 +104,6 @@
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
           "rel":"SDI_URL", 
           "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
