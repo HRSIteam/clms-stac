@@ -51,6 +51,7 @@
             "datasetAlias":"clms_wsi_wet-dry-snow", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
             "datasetShortName":"wds", 
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",
             "fileFormat":"cog",
             "gridLabel":"60m", 
             "instrumentShortName": "COMBINED", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -104,21 +105,6 @@
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
           "rel":"SDI_URL", 
           "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",

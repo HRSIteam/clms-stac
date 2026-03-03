@@ -51,6 +51,7 @@
         "datasetAlias":"clms_wsi_high-resolution-water-layer", 
         "datasetIdentifier":"<COLLECTION_NAME>", 
         "datasetShortName":"hrwl", 
+        "datasetVersion":"<PROCESSING_VERSION_SHORT>",
         "fileFormat":"cog",
         "gridLabel":"10m", 
         "instrumentShortName": "COMBINED", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -103,21 +104,6 @@
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
             "rel":"SDI_URL", 
             "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",

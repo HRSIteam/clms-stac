@@ -51,6 +51,7 @@
             "datasetAlias":"clms_wsi_water-ice-cover-s1", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
             "datasetShortName":"wics1", 
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",
             "fileFormat":"cog",
             "gridLabel":"60m", 
             "instrumentShortName": "SAR", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -103,21 +104,6 @@
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
           "rel":"SDI_URL", 
           "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/7c6a6fab-6c7c-4790-a129-bfa48ec1f052",

@@ -50,7 +50,8 @@
             "component":"bio-geophysical", 
             "datasetAlias":"clms_wsi_snow-phenology", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
-            "datasetShortName":"sps1s2", 
+            "datasetShortName":"sps1s2",
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>", 
             "fileFormat":"cog",
             "gridLabel":"60m", 
             "instrumentShortName": "COMBINED", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -103,21 +104,6 @@
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
             "rel":"SDI_URL", 
             "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/5c6763f3-834c-4b9a-ba3a-bc3c14f85875",
