@@ -102,16 +102,6 @@
     }, /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
     "links": [
         {
-            "rel": "root",
-            "href": "<CDSE_COLLECTION_LINK>", /* will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "items",
-            "href": "<CDSE_COLLECTION_LINK>/items",  /* will be added by the CDSE */
-            "type": "application/geo+json"
-        },
-        {
           "rel": "license",
           "href": "https://land.copernicus.eu/en/data-policy",
           "type": "text/html",
