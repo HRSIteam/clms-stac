@@ -12,34 +12,34 @@
     ],
     "id": "<PRODUCT_ID>", 
     "bbox": [
-        "<WEST_BOUNDING_LONGITUDE>",
-        "<SOUTH_BOUNDING_LATITUDE>",
-        "<EAST_BOUNDING_LONGITUDE>",
-        "<NORTH_BOUNDING_LATITUDE>"
+        <WEST_BOUNDING_LONGITUDE>,
+        <SOUTH_BOUNDING_LATITUDE>,
+        <EAST_BOUNDING_LONGITUDE>,
+        <NORTH_BOUNDING_LATITUDE>
     ],
     "geometry": {
         "type": "Polygon",
         "coordinates": [
             [
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ]
             ]
         ]
@@ -88,19 +88,19 @@
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>", /* eg. EPSG:326XX where XX indicates the UTM zone, also corresponds to the first 2 digits of a tile name. */ 
         "proj:shape": [
-            "<PROJ_SHAPE_HEIGHT>",
-            "<PROJ_SHAPE_WIDTH>"
+            <PROJ_SHAPE_HEIGHT>,
+            <PROJ_SHAPE_WIDTH>
         ], /* gdalinfo size result */
         "proj:transform": [
-            "<PROJ_TRANSFORM_0>",
-            "<PROJ_TRANSFORM_1>",
-            "<PROJ_TRANSFORM_2>",
-            "<PROJ_TRANSFORM_3>",
-            "<PROJ_TRANSFORM_4>",
-            "<PROJ_TRANSFORM_5>",
-            "<PROJ_TRANSFORM_6>",
-            "<PROJ_TRANSFORM_7>",
-            "<PROJ_TRANSFORM_8>"
+            <PROJ_TRANSFORM_0>,
+            <PROJ_TRANSFORM_1>,
+            <PROJ_TRANSFORM_2>,
+            <PROJ_TRANSFORM_3>,
+            <PROJ_TRANSFORM_4>,
+            <PROJ_TRANSFORM_5>,
+            <PROJ_TRANSFORM_6>,
+            <PROJ_TRANSFORM_7>,
+            <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
         "eo:cloud_cover": "<CLOUD_COVER>", /* Estimate of cloud cover as a percentage (0-100). */
     },
@@ -121,7 +121,7 @@
         "Product": {
             "href":"<PRODUCT_BUCKET_PATH>", /*s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/PRODUCT_NAME.tar>" where YYYY/MM/DD <- year/month/date of a product upload */
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
-            "file:size": "<SIZE>", /* specified in bytes */
+            "file:size": <SIZE>, /* specified in bytes */
             "roles": [
                 "data",
                 "metadata",
@@ -138,7 +138,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_MTD.xml",
-            "file:size": "<SIZE_MTD>"
+            "file:size": <SIZE_MTD>
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -258,7 +258,7 @@
             ],
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_QAFLAGS.tif",
-            "file:size": "<SIZE_QAFLAGS>"
+            "file:size": <SIZE_QAFLAGS>
         },
         "CC": {
             "title": "Cloud classification",
@@ -291,7 +291,7 @@
             ],
             "file:checksum": "<CHECKSUM_CC>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_CC.tif",
-            "file:size": "<SIZE_CC>"
+            "file:size": <SIZE_CC>
         },
         "CC-QA": {
             "title": "Quality layer for the Cloud classification (CC) layer",
@@ -324,7 +324,7 @@
             ],
             "file:checksum": "<CHECKSUM_CC-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_CC-QA.tif",
-            "file:size": "<SIZE_CC-QA>"
+            "file:size": <SIZE_CC-QA>
         },
     }
 }

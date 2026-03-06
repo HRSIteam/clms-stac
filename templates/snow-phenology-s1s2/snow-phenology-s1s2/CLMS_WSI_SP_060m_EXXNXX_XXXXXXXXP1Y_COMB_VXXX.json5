@@ -11,34 +11,34 @@
     ],
     "id": "<PRODUCT_ID>", 
     "bbox": [
-        "<WEST_BOUNDING_LONGITUDE>",
-        "<SOUTH_BOUNDING_LATITUDE>",
-        "<EAST_BOUNDING_LONGITUDE>",
-        "<NORTH_BOUNDING_LATITUDE>"
+        <WEST_BOUNDING_LONGITUDE>,
+        <SOUTH_BOUNDING_LATITUDE>,
+        <EAST_BOUNDING_LONGITUDE>,
+        <NORTH_BOUNDING_LATITUDE>
     ],
     "geometry": {
         "type": "Polygon",
         "coordinates": [
             [
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ]
             ]
         ]
@@ -87,19 +87,19 @@
         "product:timeliness_category": "NTC",
         "proj:code": "EPSG:3035", /* LAEA prjection */ 
         "proj:shape": [
-            "<PROJ_SHAPE_HEIGHT>",
-            "<PROJ_SHAPE_WIDTH>"
+            <PROJ_SHAPE_HEIGHT>,
+            <PROJ_SHAPE_WIDTH>
         ], /* gdalinfo size result */
         "proj:transform": [
-            "<PROJ_TRANSFORM_0>",
-            "<PROJ_TRANSFORM_1>",
-            "<PROJ_TRANSFORM_2>",
-            "<PROJ_TRANSFORM_3>",
-            "<PROJ_TRANSFORM_4>",
-            "<PROJ_TRANSFORM_5>",
-            "<PROJ_TRANSFORM_6>",
-            "<PROJ_TRANSFORM_7>",
-            "<PROJ_TRANSFORM_8>"
+            <PROJ_TRANSFORM_0>,
+            <PROJ_TRANSFORM_1>,
+            <PROJ_TRANSFORM_2>,
+            <PROJ_TRANSFORM_3>,
+            <PROJ_TRANSFORM_4>,
+            <PROJ_TRANSFORM_5>,
+            <PROJ_TRANSFORM_6>,
+            <PROJ_TRANSFORM_7>,
+            <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
@@ -124,7 +124,7 @@
         "Product": {
             "href":"<PRODUCT_BUCKET_PATH>", /*s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/PRODUCT_NAME.tar>" where YYYY/MM/DD <- year/month/date of a product upload */
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
-            "file:size": "<SIZE>", /* specified in bytes */
+            "file:size": <SIZE>, /* specified in bytes */
             "roles": [
                 "data",
                 "metadata",
@@ -141,7 +141,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_MTD.xml",
-            "file:size": "<SIZE_MTD>"
+            "file:size": <SIZE_MTD>
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -207,7 +207,7 @@
             ],
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_QAFLAGS.tif",
-            "file:size": "<SIZE_QAFLAGS>"
+            "file:size": <SIZE_QAFLAGS>
         },
         "SCD": {
             "title": "Snow Cover Duration (days)",
@@ -225,7 +225,7 @@
             ],
             "file:checksum": "<CHECKSUM_SCD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD.tif",
-            "file:size": "<SIZE_SCD>"
+            "file:size": <SIZE_SCD>
         },
         "SCO": {
             "title": "Snow Cover Onset-date (day of the year)",
@@ -243,7 +243,7 @@
             ],
             "file:checksum": "<CHECKSUM_SCO>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCO.tif",
-            "file:size": "<SIZE_SCO>"
+            "file:size": <SIZE_SCO>
         },
         "SCM": {
             "title": "Snow Cover Melt out date (day of the year)",
@@ -261,7 +261,7 @@
             ],
             "file:checksum": "<CHECKSUM_SCM>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCM.tif",
-            "file:size": "<SIZE_SCM>"
+            "file:size": <SIZE_SCM>
         },
         "NCSO": {
             "title": "Number of days with clear sky observations over the hydrological year used in the interpolation of the snow cover time series.",
@@ -279,7 +279,7 @@
             ],
             "file:checksum": "<CHECKSUM_NCSO>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NCSO.tif",
-            "file:size": "<SIZE_NCSO>"
+            "file:size": <SIZE_NCSO>
         },
         "NWSO": {
             "title": "Number of days with S1-based wet snow observations over the hydrological year used in the interpolation of the snow cover time series",
@@ -297,7 +297,7 @@
             ],
             "file:checksum": "<CHECKSUM_NWSO>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NWSO.tif",
-            "file:size": "<SIZE_NWSO>"
+            "file:size": <SIZE_NWSO>
         },
         "SCD-QA": {
             "title": "Quality layer for the Snow Cover Duration (SCD) layer",
@@ -335,7 +335,7 @@
             ],
             "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD-QA.tif",
-            "file:size": "<SIZE_SCD-QA>"
+            "file:size": <SIZE_SCD-QA>
         },
         "SCO-QA": {
             "title": "Quality indicator associated with the Snow Cover Onset (SCO) date",
@@ -346,7 +346,7 @@
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCO-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCO-QA.tif",
-            "file:size": "<SIZE_SCO-QA>"
+            "file:size": <SIZE_SCO-QA>
         },
         "SCM-QA": {
             "title": "Quality indicator associated with the Snow Cover Melt out (SCM) date",
@@ -357,7 +357,7 @@
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCM-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCM-QA.tif",
-            "file:size": "<SIZE_SCM-QA>"
+            "file:size": <SIZE_SCM-QA>
         },
         "SCD-MTD": {
             "title": "SCD auxiliary metadata",
@@ -366,7 +366,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_SCD-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD.tif.aux.xml",
-            "file:size": "<SIZE_SCD-MTD>"
+            "file:size": <SIZE_SCD-MTD>
         },
         "SCO-MTD": {
             "title": "SCDSCO auxiliary metadata",
@@ -375,7 +375,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_SCO-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCO.tif.aux.xml",
-            "file:size": "<SIZE_SCO-MTD>"
+            "file:size": <SIZE_SCO-MTD>
         },
         "SCM-MTD": {
             "title": "SCM auxiliary metadata",
@@ -384,7 +384,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_SCM-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCM.tif.aux.xml",
-            "file:size": "<SIZE_SCM-MTD>"
+            "file:size": <SIZE_SCM-MTD>
         },
         "NCSO-MTD": {
             "title": "NCSO auxiliary metadata",
@@ -393,7 +393,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_NCSO-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NCSO.tif.aux.xml",
-            "file:size": "<SIZE_NCSO-MTD>"
+            "file:size": <SIZE_NCSO-MTD>
         },
         "NWSO-MTD": {
             "title": "NWSO auxiliary metadata",
@@ -402,7 +402,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_NWSO-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NWSO.tif.aux.xml",
-            "file:size": "<SIZE_NWSO-MTD>"
+            "file:size": <SIZE_NWSO-MTD>
         },
         "SCD-QA-MTD": {
             "title": "SCD-QA auxiliary metadata",
@@ -411,7 +411,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_SCD-QA-MTD>",
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SCD-QA.tif.aux.xml",
-            "file:size": "<SIZE_SCD-QA-MTD>"
+            "file:size": <SIZE_SCD-QA-MTD>
         }
     }
 }

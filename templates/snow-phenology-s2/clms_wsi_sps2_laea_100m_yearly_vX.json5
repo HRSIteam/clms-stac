@@ -20,10 +20,10 @@
         "spatial": {
             "bbox": [
                 [
-                    "<lon_min>", /* -26 */
-                    "<lat_min>", /* 33 */
-                    "<lon_max>", /* 48 */
-                    "<lat_max>" /* 72 */
+                    -32, 
+                    27, 
+                    46,
+                    72 
                 ]
             ], /* bbox for EEA38+UK */
         },
