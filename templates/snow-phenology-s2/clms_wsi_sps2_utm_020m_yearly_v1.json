@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_sps2_laea_020m_yearly_v1",
-    "title": "Snow Phenology Sentinel-2 2016-present (raster 20 m, LAEA projection), Europe, annually",
-    "description": "The Sentinel-2 Snow Phenology (SPS2) product is generated once a year at European scale, based on Fractional Snow Cover (FSC) products calculated from Sentinel-2 optical data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 20 m x 20 m, as does the input FSC product. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_sps2_utm_020m_yearly_v1",
+    "title": "Snow Phenology Sentinel-2 2016-present (raster 20 m), Europe, annually",
+    "description": "The Sentinel-2 Snow Phenology (SPS2) product is generated once a year at European scale, based on Fractional Snow Cover (FSC) products calculated from Sentinel-2 optical data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The product has a spatial resolution of 20 m x 20 m, as does the input FSC product.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-09-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -58,7 +58,7 @@
           "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/d3e5340d-5325-4196-8c98-cb4e397746ea",
           "type":"text/html",
           "title": "EEA geospatial data catalogue"
-	      }    
+	      }
     ],
     "sci:doi": "10.2909/d3e5340d-5325-4196-8c98-cb4e397746ea",
     "keywords": [
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -255,7 +255,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -270,7 +270,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -285,7 +285,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -300,7 +300,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -315,7 +315,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -325,17 +325,17 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             },
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },

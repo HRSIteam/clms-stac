@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_gap-filled-fractional-snow-cover_europe_utm_60m_daily_v1",
-    "title": "Gap-filled Fractional Snow Cover 2016-present (raster 60 m), Europe, daily",
-    "description": "The Daily Cumulative Gap-filled Fractional Snow Cover (GFSC) product is generated on a daily basis at European scale based on synthetic aperture radar data from the Sentinel-1 constellation and optical imaging data from the Sentinel-2 constellation. The product provides the extent of the snow cover per pixel as a percentage (0% – 100%) with a spatial resolution of 60 m x 60 m.",
+    "id": "clms_wsi_cloud-classification_europe_utm_20m_daily_v1", 
+    "title": "Cloud Classification 2016-present (raster 20 m), Europe, daily",
+    "description": "The Cloud Classification (CC) product is generated in NRT for the entire EEA38+UK area based on optical satellite data from the Sentinel-2 constellation. The product provides the extent of clouds and cloud shadows with a pixel spacing of 20 m x 20 m. Cloud detection is performed at a 120m spatial resolution.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ], 
+            ] 
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-08-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -36,8 +36,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://en.ilmatieteenlaitos.fi/",
-            "name":"FMI",
+            "url":"https://magellium.com/",
+            "name":"Magellium/CNES",
             "roles":["processor"]
         },
         {
@@ -55,12 +55,12 @@
         },
         {
             "rel":"SDI_URL", 
-            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/832c7297-a20f-4b92-8e32-1e2e1548e642",
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/34ad510f-bba7-4c55-b1a6-8aac544bc216",
             "type":"text/html",
             "title": "EEA geospatial data catalogue"
-	      }
+	      }         
     ],
-    "sci:doi": "10.2909/832c7297-a20f-4b92-8e32-1e2e1548e642",
+    "sci:doi": "10.2909/34ad510f-bba7-4c55-b1a6-8aac544bc216",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -135,152 +135,156 @@
             "data_type": "uint8",
             "classification:bitfields": [
             {
-              "name": "hillshade",
-              "description": "Indicates whether the pixel is located in the hillshade",
+              "name": "mono_temporal",
+              "description": "Indicates whether cloud pixels were detected through the mono-temporal approach",
               "offset": 0,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_hillshade",
-                  "description": "The pixel is not located in the hillshade",
+                  "name": "not_mono_temporal",
+                  "description": "Cloud was not detected through the mono-temporal approach",
                   "value": 0
                 },
                 {
-                  "name": "hillshade",
-                  "description": "The pixel is located in the hillshade",
+                  "name": "mono_temporal",
+                  "description": "Cloud was detected through the mono-temporal approach",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "tree_cover_too_high",
-              "description": "Indicates whether the tree cover density is too high for an accurate detection and forest correction",
+              "name": "multi_temporal",
+              "description": "Indicates whether cloud pixels were detected through the multi-temporal approach",
               "offset": 1,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_tree_cover_too_high",
-                  "description": "The tree cover density is not too high for an accurate detection and forest correction",
+                  "name": "not_multi_temporal",
+                  "description": "Cloud was not detected through the multi-temporal approach",
                   "value": 0
                 },
                 {
-                  "name": "tree_cover_too_high",
-                  "description": "The tree cover density is too high for an accurate detection and forest correction",
+                  "name": "multi_temporal",
+                  "description": "Cloud was detected through the multi-temporal approach",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "cloud_cover",
-              "description": "The snow fraction was estimated despite cloud cover (except high clouds)",
+              "name": "thin_cloud",
+              "description": "Thin cloud mask",
               "offset": 2,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_cloud_cover",
-                  "description": "The pixel was not initially identified as a cloud.",
+                  "name": "not_thin_cloud",
+                  "description": "The pixel was not identified as thin cloud",
                   "value": 0
                 },
                 {
-                  "name": "cloud_cover",
-                  "description": "The pixel was initially identified as a cloud but snow was detected and snow fraction estimated.",
+                  "name": "thin_cloud",
+                  "description": "The pixel was identified as thin cloud",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "tree_cover_undefined",
-              "description": "Indicates whether the tree cover density was defined or available on the pixel",
+              "name": "cloud_shadow_from_cloud_in_image",
+              "description": "Cloud shadow mask cast from a cloud visible in the image",
               "offset": 3,
               "length": 1,
               "classes": [
                 {
-                  "name": "tree_cover_defined",
-                  "description": "The tree cover density was defined on the pixel",
+                  "name": "not_cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud visible in the image",
                   "value": 0
                 },
                 {
-                  "name": "tree_cover_undefined",
-                  "description": "The tree cover density was not defined or not available on the pixel",
+                  "name": "cloud_shadow_from_cloud_in_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud visible in the image",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "snow_found_in_shades",
-              "description": "Indicates whether the pixel is located in the hillshade and was identified as snow-covered",
+              "name": "cloud_shadow_from_cloud_outside_image",
+              "description": "Cloud shadow mask cast from a cloud located outside the image",
               "offset": 4,
               "length": 1,
               "classes": [
                 {
-                  "name": "not_snow_found_in_shades",
-                  "description": "The pixel is not snow-covered and located in the hillshades",
+                  "name": "not_cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is not a cloud shadow cast from a cloud located outside in the image",
                   "value": 0
                 },
                 {
-                  "name": "snow_found_in_shades",
-                  "description": "The pixel was detected as snow-covered despite its location in the hillshades",
+                  "name": "cloud_shadow_from_cloud_outside_image",
+                  "description": "The pixel is a cloud shadow cast from a cloud located outside in the image",
                   "value": 1
                 }
               ]
             },
             {
-              "name": "sensor_type",
-              "description": "Indicates whether the pixel information is derived from optical Sentinel-2 or radar Sentinel-1 imagery",
-              "offset": 7,
+              "name": "water",
+              "description": "Water mask",
+              "offset": 5,
               "length": 1,
               "classes": [
                 {
-                  "name": "optical",
-                  "description": "The pixel information is derived from optical Sentinel-2 imagery",
+                  "name": "not_water",
+                  "description": "The pixel does not cover a water body",
                   "value": 0
                 },
                 {
-                  "name": "radar",
-                  "description": "The pixel information is derived from radar Sentinel-1 imagery ",
+                  "name": "water",
+                  "description": "The pixel belongs to a water body",
                   "value": 1
                 }
               ]
             }
             ]
         },
-        "GF": {
-            "title": "Fractional snow cover (%)",
-            "description": "Estimate of the fractional snow cover",
+        "CC": {
+            "title": "Cloud classification",
+            "description": "Cloud and cloud shadow classification of the image.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
-              "name": "snow_fraction",
-              "description": "Snow fraction as a percentage"
+              "value": 0,
+              "name": "clear",
+              "description": "Cloud and cloud shadow-free"
             },
             {
-              "value": 205,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "value": 1,
+              "name": "high_cloud",
+              "description": "High cloud"
             },
             {
-              "value": 210,
-              "name": "inland_water",
-              "description": "Inland water",
+              "value": 2,
+              "name": "other_cloud",
+              "description": "Other cloud than high cloud"
+            },
+            {
+              "value": 3,
+              "name": "cloud_shadow",
+              "description": "Cloud shadow"
             }
             ]
         },
-        "GF-QA": {
-            "title": "Quality layer for the gap-filled fractional snow cover (GF) layer",
-            "description": "Quality layer providing basic assessment of the snow fraction layer.",
+        "CC-QA": {
+            "title": "Quality layer for CC",
+            "description": "Quality layer providing basic assessment of the Cloud Classification layer quality.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -290,30 +294,14 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
-            },
-            {
-              "value": 205,
-              "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
-            },{
-              "value": 210,
-              "name": "inland_water",
-              "description": "Inland water",
+              "description": "Minimal quality"
             }
             ]
-        },
-        "AT": {
-            "title": "Sensing start date",
-            "description": "Sensing start date (seconds from Unix time). Informs about the sensing date of the acquisition at the pixel level.",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint32"
         }
     },
     "storage:schemes": {
@@ -333,6 +321,4 @@
         }
     }
 }
-
-
 

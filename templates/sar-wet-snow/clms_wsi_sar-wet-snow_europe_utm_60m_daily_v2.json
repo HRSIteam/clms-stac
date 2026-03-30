@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_hrwl_utm_010m_3-yearly_v1",
-    "title": "High Resolution Water Layer 2021 (raster 10 m), Europe, 3-yearly",
-    "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
+    "id": "clms_wsi_sar-wet-snow_europe_utm_60m_daily_v2",
+    "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
+    "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band Synthetic Aperture Radar satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,15 +13,15 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
                 [
-                    "2016-09-01T00:00:00Z", 
+                    "2016-08-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -36,8 +36,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://www.geoville.com/",
-            "name":"GeoVille GmbH",
+            "url":"https://www.enveo.at/",
+            "name":"ENVEO GmbH",
             "roles":["processor"]
         },
         {
@@ -55,12 +55,12 @@
         },
         {
             "rel":"SDI_URL", 
-            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
             "type":"text/html",
             "title": "EEA geospatial data catalogue"
-	    }
+	    } 
     ],
-    "sci:doi": "10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+    "sci:doi": "10.2909/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,43 +125,88 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
-        "WL": {
-            "title": "Water classification",
-            "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
+        "WSM": {
+            "title": "Wet Snow classification in high Mountains areas",
+            "description": "Wet snow cover in high mountain areas",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 0,
-              "name": "dry",
-              "description": "dry",
+              "value": 110,
+              "name": "wet_snow",
+              "description": "Wet snow"
             },
             {
-              "value": 1,
-              "name": "permanent_water",
-              "description": "Permanent water",
+              "value": 125,
+              "name": "dry_patchy_or_no_snow",
+              "description": "Dry snow or snow-free or patchy snow"
             },
             {
-              "value": 2,
-              "name": "temporary_water",
-              "description": "Temporary water",
+              "value": 200,
+              "name": "radar_geometric_distorsions",
+              "description": "Radar Shadow, layover, or foreshortening (masked)"
             },
             {
-              "value": 205,
-              "name": "cloud_and_cloud_shadow",
-              "description": "Cloud and cloud shadow",
+              "value": 210,
+              "name": "water",
+              "description": "Water (masked)"
             },
             {
-              "value": 253,
-              "name": "sea_water",
-              "description": "Sea water",
+              "value": 220,
+              "name": "forest",
+              "description": "Forest (masked)"
+            },
+            {
+              "value": 230,
+              "name": "urban_areas",
+              "description": "Urban areas (masked)"
+            },
+            {
+              "value": 240,
+              "name": "no_mountain",
+              "description": "Non-mountain areas (masked)"
             }
             ]
         },
+        "WSM-QA": {
+            "title": "Quality layer for the wet snow classification (WSM) layer",
+            "description": "Quality layer providing basic assessment of the wet snow classification layer.",
+            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+            "roles": ["quality","data"],
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 0,
+              "name": "high_quality",
+              "description": "High quality"
+            },
+            {
+              "value": 1,
+              "name": "medium_quality",
+              "description": "Medium quality"
+            },
+            {
+              "value": 2,
+              "name": "low_quality",
+              "description": "Low quality"
+            },
+            {
+              "value": 3,
+              "name": "minimal_quality",
+              "description": "Minimal quality"
+            },
+            {
+              "value": 250,
+              "name": "masked",
+              "description": "Masked"
+            }
+            ]
+        } 
     },
     "storage:schemes": {
         "cdse-s3": {

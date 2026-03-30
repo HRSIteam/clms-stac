@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_icd_laea_100m_yearly_v1",
-    "title": "Ice Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_wet-dry-snow_europe_utm_60m_daily_v2",
+    "title": "Wet/Dry Snow 2016-present (raster 60 m), Europe, daily",
+    "description": "The Wet/Dry Snow (WDS) product is generated in near real-time at European scale based on C-band SAR satellite data from the Sentinel-1 constellation within the fractional snow cover on top of canopy (FSCTOC) derived from overlapping optical satellite data from the Sentinel-2 constellation. The product provides the snow state condition (wet / dry) for surfaces covered by snow (FSCTOC >= 60%) for non-forested land areas with a spatial resolution of 60 m x 60 m.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,15 +13,15 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
                 [
-                    "2016-09-01T00:00:00Z", 
+                    "2016-08-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -36,8 +36,8 @@
             "roles":["licensor"]
         },
         {
-            "url":"https://en.ilmatieteenlaitos.fi/",
-            "name":"FMI",
+            "url":"https://www.enveo.at/",
+            "name":"ENVEO GmbH",
             "roles":["processor"]
         },
         {
@@ -52,15 +52,16 @@
             "href": "https://land.copernicus.eu/en/data-policy",
             "type": "text/html",
             "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+
         },
         {
             "rel":"SDI_URL", 
-            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
             "type":"text/html",
             "title": "EEA geospatial data catalogue"
 	    }
     ],
-    "sci:doi": "10.2909/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
+    "sci:doi": "10.2909/0c03dc8e-b8b2-4c5c-88a5-8e9f9c153bc7",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -107,8 +108,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,44 +126,70 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
-        "ICD": {
-            "title": "Ice Cover Duration (days)",
-            "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
+        "SSC": {
+            "title": "Snow State Classification",
+            "description": "Snow State Classification (wet/dry) within the Sentinel-2 top-of-canopy fractional snow cover product (FSCTOC layer from the HR-WSI FSC product, aggregated at 60m, FSCTOCagg)",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
+            "data_type": "uint8",
+            "nodata": 255,
+            "classification:classes": [
+            {
+              "value": 110,
+              "name": "wet_snow",
+              "description": "Wet snow detected by Sentinel-1 on pixels where FSCTOCagg >= 60%"
+            },
+            {
+              "value": 115,
+              "name": "dry_snow",
+              "description":"Dry snow on pixels where FSCTOCagg >= 60% - no wet snow detected by Sentinel-1"
+            },
+            {
+              "value": 120,
+              "name": "snowfree_patchy_snow",
+              "description":"Snowfree or patchy snow (pixels where 0 <= FSCTOCagg < 60%)"
+            },
+            {
+              "value": 200,
+              "name": "radar_geometric_distorsions",
+              "description": "Radar Shadow, layover, or foreshortening (masked)"
+            },
+            {
+              "value": 205,
+              "name": "cloud",
+              "description": "Cloud or cloud shadow (masked, from FSCTOCagg = cloud)"
+            },
+            {
+              "value": 210,
+              "name": "water",
+              "description": "Water (masked)"
+            },
+            {
+              "value": 220,
+              "name": "forest",
+              "description": "Forest (masked)"
+            },
+            {
+              "value": 230,
+              "name": "urban_areas",
+              "description": "Urban areas (masked)"
+            }
+            ]
         },
-        "NOBS1": {
-            "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "NOBS2": {
-            "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
-            "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint16",
-            "nodata": 65535
-        },
-        "ICD-QA": {
-            "title": "Quality layer for the Ice Cover Duration (ICD) layer",
-            "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
+        "SSC-QA": {
+            "title": "Quality layer for the snow state classification (SSC) layer",
+            "description": "Quality layer providing basic assessment of the snow state classification layer.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
-            "data_type": "uint16",
-            "nodata": 65535,
+            "data_type": "uint8",
+            "nodata": 255,
             "classification:classes": [
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -172,38 +199,19 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
+            },
+            {
+              "value": 250,
+              "name": "masked",
+              "description": "Masked"
             }
             ]
-        },
-        "ICD-MTD": {
-            "title": "ICD auxiliary metadata",
-            "description": "GDAL auxiliary metadata associated with the ICD raster layer (color table)",
-            "type": "application/xml",
-            "roles": ["metadata"]
-        },
-        "NOBS1-MTD": {
-            "title": "NOBS1 auxiliary metadata",
-            "description": "GDAL auxiliary metadata associated with the NOBS1 raster layer (color table)",
-            "type": "application/xml",
-            "roles": ["metadata"]
-        },
-        "NOBS2-MTD": {
-            "title": "NOBS2 auxiliary metadata",
-            "description": "GDAL auxiliary metadata associated with the NOBS2 raster layer (color table)",
-            "type": "application/xml",
-            "roles": ["metadata"]
-        },
-        "ICD-QA-MTD": {
-            "title": "ICD-QA auxiliary metadata",
-            "description": "GDAL auxiliary metadata associated with the ICD-QA raster layer (color table)",
-            "type": "application/xml",
-            "roles": ["metadata"]
         }
     },
     "storage:schemes": {
@@ -223,4 +231,5 @@
         }
     }
 }
+
 

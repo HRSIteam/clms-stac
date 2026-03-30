@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ],
+            ]
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-08-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -345,27 +345,27 @@
             {
               "value": 1,
               "name": "open_water",
-              "description": "Open water",
+              "description": "Open water"
             },
             {
               "value": 100,
               "name": "ice",
-              "description": "Snow-covered or snow-free ice",
+              "description": "Snow-covered or snow-free ice"
             },
             {
               "value": 200,
               "name": "radar_geometric_distorsions",
-              "description": "Radar Shadow, layover, or foreshortening",
+              "description": "Radar Shadow, layover, or foreshortening"
             },
             {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },
             {
               "value": 254,
               "name": "other_features",
-              "description": "Other features",
+              "description": "Other features"
             }
             ]
         },
@@ -380,7 +380,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -390,25 +390,25 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             },
             {
               "value": 200,
               "name": "radar_geometric_distorsions",
-              "description": "Radar Shadow, layover, or foreshortening",
+              "description": "Radar Shadow, layover, or foreshortening"
             },
             {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             }
             ]
-        },
+        }
     },
     "storage:schemes": {
         "cdse-s3": {

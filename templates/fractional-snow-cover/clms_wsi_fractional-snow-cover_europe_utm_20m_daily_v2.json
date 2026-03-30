@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-08-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ] 
         }
     },
     "providers":[
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -235,21 +235,16 @@
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
-              "name": "snow_fraction",
-              "description": "Snow fraction as a percentage"
-            },
-            {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },
             {
               "value": 210,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
-            ],
+            ]
         },
         "FSCTOC-QA": {
             "title": "Quality layer for the Top-of-canopy snow fraction (FSCTOC) layer",
@@ -262,7 +257,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -272,23 +267,23 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             },
             {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },{
               "value": 210,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
-            ],
+            ]
         },
         "FSCOG": {
             "title": "On-ground fractional snow cover (%)",
@@ -299,21 +294,16 @@
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
-              "name": "snow_fraction",
-              "description": "Snow fraction as a percentage"
-            },
-            {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },
             {
               "value": 210,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
-            ],
+            ]
         },
         "FSCOG-QA": {
             "title": "Quality layer for the on-ground snow fraction (FSCOG) layer",
@@ -326,7 +316,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -336,23 +326,23 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             },
             {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },{
               "value": 210,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
-            ],
+            ]
         },
         "NDSI": {
             "title": "Normalized Difference Snow Index (%) of detected snow areas",
@@ -363,21 +353,16 @@
             "nodata": 255,
             "classification:classes": [
             {
-              "value": 0, /* TBD is there a way to avoid listing all the percentage values?*/
-              "name": "normalized_difference_snow_index",
-              "description": "Normalized Difference Snow Index as a percentage"
-            },
-            {
               "value": 205,
               "name": "cloud_or_cloud_shadow",
-              "description": "Cloud or cloud shadow",
+              "description": "Cloud or cloud shadow"
             },
             {
               "value": 210,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
-            ],
+            ]
         },
         "CLD": {
             "title": "MAJA L2A cloud and cloud shadow mask",
@@ -512,8 +497,8 @@
                 }
               ]
             }
-            ],
-        },
+            ]
+        }
     },
     "storage:schemes": {
         "cdse-s3": {

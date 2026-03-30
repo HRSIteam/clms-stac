@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_sps1s2_laea_060m_yearly_v1",
-    "title": "Snow Phenology Sentinel-2 & Sentinel-1 2016-present (raster 60 m, LAEA projection), Europe, annually",
-    "description": "The Sentinel-1 and Sentinel-2 Snow Phenology (SP S1+ S2) product is generated once a year over high-mountain areas at European scale, based on daily cumulative Gap-Filled Fractional Snow Cover (GFSC) products calculated from Sentinel-2 optical and Sentinel-1 radar data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 60 m x 60 m, as does the input GFSC product. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
+    "id": "clms_wsi_sps1s2_laea_100m_yearly_v1",
+    "title": "Snow Phenology Sentinel-2 & Sentinel-1 2016-present (raster 100 m, LAEA projection), Europe, annually",
+    "description": "The Sentinel-1 and Sentinel-2 Snow Phenology (SP S1+ S2) product is generated once a year over high-mountain areas at European scale, based on daily cumulative Gap-Filled Fractional Snow Cover (GFSC) products calculated from Sentinel-2 optical and Sentinel-1 radar data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 60 m x 60 m, as does the input GFSC product. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-09-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -55,12 +55,12 @@
         },
         {
           "rel":"SDI_URL", 
-          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/5c6763f3-834c-4b9a-ba3a-bc3c14f85875",
+          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/3893c1e6-eea1-46bc-9321-d11f0e39a044",
           "type":"text/html",
           "title": "EEA geospatial data catalogue"
-	    }  
+	    }     
     ],
-    "sci:doi": "10.2909/5c6763f3-834c-4b9a-ba3a-bc3c14f85875",
+    "sci:doi": "10.2909/3893c1e6-eea1-46bc-9321-d11f0e39a044",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -201,7 +201,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -216,7 +216,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -231,7 +231,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -246,7 +246,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -261,7 +261,7 @@
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -276,7 +276,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -286,17 +286,17 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             },
             {
               "value": 420,
               "name": "inland_water",
-              "description": "Inland water",
+              "description": "Inland water"
             }
             ]
         },
@@ -314,7 +314,7 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint16",
-            "nodata": 65535,
+            "nodata": 65535
         },
         "SCD-MTD": {
             "title": "SCD auxiliary metadata",

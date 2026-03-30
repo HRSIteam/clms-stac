@@ -1,8 +1,8 @@
 {
     "type": "Collection",
-    "id": "clms_wsi_icd_utm_020m_yearly_v1",
-    "title": "Ice Cover Duration 2016-present (raster 20 m), Europe, annually",
-    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m.",
+    "id": "clms_wsi_icd_laea_100m_yearly_v1",
+    "title": "Ice Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
+    "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
     "license": "other", 
     "extent": {
         "spatial": {
@@ -13,7 +13,7 @@
                     46,
                     72 
                 ]
-            ], 
+            ]
         },
         "temporal": {
             "interval": [
@@ -21,7 +21,7 @@
                     "2016-09-01T00:00:00Z", 
                     null
                 ]
-            ], 
+            ]
         }
     },
     "providers":[
@@ -55,12 +55,12 @@
         },
         {
             "rel":"SDI_URL", 
-            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/8d5eac19-877e-459a-a501-e1182516d64d",
+            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
             "type":"text/html",
             "title": "EEA geospatial data catalogue"
 	    }
     ],
-    "sci:doi": "10.2909/8d5eac19-877e-459a-a501-e1182516d64d",
+    "sci:doi": "10.2909/47ff73a4-eb52-4e8d-80e7-b6c3910d8891",
     "keywords": [
         "HR-WSI",
         "Water snow and ice monitoring",
@@ -107,8 +107,8 @@
          			"type":"text/html",
          			"title":"Homepage of the Copernicus Land Monitoring Service"
                	}
-           	],
-        },
+           	]
+        }
     ],
     "assets": {
         "Product": {
@@ -125,7 +125,7 @@
             "title": "Product metadata",
             "description": "Product metadata",
             "type": "application/xml",
-            "roles": ["metadata"],
+            "roles": ["metadata"]
         },
         "ICD": {
             "title": "Ice Cover Duration (days)",
@@ -162,7 +162,7 @@
             {
               "value": 0,
               "name": "high_quality",
-              "description": "High quality",
+              "description": "High quality"
             },
             {
               "value": 1,
@@ -172,12 +172,12 @@
             {
               "value": 2,
               "name": "low_quality",
-              "description": "Low quality",
+              "description": "Low quality"
             },
             {
               "value": 3,
               "name": "minimal_quality",
-              "description": "Minimal quality",
+              "description": "Minimal quality"
             }
             ]
         },
