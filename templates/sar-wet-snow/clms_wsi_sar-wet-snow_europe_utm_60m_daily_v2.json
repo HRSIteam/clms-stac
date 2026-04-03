@@ -1,228 +1,246 @@
 {
-    "type": "Collection",
-    "id": "clms_wsi_sar-wet-snow_europe_utm_60m_daily_v2",
-    "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
-    "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band Synthetic Aperture Radar satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
-    "license": "other", 
-    "extent": {
-        "spatial": {
-            "bbox": [
-                [
-                    -32, 
-                    27, 
-                    46,
-                    72 
-                ]
-            ]
-        },
-        "temporal": {
-            "interval": [
-                [
-                    "2016-08-01T00:00:00Z", 
-                    null
-                ]
-            ]
-        }
+  "type": "Collection",
+  "id": "clms_wsi_sar-wet-snow_europe_utm_60m_daily_v2",
+  "title": "SAR Wet Snow 2016-present (raster 60 m), Europe, daily",
+  "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band Synthetic Aperture Radar satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -32,
+          27,
+          46,
+          72
+        ]
+      ]
     },
-    "providers":[
-        {
-            "url":"https://land.copernicus.eu",
-            "name":"EEA",
-            "roles":["producer"]
-        },
-        {
-            "url":"https://commission.europa.eu/",
-            "name":"European Commission",
-            "roles":["licensor"]
-        },
-        {
-            "url":"https://www.enveo.at/",
-            "name":"ENVEO GmbH",
-            "roles":["processor"]
-        },
-        {
-            "url":"https://cloudferro.com/",
-            "name":"CloudFerro",
-            "roles":["host"]
-        }
-    ],
-    "links": [
-        {
-            "rel": "license",
-            "href": "https://land.copernicus.eu/en/data-policy",
-            "type": "text/html",
-            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
-        },
-        {
-            "rel":"SDI_URL", 
-            "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
-            "type":"text/html",
-            "title": "EEA geospatial data catalogue"
-	    } 
-    ],
-    "sci:doi": "10.2909/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
-    "keywords": [
-        "HR-WSI",
-        "Water snow and ice monitoring",
-        "monitoring",
-        "land cover",
-        "water",
-        "snow",
-        "ice",
-        "clouds",
-        "high resolution",
-        "near real time",
-        "pan-European",
-        "CLMS",
-        "Copernicus",
-        "climate change impact",
-        "landscape alteration",
-        "environmental policy"
-    ],
-    "contacts": [
-        {
-            "name": "Copernicus Land Monitoring Service",
-            "organization": "European Environment Agency",
-            "roles":["producer"],
-            "emails": [
-               	{
-              		"value":"copernicus@eea.europa.eu",
-              		"roles":[
-             			"contact point"
-              		]
-               	}
-           	],
-            "phones": [
-               	{
-              		"value":"+45 33 36 71 00",
-              		"roles":[
-             			"contact point"
-              		]
-          		}
-           	],
-            "links": [
-               	{
-              		"href":"https://land.copernicus.eu/",
-         			"rel":"about",
-         			"type":"text/html",
-         			"title":"Homepage of the Copernicus Land Monitoring Service"
-               	}
-           	]
-        }
-    ],
-    "assets": {
-        "Product": {
-            "roles": [
-                "data",
-                "metadata",
-                "quality",
-                "archive"
-            ],
-            "title": "TAR product",
-            "type": "application/tar"
-        },
-        "MTD": {
-            "title": "Product metadata",
-            "description": "Product metadata",
-            "type": "application/xml",
-            "roles": ["metadata"]
-        },
-        "WSM": {
-            "title": "Wet Snow classification in high Mountains areas",
-            "description": "Wet snow cover in high mountain areas",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 110,
-              "name": "wet_snow",
-              "description": "Wet snow"
-            },
-            {
-              "value": 125,
-              "name": "dry_patchy_or_no_snow",
-              "description": "Dry snow or snow-free or patchy snow"
-            },
-            {
-              "value": 200,
-              "name": "radar_geometric_distorsions",
-              "description": "Radar Shadow, layover, or foreshortening (masked)"
-            },
-            {
-              "value": 210,
-              "name": "water",
-              "description": "Water (masked)"
-            },
-            {
-              "value": 220,
-              "name": "forest",
-              "description": "Forest (masked)"
-            },
-            {
-              "value": 230,
-              "name": "urban_areas",
-              "description": "Urban areas (masked)"
-            },
-            {
-              "value": 240,
-              "name": "no_mountain",
-              "description": "Non-mountain areas (masked)"
-            }
-            ]
-        },
-        "WSM-QA": {
-            "title": "Quality layer for the wet snow classification (WSM) layer",
-            "description": "Quality layer providing basic assessment of the wet snow classification layer.",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["quality","data"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 0,
-              "name": "high_quality",
-              "description": "High quality"
-            },
-            {
-              "value": 1,
-              "name": "medium_quality",
-              "description": "Medium quality"
-            },
-            {
-              "value": 2,
-              "name": "low_quality",
-              "description": "Low quality"
-            },
-            {
-              "value": 3,
-              "name": "minimal_quality",
-              "description": "Minimal quality"
-            },
-            {
-              "value": 250,
-              "name": "masked",
-              "description": "Masked"
-            }
-            ]
-        } 
-    },
-    "storage:schemes": {
-        "cdse-s3": {
-          "type": "custom-s3",
-          "title": "Copernicus Data Space Ecosystem S3",
-          "platform": "https://eodata.dataspace.copernicus.eu",
-          "description": "This endpoint provides access to EO data which is stored on the object storage of both CloudFerro Cloud and OpenTelekom Cloud (OTC). See the [documentation](https://documentation.dataspace.copernicus.eu/APIs/S3.html) for more information, including how to get credentials.",
-          "requester_pays": false
-        },
-        "creodias-s3": {
-          "type": "custom-s3",
-          "title": "CREODIAS S3",
-          "platform": "https://eodata.cloudferro.com",
-          "description": "Comprehensive Earth Observation Data (EODATA) archive offered by CREODIAS as a commercial part of CDSE, designed to provide users with access to a vast repository of satellite data without predefined quota limits",
-          "requester_pays": true
-        }
+    "temporal": {
+      "interval": [
+        [
+          "2016-08-01T00:00:00Z",
+          null
+        ]
+      ]
     }
+  },
+  "providers": [
+    {
+      "url": "https://land.copernicus.eu",
+      "name": "EEA",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "url": "https://commission.europa.eu/",
+      "name": "European Commission",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "url": "https://www.enveo.at/",
+      "name": "ENVEO GmbH",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "url": "https://cloudferro.com/",
+      "name": "CloudFerro",
+      "roles": [
+        "host"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "type": "text/html",
+      "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+    },
+    {
+      "rel": "SDI_URL",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
+      "type": "text/html",
+      "title": "EEA geospatial data catalogue"
+    }
+  ],
+  "sci:doi": "10.2909/cd23c4bb-b3cb-4331-bb89-93321b46f8ed",
+  "keywords": [
+    "HR-WSI",
+    "Water snow and ice monitoring",
+    "monitoring",
+    "land cover",
+    "water",
+    "snow",
+    "ice",
+    "clouds",
+    "high resolution",
+    "near real time",
+    "pan-European",
+    "CLMS",
+    "Copernicus",
+    "climate change impact",
+    "landscape alteration",
+    "environmental policy"
+  ],
+  "contacts": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "organization": "European Environment Agency",
+      "roles": [
+        "producer"
+      ],
+      "emails": [
+        {
+          "value": "copernicus@eea.europa.eu",
+          "roles": [
+            "contact point"
+          ]
+        }
+      ],
+      "phones": [
+        {
+          "value": "+45 33 36 71 00",
+          "roles": [
+            "contact point"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "https://land.copernicus.eu/",
+          "rel": "about",
+          "type": "text/html",
+          "title": "Homepage of the Copernicus Land Monitoring Service"
+        }
+      ]
+    }
+  ],
+  "storage:schemes": {
+    "cdse-s3": {
+      "type": "custom-s3",
+      "title": "Copernicus Data Space Ecosystem S3",
+      "platform": "https://eodata.dataspace.copernicus.eu",
+      "description": "This endpoint provides access to EO data which is stored on the object storage of both CloudFerro Cloud and OpenTelekom Cloud (OTC). See the [documentation](https://documentation.dataspace.copernicus.eu/APIs/S3.html) for more information, including how to get credentials.",
+      "requester_pays": false
+    },
+    "creodias-s3": {
+      "type": "custom-s3",
+      "title": "CREODIAS S3",
+      "platform": "https://eodata.cloudferro.com",
+      "description": "Comprehensive Earth Observation Data (EODATA) archive offered by CREODIAS as a commercial part of CDSE, designed to provide users with access to a vast repository of satellite data without predefined quota limits",
+      "requester_pays": true
+    }
+  },
+  "stac_version": "1.0.0",
+  "item_assets": {
+    "Product": {
+      "roles": [
+        "data",
+        "metadata",
+        "quality",
+        "archive"
+      ],
+      "title": "TAR product",
+      "type": "application/tar"
+    },
+    "MTD": {
+      "title": "Product metadata",
+      "description": "Product metadata",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "WSM": {
+      "title": "Wet Snow classification in high Mountains areas",
+      "description": "Wet snow cover in high mountain areas",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data"
+      ],
+      "data_type": "uint8",
+      "nodata": 255,
+      "classification:classes": [
+        {
+          "value": 110,
+          "name": "wet_snow",
+          "description": "Wet snow"
+        },
+        {
+          "value": 125,
+          "name": "dry_patchy_or_no_snow",
+          "description": "Dry snow or snow-free or patchy snow"
+        },
+        {
+          "value": 200,
+          "name": "radar_geometric_distorsions",
+          "description": "Radar Shadow, layover, or foreshortening (masked)"
+        },
+        {
+          "value": 210,
+          "name": "water",
+          "description": "Water (masked)"
+        },
+        {
+          "value": 220,
+          "name": "forest",
+          "description": "Forest (masked)"
+        },
+        {
+          "value": 230,
+          "name": "urban_areas",
+          "description": "Urban areas (masked)"
+        },
+        {
+          "value": 240,
+          "name": "no_mountain",
+          "description": "Non-mountain areas (masked)"
+        }
+      ]
+    },
+    "WSM-QA": {
+      "title": "Quality layer for the wet snow classification (WSM) layer",
+      "description": "Quality layer providing basic assessment of the wet snow classification layer.",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "quality",
+        "data"
+      ],
+      "data_type": "uint8",
+      "nodata": 255,
+      "classification:classes": [
+        {
+          "value": 0,
+          "name": "high_quality",
+          "description": "High quality"
+        },
+        {
+          "value": 1,
+          "name": "medium_quality",
+          "description": "Medium quality"
+        },
+        {
+          "value": 2,
+          "name": "low_quality",
+          "description": "Low quality"
+        },
+        {
+          "value": 3,
+          "name": "minimal_quality",
+          "description": "Minimal quality"
+        },
+        {
+          "value": 250,
+          "name": "masked",
+          "description": "Masked"
+        }
+      ]
+    }
+  },
+  "stac_extensions": []
 }
-

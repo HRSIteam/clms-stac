@@ -1,224 +1,243 @@
 {
-    "type": "Collection",
-    "id": "clms_wsi_hrwl_laea_010m_3-yearly_v1",
-    "title": "High Resolution Water Layer 2021 (raster 10 m, LAEA projection), Europe, 3-yearly",
-    "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
-    "license": "other", 
-    "extent": {
-        "spatial": {
-            "bbox": [
-                [
-                    -32, 
-                    27, 
-                    46,
-                    72 
-                ]
-            ]
-        },
-        "temporal": {
-            "interval": [
-                [
-                    "2016-09-01T00:00:00Z", 
-                    null
-                ]
-            ]
-        }
+  "type": "Collection",
+  "id": "clms_wsi_hrwl_laea_010m_3-yearly_v1",
+  "title": "High Resolution Water Layer 2021 (raster 10 m, LAEA projection), Europe, 3-yearly",
+  "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
+  "license": "other",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -32,
+          27,
+          46,
+          72
+        ]
+      ]
     },
-    "providers":[
-        {
-            "url":"https://land.copernicus.eu",
-            "name":"EEA",
-            "roles":["producer"]
-        },
-        {
-            "url":"https://commission.europa.eu/",
-            "name":"European Commission",
-            "roles":["licensor"]
-        },
-        {
-            "url":"https://www.geoville.com/",
-            "name":"GeoVille GmbH",
-            "roles":["processor"]
-        },
-        {
-            "url":"https://cloudferro.com/",
-            "name":"CloudFerro",
-            "roles":["host"]
-        }
-    ],
-    "links": [
-        {
-          "rel": "license",
-          "href": "https://land.copernicus.eu/en/data-policy",
-          "type": "text/html",
-          "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
-        },
-        {
-          "rel":"SDI_URL", 
-          "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
-          "type":"text/html",
-          "title": "EEA geospatial data catalogue"
-	    }       
-    ],
-    "sci:doi": "10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
-    "keywords": [
-        "HR-WSI",
-        "Water snow and ice monitoring",
-        "monitoring",
-        "land cover",
-        "water",
-        "snow",
-        "ice",
-        "clouds",
-        "high resolution",
-        "near real time",
-        "pan-European",
-        "CLMS",
-        "Copernicus",
-        "climate change impact",
-        "landscape alteration",
-        "environmental policy"
-    ],
-    "contacts": [
-        {
-            "name": "Copernicus Land Monitoring Service",
-            "organization": "European Environment Agency",
-            "roles":["producer"],
-            "emails": [
-               	{
-              		"value":"copernicus@eea.europa.eu",
-              		"roles":[
-             			"contact point"
-              		]
-               	}
-           	],
-            "phones": [
-               	{
-              		"value":"+45 33 36 71 00",
-              		"roles":[
-             			"contact point"
-              		]
-          		}
-           	],
-            "links": [
-               	{
-              		"href":"https://land.copernicus.eu/",
-         			"rel":"about",
-         			"type":"text/html",
-         			"title":"Homepage of the Copernicus Land Monitoring Service"
-               	}
-           	]
-        }
-    ],
-    "assets": {
-        "Product": {
-            "roles": [
-                "data",
-                "metadata",
-                "quality",
-                "archive"
-            ],
-            "title": "TAR product",
-            "type": "application/tar"
-        },
-        "MTD": {
-            "title": "Product metadata",
-            "description": "Product metadata",
-            "type": "application/xml",
-            "roles": ["metadata"]
-        },
-        "WL": {
-            "title": "Water classification",
-            "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 0,
-              "name": "dry",
-              "description": "dry"
-            },
-            {
-              "value": 1,
-              "name": "permanent_water",
-              "description": "Permanent water"
-            },
-            {
-              "value": 2,
-              "name": "temporary_water",
-              "description": "Temporary water"
-            },
-            {
-              "value": 205,
-              "name": "cloud_and_cloud_shadow",
-              "description": "Cloud and cloud shadow"
-            },
-            {
-              "value": 253,
-              "name": "sea_water",
-              "description": "Sea water"
-            }
-            ]
-        },
-        "WPI": {
-            "title": "Water probability index",
-            "description": "Occurrence of water areas throughout the entire observation period (between 0 and 100)",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 205,
-              "name": "cloud_and_cloud_shadow",
-              "description": "Cloud and cloud shadow"
-            },
-            {
-              "value": 253,
-              "name": "sea_water",
-              "description": "Sea water"
-            }
-            ]
-        },
-        "WCL": {
-            "title": "Water confidence layer",
-            "description": "Quality layer providing an assessment of Water Layer (WL) quality (between 0 and 100)",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data", "quality"],
-            "data_type": "uint8",
-            "nodata": 255,
-            "classification:classes": [
-            {
-              "value": 205,
-              "name": "cloud_and_cloud_shadow",
-              "description": "Cloud and cloud shadow"
-            },
-            {
-              "value": 253,
-              "name": "sea_water",
-              "description": "Sea water"
-            }
-            ]
-        }
-    },
-    "storage:schemes": {
-        "cdse-s3": {
-          "type": "custom-s3",
-          "title": "Copernicus Data Space Ecosystem S3",
-          "platform": "https://eodata.dataspace.copernicus.eu",
-          "description": "This endpoint provides access to EO data which is stored on the object storage of both CloudFerro Cloud and OpenTelekom Cloud (OTC). See the [documentation](https://documentation.dataspace.copernicus.eu/APIs/S3.html) for more information, including how to get credentials.",
-          "requester_pays": false
-        },
-        "creodias-s3": {
-          "type": "custom-s3",
-          "title": "CREODIAS S3",
-          "platform": "https://eodata.cloudferro.com",
-          "description": "Comprehensive Earth Observation Data (EODATA) archive offered by CREODIAS as a commercial part of CDSE, designed to provide users with access to a vast repository of satellite data without predefined quota limits",
-          "requester_pays": true
-        }
+    "temporal": {
+      "interval": [
+        [
+          "2016-09-01T00:00:00Z",
+          null
+        ]
+      ]
     }
+  },
+  "providers": [
+    {
+      "url": "https://land.copernicus.eu",
+      "name": "EEA",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "url": "https://commission.europa.eu/",
+      "name": "European Commission",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "url": "https://www.geoville.com/",
+      "name": "GeoVille GmbH",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "url": "https://cloudferro.com/",
+      "name": "CloudFerro",
+      "roles": [
+        "host"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "type": "text/html",
+      "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
+    },
+    {
+      "rel": "SDI_URL",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+      "type": "text/html",
+      "title": "EEA geospatial data catalogue"
+    }
+  ],
+  "sci:doi": "10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
+  "keywords": [
+    "HR-WSI",
+    "Water snow and ice monitoring",
+    "monitoring",
+    "land cover",
+    "water",
+    "snow",
+    "ice",
+    "clouds",
+    "high resolution",
+    "near real time",
+    "pan-European",
+    "CLMS",
+    "Copernicus",
+    "climate change impact",
+    "landscape alteration",
+    "environmental policy"
+  ],
+  "contacts": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "organization": "European Environment Agency",
+      "roles": [
+        "producer"
+      ],
+      "emails": [
+        {
+          "value": "copernicus@eea.europa.eu",
+          "roles": [
+            "contact point"
+          ]
+        }
+      ],
+      "phones": [
+        {
+          "value": "+45 33 36 71 00",
+          "roles": [
+            "contact point"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "https://land.copernicus.eu/",
+          "rel": "about",
+          "type": "text/html",
+          "title": "Homepage of the Copernicus Land Monitoring Service"
+        }
+      ]
+    }
+  ],
+  "storage:schemes": {
+    "cdse-s3": {
+      "type": "custom-s3",
+      "title": "Copernicus Data Space Ecosystem S3",
+      "platform": "https://eodata.dataspace.copernicus.eu",
+      "description": "This endpoint provides access to EO data which is stored on the object storage of both CloudFerro Cloud and OpenTelekom Cloud (OTC). See the [documentation](https://documentation.dataspace.copernicus.eu/APIs/S3.html) for more information, including how to get credentials.",
+      "requester_pays": false
+    },
+    "creodias-s3": {
+      "type": "custom-s3",
+      "title": "CREODIAS S3",
+      "platform": "https://eodata.cloudferro.com",
+      "description": "Comprehensive Earth Observation Data (EODATA) archive offered by CREODIAS as a commercial part of CDSE, designed to provide users with access to a vast repository of satellite data without predefined quota limits",
+      "requester_pays": true
+    }
+  },
+  "stac_version": "1.0.0",
+  "item_assets": {
+    "Product": {
+      "roles": [
+        "data",
+        "metadata",
+        "quality",
+        "archive"
+      ],
+      "title": "TAR product",
+      "type": "application/tar"
+    },
+    "MTD": {
+      "title": "Product metadata",
+      "description": "Product metadata",
+      "type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "WL": {
+      "title": "Water classification",
+      "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data"
+      ],
+      "data_type": "uint8",
+      "nodata": 255,
+      "classification:classes": [
+        {
+          "value": 0,
+          "name": "dry",
+          "description": "dry"
+        },
+        {
+          "value": 1,
+          "name": "permanent_water",
+          "description": "Permanent water"
+        },
+        {
+          "value": 2,
+          "name": "temporary_water",
+          "description": "Temporary water"
+        },
+        {
+          "value": 205,
+          "name": "cloud_and_cloud_shadow",
+          "description": "Cloud and cloud shadow"
+        },
+        {
+          "value": 253,
+          "name": "sea_water",
+          "description": "Sea water"
+        }
+      ]
+    },
+    "WPI": {
+      "title": "Water probability index",
+      "description": "Occurrence of water areas throughout the entire observation period (between 0 and 100)",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data"
+      ],
+      "data_type": "uint8",
+      "nodata": 255,
+      "classification:classes": [
+        {
+          "value": 205,
+          "name": "cloud_and_cloud_shadow",
+          "description": "Cloud and cloud shadow"
+        },
+        {
+          "value": 253,
+          "name": "sea_water",
+          "description": "Sea water"
+        }
+      ]
+    },
+    "WCL": {
+      "title": "Water confidence layer",
+      "description": "Quality layer providing an assessment of Water Layer (WL) quality (between 0 and 100)",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data",
+        "quality"
+      ],
+      "data_type": "uint8",
+      "nodata": 255,
+      "classification:classes": [
+        {
+          "value": 205,
+          "name": "cloud_and_cloud_shadow",
+          "description": "Cloud and cloud shadow"
+        },
+        {
+          "value": 253,
+          "name": "sea_water",
+          "description": "Sea water"
+        }
+      ]
+    }
+  },
+  "stac_extensions": []
 }
-
-
