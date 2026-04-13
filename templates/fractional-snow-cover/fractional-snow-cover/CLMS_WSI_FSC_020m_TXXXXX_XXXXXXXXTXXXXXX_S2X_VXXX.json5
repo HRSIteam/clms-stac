@@ -7,40 +7,39 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json", 
         "https://stac-extensions.github.io/eo/v2.0.0/schema.json"
     ],
     "id": "<PRODUCT_ID>", 
     "bbox": [
-        "<WEST_BOUNDING_LONGITUDE>",
-        "<SOUTH_BOUNDING_LATITUDE>",
-        "<EAST_BOUNDING_LONGITUDE>",
-        "<NORTH_BOUNDING_LATITUDE>"
+        <WEST_BOUNDING_LONGITUDE>,
+        <SOUTH_BOUNDING_LATITUDE>,
+        <EAST_BOUNDING_LONGITUDE>,
+        <NORTH_BOUNDING_LATITUDE>
     ],
     "geometry": {
         "type": "Polygon",
         "coordinates": [
             [
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ]
             ]
         ]
@@ -53,6 +52,7 @@
             "datasetAlias":"clms_wsi_fractional-snow-cover", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
             "datasetShortName":"fsc", 
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",
             "fileFormat":"cog",
             "gridLabel":"20m", 
             "instrumentShortName": "MSI", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -60,7 +60,7 @@
             "platformShortName":"<PLATFORM_UPP>", /*  e.g. 'SPOT4,SENTINEL3A,SENTINEL3B' */
             "missionShortName":"SENTINEL2", /* (All platforms in uppercase.) e.g 'SPOT4,SENTINEL3' */
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
-            "SDIResourceIdentifier":"copernicus_r_utm-wgs84_20_m_fsc_p_2016-now_v01_r00", 
+            "SDIResourceIdentifier":"copernicus_r_utm-wgs84_20_m_fsc_p_2016-now_v02_r00", 
             "temporalRepeatRate":"daily",
             "productType": "snow_cover_extent",
             "cloudCover":"<CLOUD_COVER>",
@@ -88,39 +88,24 @@
         "product:timeliness_category": "NRT",
         "proj:code": "EPSG:<EPSG>", /* eg. EPSG:326XX where XX indicates the UTM zone, also corresponds to the first 2 digits of a tile name. */ 
         "proj:shape": [
-            "<PROJ_SHAPE_HEIGHT>",
-            "<PROJ_SHAPE_WIDTH>"
+            <PROJ_SHAPE_HEIGHT>,
+            <PROJ_SHAPE_WIDTH>
         ], /* gdalinfo size result */
         "proj:transform": [
-            "<PROJ_TRANSFORM_0>",
-            "<PROJ_TRANSFORM_1>",
-            "<PROJ_TRANSFORM_2>",
-            "<PROJ_TRANSFORM_3>",
-            "<PROJ_TRANSFORM_4>",
-            "<PROJ_TRANSFORM_5>",
-            "<PROJ_TRANSFORM_6>",
-            "<PROJ_TRANSFORM_7>",
-            "<PROJ_TRANSFORM_8>"
+            <PROJ_TRANSFORM_0>,
+            <PROJ_TRANSFORM_1>,
+            <PROJ_TRANSFORM_2>,
+            <PROJ_TRANSFORM_3>,
+            <PROJ_TRANSFORM_4>,
+            <PROJ_TRANSFORM_5>,
+            <PROJ_TRANSFORM_6>,
+            <PROJ_TRANSFORM_7>,
+            <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
         "eo:cloud_cover": "<CLOUD_COVER>", /* Estimate of cloud cover as a percentage (0-100). */
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
             "rel":"SDI_URL", 
             "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/4a9529e9-4f5e-401f-bd72-dde7068848f6",
@@ -136,7 +121,7 @@
         "Product": {
             "href":"<PRODUCT_BUCKET_PATH>", /*s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/PRODUCT_NAME.tar>" where YYYY/MM/DD <- year/month/date of a product upload */
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
-            "file:size": "<SIZE>", /* specified in bytes */
+            "file:size": <SIZE>, /* specified in bytes */
             "roles": [
                 "data",
                 "metadata",
@@ -153,7 +138,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_MTD.xml",
-            "file:size": "<SIZE_MTD>"
+            "file:size": <SIZE_MTD>
         },
         "QAFLAGS": {
             "title": "Quality Flags (QAFLAGS)",
@@ -255,7 +240,7 @@
             ],
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_QAFLAGS.tif",
-            "file:size": "<SIZE_QAFLAGS>"
+            "file:size": <SIZE_QAFLAGS>
         },
         "FSCTOC": {
             "title": "Top of canopy fractional snow cover (%)",
@@ -278,7 +263,7 @@
             ],
             "file:checksum": "<CHECKSUM_FSCTOC>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_FSCTOC.tif",
-            "file:size": "<SIZE_FSCTOC>"
+            "file:size": <SIZE_FSCTOC>
         },
         "FSCTOC-QA": {
             "title": "Quality layer for the Top-of-canopy snow fraction (FSCTOC) layer",
@@ -320,7 +305,7 @@
             ],
             "file:checksum": "<CHECKSUM_FSCTOC-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_FSCTOC-QA.tif",
-            "file:size": "<SIZE_FSCTOC-QA>"
+            "file:size": <SIZE_FSCTOC-QA>
         },
         "FSCOG": {
             "title": "On-ground fractional snow cover (%)",
@@ -343,7 +328,7 @@
             ],
             "file:checksum": "<CHECKSUM_FSCOG>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_FSCOG.tif",
-            "file:size": "<SIZE_FSCOG>"
+            "file:size": <SIZE_FSCOG>
         },
         "FSCOG-QA": {
             "title": "Quality layer for the on-ground snow fraction (FSCOG) layer",
@@ -385,7 +370,7 @@
             ],
             "file:checksum": "<CHECKSUM_FSCOG-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_FSCOG-QA.tif",
-            "file:size": "<SIZE_FSCOG-QA>"
+            "file:size": <SIZE_FSCOG-QA>
         },
         "NDSI": {
             "title": "Normalized Difference Snow Index (%) of detected snow areas",
@@ -408,7 +393,7 @@
             ],
             "file:checksum": "<CHECKSUM_NDSI>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NDSI.tif",
-            "file:size": "<SIZE_NDSI>"
+            "file:size": <SIZE_NDSI>
         },
         "CLD": {
             "title": "MAJA L2A cloud and cloud shadow mask",
@@ -546,7 +531,7 @@
             ],
             "file:checksum": "<CHECKSUM_CLD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_CLD.tif",
-            "file:size": "<SIZE_CLD>"
+            "file:size": <SIZE_CLD>
         },
     }
 }

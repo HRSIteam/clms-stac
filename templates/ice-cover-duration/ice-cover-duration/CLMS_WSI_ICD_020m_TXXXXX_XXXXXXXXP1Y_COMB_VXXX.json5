@@ -7,39 +7,38 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json", 
     ],
     "id": "<PRODUCT_ID>", 
     "bbox": [
-        "<WEST_BOUNDING_LONGITUDE>",
-        "<SOUTH_BOUNDING_LATITUDE>",
-        "<EAST_BOUNDING_LONGITUDE>",
-        "<NORTH_BOUNDING_LATITUDE>"
+        <WEST_BOUNDING_LONGITUDE>,
+        <SOUTH_BOUNDING_LATITUDE>,
+        <EAST_BOUNDING_LONGITUDE>,
+        <NORTH_BOUNDING_LATITUDE>
     ],
     "geometry": {
         "type": "Polygon",
         "coordinates": [
             [
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ]
             ]
         ]
@@ -52,6 +51,7 @@
             "datasetAlias":"clms_wsi_ice-cover-duration", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
             "datasetShortName":"icd", 
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",
             "fileFormat":"cog",
             "gridLabel":"20m", 
             "instrumentShortName": "COMBINED", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -61,7 +61,7 @@
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
             "SDIResourceIdentifier":"copernicus_r_utm-wgs84_20_m_icd_p_2016-now_v01_r00", 
             "temporalRepeatRate":"yearly",
-            "productType": "ice_phenology",
+            "productType": "river_and_lake_ice_extent",
             "cloudCover":"0.0",
             "projectionName":"utm"
         }
@@ -82,43 +82,28 @@
         "processing:level": "L3",
         "processing:datetime": "<PROCESSING_DATETIME>", /* with the format 2025-06-21T00:00:00.000000Z. */
         "processing:version": "<PROCESSING_VERSION>", /* eg. v0.0 */
-        "product:type": "ice_phenology",
+        "product:type": "river_and_lake_ice_extent",
         "product:timeliness": "PT1M",/* ISO 8601 duration */
         "product:timeliness_category": "NTC",
         "proj:code": "EPSG:<EPSG>", /* eg. EPSG:326XX where XX indicates the UTM zone, also corresponds to the first 2 digits of a tile name. */ 
         "proj:shape": [
-            "<PROJ_SHAPE_HEIGHT>",
-            "<PROJ_SHAPE_WIDTH>"
+            <PROJ_SHAPE_HEIGHT>,
+            <PROJ_SHAPE_WIDTH>
         ], /* gdalinfo size result */
         "proj:transform": [
-            "<PROJ_TRANSFORM_0>",
-            "<PROJ_TRANSFORM_1>",
-            "<PROJ_TRANSFORM_2>",
-            "<PROJ_TRANSFORM_3>",
-            "<PROJ_TRANSFORM_4>",
-            "<PROJ_TRANSFORM_5>",
-            "<PROJ_TRANSFORM_6>",
-            "<PROJ_TRANSFORM_7>",
-            "<PROJ_TRANSFORM_8>"
+            <PROJ_TRANSFORM_0>,
+            <PROJ_TRANSFORM_1>,
+            <PROJ_TRANSFORM_2>,
+            <PROJ_TRANSFORM_3>,
+            <PROJ_TRANSFORM_4>,
+            <PROJ_TRANSFORM_5>,
+            <PROJ_TRANSFORM_6>,
+            <PROJ_TRANSFORM_7>,
+            <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
             "rel":"SDI_URL", 
             "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/8d5eac19-877e-459a-a501-e1182516d64d",
@@ -134,7 +119,7 @@
         "Product": {
             "href":"<PRODUCT_BUCKET_PATH>", /*s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/PRODUCT_NAME.tar>" where YYYY/MM/DD <- year/month/date of a product upload */
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
-            "file:size": "<SIZE>", /* specified in bytes */
+            "file:size": <SIZE>, /* specified in bytes */
             "roles": [
                 "data",
                 "metadata",
@@ -151,7 +136,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_MTD.xml",
-            "file:size": "<SIZE_MTD>"
+            "file:size": <SIZE_MTD>
         },
         "ICD": {
             "title": "Ice Cover Duration (days)",
@@ -162,7 +147,7 @@
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_ICD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD.tif",
-            "file:size": "<SIZE_ICD>"
+            "file:size": <SIZE_ICD>
         },
         "NOBS1": {
             "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
@@ -173,7 +158,7 @@
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_NOBS1>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS1.tif",
-            "file:size": "<SIZE_NOBS1>"
+            "file:size": <SIZE_NOBS1>
         },
         "NOBS2": {
             "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
@@ -184,7 +169,7 @@
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_NOBS2>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS2.tif",
-            "file:size": "<SIZE_NOBS2>"
+            "file:size": <SIZE_NOBS2>
         },
         "ICD-QA": {
             "title": "Quality layer for the Ice Cover Duration (ICD) layer",
@@ -217,7 +202,43 @@
             ],
             "file:checksum": "<CHECKSUM_ICD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_ICD-QA.tif",
-            "file:size": "<SIZE_ICD-QA>"
+            "file:size": <SIZE_ICD-QA>
+        },
+        "ICD-MTD": {
+            "title": "ICD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the ICD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_ICD-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD.tif.aux.xml",
+            "file:size": <SIZE_ICD-MTD>
+        },
+        "NOBS1-MTD": {
+            "title": "NOBS1 auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS1 raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_NOBS1-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS1.tif.aux.xml",
+            "file:size": <SIZE_NOBS1-MTD>
+        },
+        "NOBS2-MTD": {
+            "title": "NOBS2 auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the NOBS2 raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_NOBS2-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_NOBS2.tif.aux.xml",
+            "file:size": <SIZE_NOBS2-MTD>
+        },
+        "ICD-QA-MTD": {
+            "title": "ICD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the ICD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_ICD-QA-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_ICD-QA.tif.aux.xml",
+            "file:size": <SIZE_ICD-QA-MTD>
         }
     }
 }

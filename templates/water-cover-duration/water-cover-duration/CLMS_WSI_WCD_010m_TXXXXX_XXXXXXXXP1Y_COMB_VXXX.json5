@@ -7,39 +7,38 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
         "https://stac-extensions.github.io/product/v1.0.0/schema.json",
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json", 
     ],
     "id": "<PRODUCT_ID>", 
     "bbox": [
-        "<WEST_BOUNDING_LONGITUDE>",
-        "<SOUTH_BOUNDING_LATITUDE>",
-        "<EAST_BOUNDING_LONGITUDE>",
-        "<NORTH_BOUNDING_LATITUDE>"
+        <WEST_BOUNDING_LONGITUDE>,
+        <SOUTH_BOUNDING_LATITUDE>,
+        <EAST_BOUNDING_LONGITUDE>,
+        <NORTH_BOUNDING_LATITUDE>
     ],
     "geometry": {
         "type": "Polygon",
         "coordinates": [
             [
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<EAST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <EAST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<NORTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <NORTH_BOUNDING_LATITUDE>
                 ],
                 [
-                    "<WEST_BOUNDING_LONGITUDE>",
-                    "<SOUTH_BOUNDING_LATITUDE>"
+                    <WEST_BOUNDING_LONGITUDE>,
+                    <SOUTH_BOUNDING_LATITUDE>
                 ]
             ]
         ]
@@ -52,6 +51,7 @@
             "datasetAlias":"clms_wsi_water-cover-duration", 
             "datasetIdentifier":"<COLLECTION_NAME>", 
             "datasetShortName":"wcd", 
+            "datasetVersion":"<PROCESSING_VERSION_SHORT>",
             "fileFormat":"cog",
             "gridLabel":"10m", 
             "instrumentShortName": "COMBINED", /* eg. 'VEGETATION,OLCI,SLSTR' */
@@ -61,7 +61,7 @@
             "nominalDate":"<DATETIME>", /* The nominal date is the reference date for the data acquisition period covered by the product. This date will be used to extract YYYY/MM/DD in the folderstructure. e.g. '1999-01-01T00:00:00Z'  */
             "SDIResourceIdentifier":"copernicus_r_utm-wgs84_10_m_wcd_p_2016-now_v01_r00", 
             "temporalRepeatRate":"yearly",
-            "productType": " water_bodies_duration",
+            "productType": "water_extent",
             "cloudCover":"0.0",
             "projectionName":"utm"
         }
@@ -82,43 +82,28 @@
         "processing:level": "L3",
         "processing:datetime": "<PROCESSING_DATETIME>", /* with the format 2025-06-21T00:00:00.000000Z. */
         "processing:version": "<PROCESSING_VERSION>", /* eg. v0.0 */
-        "product:type": "water_bodies_duration",
+        "product:type": "water_extent",
         "product:timeliness": "PT1M",/* ISO 8601 duration */
         "product:timeliness_category": "NTC",
         "proj:code": "EPSG:<EPSG>", /* eg. EPSG:326XX where XX indicates the UTM zone, also corresponds to the first 2 digits of a tile name. */ 
         "proj:shape": [
-            "<PROJ_SHAPE_HEIGHT>",
-            "<PROJ_SHAPE_WIDTH>"
+            <PROJ_SHAPE_HEIGHT>,
+            <PROJ_SHAPE_WIDTH>
         ], /* gdalinfo size result */
         "proj:transform": [
-            "<PROJ_TRANSFORM_0>",
-            "<PROJ_TRANSFORM_1>",
-            "<PROJ_TRANSFORM_2>",
-            "<PROJ_TRANSFORM_3>",
-            "<PROJ_TRANSFORM_4>",
-            "<PROJ_TRANSFORM_5>",
-            "<PROJ_TRANSFORM_6>",
-            "<PROJ_TRANSFORM_7>",
-            "<PROJ_TRANSFORM_8>"
+            <PROJ_TRANSFORM_0>,
+            <PROJ_TRANSFORM_1>,
+            <PROJ_TRANSFORM_2>,
+            <PROJ_TRANSFORM_3>,
+            <PROJ_TRANSFORM_4>,
+            <PROJ_TRANSFORM_5>,
+            <PROJ_TRANSFORM_6>,
+            <PROJ_TRANSFORM_7>,
+            <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
-        {
-            "rel": "collection",
-            "href": "<CDSE_COLLECTION_LINK>", /* this will be added by the CDSE */
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "<CDSE_COLLECTION_LINK>",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://stac.dataspace.copernicus.eu/v1/",
-            "type": "application/json"
-        },
         {
             "rel":"SDI_URL", 
             "href":"https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/39e1ff33-01d9-45c2-9edc-00924383f34f",
@@ -134,7 +119,7 @@
         "Product": {
             "href":"<PRODUCT_BUCKET_PATH>", /*s3://CLMS_PRODUCER_BUCKET_PATH/YYYY/MM/DD/PRODUCT_NAME.tar>" where YYYY/MM/DD <- year/month/date of a product upload */
             "file:checksum": "<CHECKSUM>",/* must be multihash encoded */
-            "file:size": "<SIZE>", /* specified in bytes */
+            "file:size": <SIZE>, /* specified in bytes */
             "roles": [
                 "data",
                 "metadata",
@@ -151,7 +136,7 @@
             "roles": ["metadata"],
             "file:checksum": "<CHECKSUM_MTD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_MTD.xml",
-            "file:size": "<SIZE_MTD>"
+            "file:size": <SIZE_MTD>
         },
         "WCD": {
             "title": "Water Cover Duration (days)",
@@ -179,7 +164,7 @@
             ],
             "file:checksum": "<CHECKSUM_WCD>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD.tif",
-            "file:size": "<SIZE_WCD>"
+            "file:size": <SIZE_WCD>
         },
         "WCD-QA": {
             "title": "Quality layer for the Water Cover Duration (WCD) layer",
@@ -222,7 +207,25 @@
             ],
             "file:checksum": "<CHECKSUM_WCD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD-QA.tif",
-            "file:size": "<SIZE_WCD-QA>"
+            "file:size": <SIZE_WCD-QA>
+        },
+        "WCD-MTD": {
+            "title": "WCD auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the WCD raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_WCD-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD.tif.aux.xml",
+            "file:size": <SIZE_WCD-MTD>
+        },
+        "WCD-QA-MTD": {
+            "title": "WCD-QA auxiliary metadata",
+            "description": "GDAL auxiliary metadata associated with the WCD-QA raster layer (color table)",
+            "type": "application/xml",
+            "roles": ["metadata"],
+            "file:checksum": "<CHECKSUM_WCD-QA-MTD>",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_WCD-QA.tif.aux.xml",
+            "file:size": <SIZE_WCD-QA-MTD>
         }
     }
 }
