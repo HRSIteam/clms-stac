@@ -1,6 +1,6 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_wcd_laea_010m_yearly_v1",
+  "id": "clms_wsi_water-cover-duration_europe_laea_10m_yearly_v1",
   "title": "Water Cover Duration 2016-present (raster 10 m, LAEA projection), Europe, annually",
   "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m. This product corresponds to a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
   "license": "other",
