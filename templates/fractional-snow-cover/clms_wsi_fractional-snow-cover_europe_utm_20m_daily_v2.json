@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",
