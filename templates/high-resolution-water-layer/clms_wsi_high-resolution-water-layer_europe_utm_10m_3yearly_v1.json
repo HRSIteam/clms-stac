@@ -1,6 +1,6 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_high-resolution-water-layer_europe_utm_10m_3-yearly_v1",
+  "id": "clms_wsi_high-resolution-water-layer_europe_utm_10m_3yearly_v1",
   "title": "High Resolution Water Layer 2021 (raster 10 m), Europe, 3-yearly",
   "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
   "license": "other",
