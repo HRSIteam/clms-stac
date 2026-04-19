@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",
