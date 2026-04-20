@@ -1,8 +1,8 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_wcd_utm_010m_yearly_v1",
-  "title": "Water Cover Duration 2016-present (raster 10 m), Europe, annually",
-  "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m.",
+  "id": "clms_wsi_high-resolution-water-layer_europe_laea_100m_3yearly_v1",
+  "title": "High Resolution Water Layer 2021 (raster 100 m, LAEA projection), Europe, 3-yearly",
+  "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. This product corresponds to a 100m resampling and a reprojection to the LAEA projection of the native product defined on UTM 10 m x 10 m grid.",
   "license": "other",
   "extent": {
     "spatial": {
@@ -63,12 +63,12 @@
     },
     {
       "rel": "SDI_URL",
-      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/39e1ff33-01d9-45c2-9edc-00924383f34f",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/ec45177f-56a7-41a2-bb22-ef6fe8b83ab8",
       "type": "text/html",
       "title": "EEA geospatial data catalogue"
     }
   ],
-  "sci:doi": "10.2909/39e1ff33-01d9-45c2-9edc-00924383f34f",
+  "sci:doi": "10.2909/ec45177f-56a7-41a2-bb22-ef6fe8b83ab8",
   "keywords": [
     "HR-WSI",
     "Water snow and ice monitoring",
@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",
@@ -156,90 +156,41 @@
         "metadata"
       ]
     },
-    "WCD": {
-      "title": "Water Cover Duration (days)",
-      "description": " Water presence frequency in a hydrological year expressed in number of days (between 0 and 366)",
+    "WL": {
+      "title": "Water classification",
+      "description": " Classified layer, differentiating the classes of permanent water, temporary water, and dry areas as well as sea water.",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
-        "data"
-      ],
-      "data_type": "uint16",
-      "nodata": 65535,
-      "classification:classes": [
-        {
-          "value": 0,
-          "name": "no_water",
-          "description": "No water"
-        },
-        {
-          "value": 65485,
-          "name": "cloud_or_cloud_shadow",
-          "description": "Cloud or cloud shadow"
-        },
-        {
-          "value": 65533,
-          "name": "sea_water",
-          "description": "Sea water"
-        }
-      ]
-    },
-    "WCD-QA": {
-      "title": "Quality layer for the Water Cover Duration (WCD) layer",
-      "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "roles": [
-        "quality",
         "data"
       ],
       "data_type": "uint8",
-      "nodata": 65535,
+      "nodata": 255,
       "classification:classes": [
         {
           "value": 0,
-          "name": "high_quality",
-          "description": "High quality"
+          "name": "dry",
+          "description": "dry"
         },
         {
           "value": 1,
-          "name": "medium_quality",
-          "description": "Medium quality"
+          "name": "permanent_water",
+          "description": "Permanent water"
         },
         {
           "value": 2,
-          "name": "low_quality",
-          "description": "Low quality"
+          "name": "temporary_water",
+          "description": "Temporary water"
         },
         {
-          "value": 3,
-          "name": "minimal_quality",
-          "description": "Minimal quality"
+          "value": 205,
+          "name": "cloud_and_cloud_shadow",
+          "description": "Cloud and cloud shadow"
         },
         {
-          "value": 65485,
-          "name": "cloud_or_cloud_shadow",
-          "description": "Cloud or cloud shadow"
-        },
-        {
-          "value": 65533,
+          "value": 253,
           "name": "sea_water",
           "description": "Sea water"
         }
-      ]
-    },
-    "WCD-MTD": {
-      "title": "WCD auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the WCD raster layer (color table)",
-      "type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
-    },
-    "WCD-QA-MTD": {
-      "title": "WCD-QA auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the WCD-QA raster layer (color table)",
-      "type": "application/xml",
-      "roles": [
-        "metadata"
       ]
     }
   },

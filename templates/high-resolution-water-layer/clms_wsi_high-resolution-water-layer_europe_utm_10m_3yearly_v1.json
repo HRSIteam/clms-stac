@@ -1,8 +1,8 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_hrwl_laea_100m_3-yearly_v1",
-  "title": "High Resolution Water Layer 2021 (raster 100 m, LAEA projection), Europe, 3-yearly",
-  "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. This product corresponds to a 100m resampling and a reprojection to the LAEA projection of the native product defined on UTM 10 m x 10 m grid.",
+  "id": "clms_wsi_high-resolution-water-layer_europe_utm_10m_3yearly_v1",
+  "title": "High Resolution Water Layer 2021 (raster 10 m), Europe, 3-yearly",
+  "description": "The High Resolution Water Layer (HRWL) is a multi-annual product (generally a 7-year period). It provides detailed information about the presence and condition of water surfaces across Europe. It is based on the information created within the annual Water Cover Duration (WCD) production. It has a spatial resolution of 10 m x 10 m.",
   "license": "other",
   "extent": {
     "spatial": {
@@ -63,12 +63,12 @@
     },
     {
       "rel": "SDI_URL",
-      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/ec45177f-56a7-41a2-bb22-ef6fe8b83ab8",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
       "type": "text/html",
       "title": "EEA geospatial data catalogue"
     }
   ],
-  "sci:doi": "10.2909/ec45177f-56a7-41a2-bb22-ef6fe8b83ab8",
+  "sci:doi": "10.2909/b0b65b9d-f826-4c7e-b8bf-1c9b8a407e5b",
   "keywords": [
     "HR-WSI",
     "Water snow and ice monitoring",
@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",

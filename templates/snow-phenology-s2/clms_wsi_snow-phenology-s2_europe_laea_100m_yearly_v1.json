@@ -1,8 +1,8 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_sps2_utm_020m_yearly_v1",
-  "title": "Snow Phenology Sentinel-2 2016-present (raster 20 m), Europe, annually",
-  "description": "The Sentinel-2 Snow Phenology (SPS2) product is generated once a year at European scale, based on Fractional Snow Cover (FSC) products calculated from Sentinel-2 optical data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The product has a spatial resolution of 20 m x 20 m, as does the input FSC product.",
+  "id": "clms_wsi_snow-phenology-s2_europe_laea_100m_yearly_v1",
+  "title": "Snow Phenology Sentinel-2 2016-present (raster 100 m, LAEA projection), Europe, annually",
+  "description": "The Sentinel-2 Snow Phenology (SPS2) product is generated once a year at European scale, based on Fractional Snow Cover (FSC) products calculated from Sentinel-2 optical data. This product describes the snow season in terms of temporality as it provides, within an hydrological year and for each pixel, the number of days with snow cover, as well as the first and the last day of the longest observed snow period. The hydrological year starts from 1st September. The native product has a spatial resolution of 20 m x 20 m, as does the input FSC product. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
   "license": "other",
   "extent": {
     "spatial": {
@@ -63,12 +63,12 @@
     },
     {
       "rel": "SDI_URL",
-      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/d3e5340d-5325-4196-8c98-cb4e397746ea",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/4187eaf1-69f8-40ba-afff-c13b2433dd53",
       "type": "text/html",
       "title": "EEA geospatial data catalogue"
     }
   ],
-  "sci:doi": "10.2909/d3e5340d-5325-4196-8c98-cb4e397746ea",
+  "sci:doi": "10.2909/4187eaf1-69f8-40ba-afff-c13b2433dd53",
   "keywords": [
     "HR-WSI",
     "Water snow and ice monitoring",
@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",

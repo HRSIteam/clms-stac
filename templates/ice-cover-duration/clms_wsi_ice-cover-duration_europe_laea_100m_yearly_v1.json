@@ -1,6 +1,6 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_icd_laea_100m_yearly_v1",
+  "id": "clms_wsi_ice-cover-duration_europe_laea_100m_yearly_v1",
   "title": "Ice Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
   "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m. This product corresponds to a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
   "license": "other",
@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",

@@ -1,8 +1,8 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_icd_utm_020m_yearly_v1",
-  "title": "Ice Cover Duration 2016-present (raster 20 m), Europe, annually",
-  "description": "The Ice Cover Duration (ICD) product is generated once a year. It provides an estimated number of days on which ice covers inland waters across Europe during the hydrological year.  The hydrological year begins on 1 September. The ICD is derived from Water/Ice Cover (WIC) products, which are based on observations from Sentinel-1 and Sentinel-2. It has a spatial resolution of 20 m x 20 m.",
+  "id": "clms_wsi_water-cover-duration_europe_laea_100m_yearly_v1",
+  "title": "Water Cover Duration 2016-present (raster 100 m, LAEA projection), Europe, annually",
+  "description": "The Water Cover Duration (WCD) product is generated once a year. It provides an estimate of the number of days on which water covers the land at a European scale during the hydrological year. The hydrological year begins on 1 September. The product is derived from Sentinel-1 and Sentinel-2 data, as well as Sentinel-2 Water and Ice Cover (WIC S2) product. It has a spatial resolution of 10 m x 10 m. This product corresponds to a a resampling at 100m and a reprojection of the native product to the LAEA (Lambert azimuthal equal-area projection) grid.",
   "license": "other",
   "extent": {
     "spatial": {
@@ -40,8 +40,8 @@
       ]
     },
     {
-      "url": "https://en.ilmatieteenlaitos.fi/",
-      "name": "FMI",
+      "url": "https://www.geoville.com/",
+      "name": "GeoVille GmbH",
       "roles": [
         "processor"
       ]
@@ -63,12 +63,12 @@
     },
     {
       "rel": "SDI_URL",
-      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/8d5eac19-877e-459a-a501-e1182516d64d",
+      "href": "https://sdi.eea.europa.eu/catalogue/srv/eng/catalog.search#/metadata/f2dab19c-57d5-4b26-9c1b-9dababff1f2a",
       "type": "text/html",
       "title": "EEA geospatial data catalogue"
     }
   ],
-  "sci:doi": "10.2909/8d5eac19-877e-459a-a501-e1182516d64d",
+  "sci:doi": "10.2909/f2dab19c-57d5-4b26-9c1b-9dababff1f2a",
   "keywords": [
     "HR-WSI",
     "Water snow and ice monitoring",
@@ -136,7 +136,7 @@
       "requester_pays": true
     }
   },
-  "stac_version": "1.0.0",
+  "stac_version": "1.1.0",
   "item_assets": {
     "Product": {
       "roles": [
@@ -145,8 +145,8 @@
         "quality",
         "archive"
       ],
-      "title": "TAR product",
-      "type": "application/tar"
+      "title": "Zipped product",
+      "type": "application/zip"
     },
     "MTD": {
       "title": "Product metadata",
@@ -156,45 +156,42 @@
         "metadata"
       ]
     },
-    "ICD": {
-      "title": "Ice Cover Duration (days)",
-      "description": "Number of days of ice cover on water over the hydrological year (between 0 and 366)",
+    "WCD": {
+      "title": "Water Cover Duration (days)",
+      "description": " Water presence frequency in a hydrological year expressed in number of days (between 0 and 366)",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
         "data"
       ],
       "data_type": "uint16",
-      "nodata": 65535
+      "nodata": 65535,
+      "classification:classes": [
+        {
+          "value": 0,
+          "name": "no_water",
+          "description": "No water"
+        },
+        {
+          "value": 65485,
+          "name": "cloud_or_cloud_shadow",
+          "description": "Cloud or cloud shadow"
+        },
+        {
+          "value": 65533,
+          "name": "sea_water",
+          "description": "Sea water"
+        }
+      ]
     },
-    "NOBS1": {
-      "title": "Number of days with Sentinel-1 based observations over the hydrological year.",
-      "description": "Number of days with Sentinel-1 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "roles": [
-        "data"
-      ],
-      "data_type": "uint16",
-      "nodata": 65535
-    },
-    "NOBS2": {
-      "title": "Number of days with Sentinel-2 based observations over the hydrological year.",
-      "description": "Number of days with Sentinel-2 based observations used in the interpolation of the ice cover time series (between 0 and 366).",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "roles": [
-        "data"
-      ],
-      "data_type": "uint16",
-      "nodata": 65535
-    },
-    "ICD-QA": {
-      "title": "Quality layer for the Ice Cover Duration (ICD) layer",
-      "description": "Quality layer providing basic assessment of the Ice Cover Duration layer.",
+    "WCD-QA": {
+      "title": "Quality layer for the Water Cover Duration (WCD) layer",
+      "description": "Quality layer providing basic assessment of the Water Cover Duration layer.",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
         "quality",
         "data"
       ],
-      "data_type": "uint16",
+      "data_type": "uint8",
       "nodata": 65535,
       "classification:classes": [
         {
@@ -216,36 +213,30 @@
           "value": 3,
           "name": "minimal_quality",
           "description": "Minimal quality"
+        },
+        {
+          "value": 65485,
+          "name": "cloud_or_cloud_shadow",
+          "description": "Cloud or cloud shadow"
+        },
+        {
+          "value": 65533,
+          "name": "sea_water",
+          "description": "Sea water"
         }
       ]
     },
-    "ICD-MTD": {
-      "title": "ICD auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the ICD raster layer (color table)",
+    "WCD-MTD": {
+      "title": "WCD auxiliary metadata",
+      "description": "GDAL auxiliary metadata associated with the WCD raster layer (color table)",
       "type": "application/xml",
       "roles": [
         "metadata"
       ]
     },
-    "NOBS1-MTD": {
-      "title": "NOBS1 auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the NOBS1 raster layer (color table)",
-      "type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
-    },
-    "NOBS2-MTD": {
-      "title": "NOBS2 auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the NOBS2 raster layer (color table)",
-      "type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
-    },
-    "ICD-QA-MTD": {
-      "title": "ICD-QA auxiliary metadata",
-      "description": "GDAL auxiliary metadata associated with the ICD-QA raster layer (color table)",
+    "WCD-QA-MTD": {
+      "title": "WCD-QA auxiliary metadata",
+      "description": "GDAL auxiliary metadata associated with the WCD-QA raster layer (color table)",
       "type": "application/xml",
       "roles": [
         "metadata"
