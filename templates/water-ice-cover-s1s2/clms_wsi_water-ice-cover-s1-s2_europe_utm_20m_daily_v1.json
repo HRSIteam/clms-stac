@@ -1,6 +1,6 @@
 {
   "type": "Collection",
-  "id": "clms_wsi_water-ice-cover-s1s2_europe_utm_20m_daily_v1",
+  "id": "clms_wsi_water-ice-cover-s1-s2_europe_utm_20m_daily_v1",
   "title": "Water/Ice Cover S1+S2 2016-present (raster 60 m), Europe, daily",
   "description": "The Water and Ice Cover by Sentinel-1 and Sentinel-2 (WIC S1+S2) product is generated in near real-time at European scale. It results from the combination of WIC S1 and WIC S2 which are respectively water and ice cover data based on synthetic aperture radar data from the Sentinel-1 constellation and on optical satellite data from the Sentinel-2 constellation. The product provides the river and lake area covered by snow-covered or snow-free ice with a spatial resolution of 20 m x 20 m.",
   "license": "other",
