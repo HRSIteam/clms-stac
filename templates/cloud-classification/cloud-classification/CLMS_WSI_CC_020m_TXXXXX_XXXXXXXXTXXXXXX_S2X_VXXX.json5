@@ -102,7 +102,7 @@
             <PROJ_TRANSFORM_7>,
             <PROJ_TRANSFORM_8>
         ], /* The affine transformation coefficients for the default grid. Obtained from GDAL(GetGeoTransform, requires re-ordering) or the Rasterio (Transform). */
-        "eo:cloud_cover": "<CLOUD_COVER>", /* Estimate of cloud cover as a percentage (0-100). */
+        "eo:cloud_cover": <CLOUD_COVER>, /* Estimate of cloud cover as a percentage (0-100). */
     },
     "collection": "<COLLECTION_NAME>", /* name of the collection JSON file */
     "links": [
