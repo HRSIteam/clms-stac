@@ -189,7 +189,7 @@
             }
             ],
             "file:checksum": "<CHECKSUM_SSC>",/* must be multihash encoded */
-            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SSC.xml",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SSC.tif",
             "file:size": <SIZE_SSC>
         },
         "SSC-QA": {
@@ -227,7 +227,7 @@
             }
             ],
             "file:checksum": "<CHECKSUM_SSC-QA>",/* must be multihash encoded */
-            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SSC-QA.xml",
+            "file:local_path": "<PRODUCT_ID>/<PRODUCT_ID>_SSC-QA.tif",
             "file:size": <SIZE_SSC-QA>
         }
     }
